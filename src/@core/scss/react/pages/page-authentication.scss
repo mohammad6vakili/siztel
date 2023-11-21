@@ -1,0 +1,16 @@
+@import "../../base/pages/authentication.scss";
+
+.auth-wrapper .auth-footer-btn .btn {
+  padding: 0.555rem 0.6rem !important;
+}
+.PhoneInput > input {
+  border: none !important;
+  outline: none !important;
+}
+.register_mobile_field {
+  display: flex;
+}
+.register_mobile_field > div {
+  min-width: 110px !important;
+  margin-right: 5px !important;
+}

@@ -1,0 +1,36 @@
+.navbar_finance {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.navbar_finance > div {
+  margin-left: 3px;
+}
+.navbar_finance_dropdown {
+  padding: 5px;
+  position: relative;
+}
+.navbar_finance_dropdown > div {
+  display: flex;
+  align-items: center;
+  width: 280px;
+  padding: 8px;
+}
+.navbar_finance_dropdown > div:last-child {
+  border-bottom: none !important;
+}
+.navbar_finance_dropdown > div > div {
+  margin-left: 8px;
+}
+.navbar_finance_dropdown > div > div > span {
+  margin-right: 5px;
+}
+.navbar_finance_dropdown > button {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  top: 0;
+  right: 4px;
+}

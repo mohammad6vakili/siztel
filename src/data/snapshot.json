@@ -1,0 +1,11 @@
+{
+    "uuid": "ab5f898a-a093-448b-b0a9-247a009a1f9d",
+    "snapshot_label": "Test_1",
+    "snapshot_description": "Test desc 1",
+    "snapshot_size": "1.15",
+    "include_ram": 1,
+    "snapshot_status": 1,
+    "snapshot_status_readable": "Enable",
+    "last_rollback_at": null,
+    "created_at": "2023-06-15 11:19:15"
+}
