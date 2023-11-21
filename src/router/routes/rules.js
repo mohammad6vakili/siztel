@@ -62,6 +62,17 @@ const RatesRoot = lazy(() => import("../../views/rules/rates/root/index"));
 const RatesNew = lazy(() => import("../../views/rules/rates/new/index"));
 const RatesUpdate = lazy(() => import("../../views/rules/rates/update/index"));
 
+// rating_plans
+const RatingPlansRoot = lazy(() =>
+  import("../../views/rules/rating_plans/root/index")
+);
+const RatingPlansNew = lazy(() =>
+  import("../../views/rules/rating_plans/new/index")
+);
+const RatingPlansUpdate = lazy(() =>
+  import("../../views/rules/rating_plans/update/index")
+);
+
 const rulesRoutes = [
   // action_blands
   {
@@ -153,6 +164,19 @@ const rulesRoutes = [
   {
     path: "/rules/rates/update",
     element: <RatesUpdate />,
+  },
+  // rating_plans
+  {
+    path: "/rules/rating_plans",
+    element: <RatingPlansRoot />,
+  },
+  {
+    path: "/rules/rating_plans/new",
+    element: <RatingPlansNew />,
+  },
+  {
+    path: "/rules/rating_plans/update",
+    element: <RatingPlansUpdate />,
   },
 ];
 
