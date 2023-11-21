@@ -57,6 +57,11 @@ const DestinationsUpdate = lazy(() =>
   import("../../views/rules/destinations/update/index")
 );
 
+// rates
+const RatesRoot = lazy(() => import("../../views/rules/rates/root/index"));
+const RatesNew = lazy(() => import("../../views/rules/rates/new/index"));
+const RatesUpdate = lazy(() => import("../../views/rules/rates/update/index"));
+
 const rulesRoutes = [
   // action_blands
   {
@@ -135,6 +140,19 @@ const rulesRoutes = [
   {
     path: "/rules/destinations/update",
     element: <DestinationsUpdate />,
+  },
+  // rates
+  {
+    path: "/rules/rates",
+    element: <RatesRoot />,
+  },
+  {
+    path: "/rules/rates/new",
+    element: <RatesNew />,
+  },
+  {
+    path: "/rules/rates/update",
+    element: <RatesUpdate />,
   },
 ];
 
