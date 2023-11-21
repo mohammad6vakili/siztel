@@ -84,6 +84,17 @@ const RatingProfilesUpdate = lazy(() =>
   import("../../views/rules/rating_profiles/update/index")
 );
 
+// shared_groups
+const SharedGroupsRoot = lazy(() =>
+  import("../../views/rules/shared_groups/root/index")
+);
+const SharedGroupsNew = lazy(() =>
+  import("../../views/rules/shared_groups/new/index")
+);
+const SharedGroupsUpdate = lazy(() =>
+  import("../../views/rules/shared_groups/update/index")
+);
+
 const rulesRoutes = [
   // action_blands
   {
@@ -201,6 +212,19 @@ const rulesRoutes = [
   {
     path: "/rules/rating_profiles/update",
     element: <RatingProfilesUpdate />,
+  },
+  // shared_groups
+  {
+    path: "/rules/shared_groups",
+    element: <SharedGroupsRoot />,
+  },
+  {
+    path: "/rules/shared_groups/new",
+    element: <SharedGroupsNew />,
+  },
+  {
+    path: "/rules/shared_groups/update",
+    element: <SharedGroupsUpdate />,
   },
 ];
 
