@@ -37,7 +37,7 @@ const getLayout = {
 const TemplateTitle = "%s - SIZ TEL";
 
 // ** Default Route
-const DefaultRoute = "/home";
+const DefaultRoute = "/admin/accounts";
 
 // ** Merge Routes
 const Routes = [

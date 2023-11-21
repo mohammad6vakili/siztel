@@ -19,21 +19,25 @@ import ApiMenus from "./api_menus";
 import SshKeys from "./ssh_menus";
 import VmMenus from "./vm_menus";
 import FirewallMenus from "./firewall_menus";
+import AdminMenus from "./admin";
+import RulesMenus from "./rules";
 
 // ** Merge & Export
 export default [
-  ...HomeMenus,
-  ...NotificationsMenus,
-  ...VpcMenus,
-  ...VmMenus,
-  ...FirewallMenus,
-  ...ApiMenus,
-  ...SshKeys,
-  ...ProfileMenus,
-  ...BilingsMenus,
-  ...SupportMenus,
-  ...ProductsMenus,
-  ...DocumentsMenus,
+  ...AdminMenus,
+  ...RulesMenus,
+  // ...HomeMenus,
+  // ...NotificationsMenus,
+  // ...VpcMenus,
+  // ...VmMenus,
+  // ...FirewallMenus,
+  // ...ApiMenus,
+  // ...SshKeys,
+  // ...ProfileMenus,
+  // ...BilingsMenus,
+  // ...SupportMenus,
+  // ...ProductsMenus,
+  // ...DocumentsMenus,
   //   ...dashboards,
   //   ...apps,
   //   ...pages,

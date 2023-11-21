@@ -1,5 +1,6 @@
 import { lazy } from "react";
 
+// accounts
 const AccountsRoot = lazy(() =>
   import("../../views/admin/accounts/root/index")
 );
@@ -8,10 +9,12 @@ const AccountsUpdate = lazy(() =>
   import("../../views/admin/accounts/update/index")
 );
 
+// cdr
 const CdrRoot = lazy(() => import("../../views/admin/cdr/root/index"));
 const CdrNew = lazy(() => import("../../views/admin/cdr/new/index"));
 const CdrUpdate = lazy(() => import("../../views/admin/cdr/update/index"));
 
+// invoice
 const InvoiceRoot = lazy(() => import("../../views/admin/invoice/root/index"));
 const InvoiceNew = lazy(() => import("../../views/admin/invoice/new/index"));
 const InvoiceUpdate = lazy(() =>
@@ -19,6 +22,7 @@ const InvoiceUpdate = lazy(() =>
 );
 
 const adminRoutes = [
+  // accounts
   {
     path: "/admin/accounts",
     element: <AccountsRoot />,
@@ -31,6 +35,7 @@ const adminRoutes = [
     path: "/admin/accounts/update",
     element: <AccountsUpdate />,
   },
+  // cdr
   {
     path: "/admin/cdr",
     element: <CdrRoot />,
@@ -43,6 +48,7 @@ const adminRoutes = [
     path: "/admin/cdr/update",
     element: <CdrUpdate />,
   },
+  // invoice
   {
     path: "/admin/invoice",
     element: <InvoiceRoot />,
