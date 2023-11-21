@@ -20,6 +20,20 @@ const ActionTriggersUpdate = lazy(() =>
   import("../../views/rules/action_triggers/update/index")
 );
 
+const ActionsRoot = lazy(() => import("../../views/rules/actions/root/index"));
+const ActionsNew = lazy(() => import("../../views/rules/actions/new/index"));
+const ActionsUpdate = lazy(() =>
+  import("../../views/rules/actions/update/index")
+);
+
+const ChargersRoot = lazy(() =>
+  import("../../views/rules/chargers/root/index")
+);
+const ChargersNew = lazy(() => import("../../views/rules/chargers/new/index"));
+const ChargersUpdate = lazy(() =>
+  import("../../views/rules/chargers/update/index")
+);
+
 const rulesRoutes = [
   {
     path: "/rules/action_blands",
@@ -44,6 +58,18 @@ const rulesRoutes = [
   {
     path: "/rules/action_triggers/update",
     element: <ActionTriggersUpdate />,
+  },
+  {
+    path: "/rules/chargers",
+    element: <ChargersRoot />,
+  },
+  {
+    path: "/rules/chargers/new",
+    element: <ChargersNew />,
+  },
+  {
+    path: "/rules/chargers/update",
+    element: <ChargersUpdate />,
   },
 ];
 
