@@ -95,6 +95,13 @@ const SharedGroupsUpdate = lazy(() =>
   import("../../views/rules/shared_groups/update/index")
 );
 
+// timing
+const TimingRoot = lazy(() => import("../../views/rules/timing/root/index"));
+const TimingNew = lazy(() => import("../../views/rules/timing/new/index"));
+const TimingUpdate = lazy(() =>
+  import("../../views/rules/timing/update/index")
+);
+
 const rulesRoutes = [
   // action_blands
   {
@@ -225,6 +232,19 @@ const rulesRoutes = [
   {
     path: "/rules/shared_groups/update",
     element: <SharedGroupsUpdate />,
+  },
+  // timing
+  {
+    path: "/rules/timing",
+    element: <TimingRoot />,
+  },
+  {
+    path: "/rules/timing/new",
+    element: <TimingNew />,
+  },
+  {
+    path: "/rules/timing/update",
+    element: <TimingUpdate />,
   },
 ];
 
