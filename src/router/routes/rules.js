@@ -1,5 +1,6 @@
 import { lazy } from "react";
 
+// action_blands
 const ActionBlandsRoot = lazy(() =>
   import("../../views/rules/action_blands/root/index")
 );
@@ -9,7 +10,7 @@ const ActionBlandsNew = lazy(() =>
 const ActionBlandsUpdate = lazy(() =>
   import("../../views/rules/action_blands/update/index")
 );
-
+// action_triggers
 const ActionTriggersRoot = lazy(() =>
   import("../../views/rules/action_triggers/root/index")
 );
@@ -19,13 +20,13 @@ const ActionTriggersNew = lazy(() =>
 const ActionTriggersUpdate = lazy(() =>
   import("../../views/rules/action_triggers/update/index")
 );
-
+// actions
 const ActionsRoot = lazy(() => import("../../views/rules/actions/root/index"));
 const ActionsNew = lazy(() => import("../../views/rules/actions/new/index"));
 const ActionsUpdate = lazy(() =>
   import("../../views/rules/actions/update/index")
 );
-
+// chargers
 const ChargersRoot = lazy(() =>
   import("../../views/rules/chargers/root/index")
 );
@@ -34,7 +35,30 @@ const ChargersUpdate = lazy(() =>
   import("../../views/rules/chargers/update/index")
 );
 
+// destination_rates
+const DestinationRatesRoot = lazy(() =>
+  import("../../views/rules/destination_rates/root/index")
+);
+const DestinationRatesNew = lazy(() =>
+  import("../../views/rules/destination_rates/new/index")
+);
+const DestinationRatesUpdate = lazy(() =>
+  import("../../views/rules/destination_rates/update/index")
+);
+
+// destinations
+const DestinationsRoot = lazy(() =>
+  import("../../views/rules/destinations/root/index")
+);
+const DestinationsNew = lazy(() =>
+  import("../../views/rules/destinations/new/index")
+);
+const DestinationsUpdate = lazy(() =>
+  import("../../views/rules/destinations/update/index")
+);
+
 const rulesRoutes = [
+  // action_blands
   {
     path: "/rules/action_blands",
     element: <ActionBlandsRoot />,
@@ -47,6 +71,7 @@ const rulesRoutes = [
     path: "/rules/action_blands/update",
     element: <ActionBlandsUpdate />,
   },
+  // action_triggers
   {
     path: "/rules/action_triggers",
     element: <ActionTriggersRoot />,
@@ -59,6 +84,20 @@ const rulesRoutes = [
     path: "/rules/action_triggers/update",
     element: <ActionTriggersUpdate />,
   },
+  // actions
+  {
+    path: "/rules/actions",
+    element: <ActionsRoot />,
+  },
+  {
+    path: "/rules/actions/new",
+    element: <ActionsNew />,
+  },
+  {
+    path: "/rules/actions/update",
+    element: <ActionsUpdate />,
+  },
+  // chargers
   {
     path: "/rules/chargers",
     element: <ChargersRoot />,
@@ -70,6 +109,32 @@ const rulesRoutes = [
   {
     path: "/rules/chargers/update",
     element: <ChargersUpdate />,
+  },
+  // destination_rates
+  {
+    path: "/rules/destination_rates",
+    element: <DestinationRatesRoot />,
+  },
+  {
+    path: "/rules/destination_rates/new",
+    element: <DestinationRatesNew />,
+  },
+  {
+    path: "/rules/destination_rates/update",
+    element: <DestinationRatesUpdate />,
+  },
+  // destinations
+  {
+    path: "/rules/destinations",
+    element: <DestinationsRoot />,
+  },
+  {
+    path: "/rules/destinations/new",
+    element: <DestinationsNew />,
+  },
+  {
+    path: "/rules/destinations/update",
+    element: <DestinationsUpdate />,
   },
 ];
 
