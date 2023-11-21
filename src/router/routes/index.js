@@ -12,6 +12,7 @@ import ExtensionsRoutes from "./Extensions";
 import PageLayoutsRoutes from "./PageLayouts";
 import AuthenticationRoutes from "./Authentication";
 import adminRoutes from "./admin";
+import rulesRoutes from "./rules";
 
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
@@ -50,6 +51,7 @@ const Routes = [
   ...TablesRoutes,
   ...ChartsRoutes,
   ...adminRoutes,
+  ...rulesRoutes,
 ];
 
 const getRouteMeta = (route) => {
