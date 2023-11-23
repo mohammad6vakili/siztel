@@ -26,7 +26,7 @@ const TimingUpdate = () => {
         onSubmit={(e) => {
           e.preventDefault();
           navigate("/rules/timing");
-          toast.success("Successfully Created!");
+          toast.success("Successfully Updated!");
         }}
         className="d-flex flex-column align-items-center"
       >
