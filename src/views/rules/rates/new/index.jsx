@@ -64,7 +64,7 @@ const RatesNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/timing");
+          navigate("/rules/rates");
           toast.success("Successfully Created!");
         }}
         className="d-flex flex-column align-items-center"
