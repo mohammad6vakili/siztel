@@ -12,6 +12,7 @@ import ecommerce from "@src/views/apps/ecommerce/store";
 import dataTables from "@src/views/tables/data-tables/store";
 import permissions from "@src/views/apps/roles-permissions/store";
 import rates from "./rates_slice";
+import destinationRates from "./destination_rates_slice";
 
 const rootReducer = {
   auth,
@@ -27,6 +28,7 @@ const rootReducer = {
   dataTables,
   permissions,
   rates,
+  destinationRates,
 };
 
 export default rootReducer;

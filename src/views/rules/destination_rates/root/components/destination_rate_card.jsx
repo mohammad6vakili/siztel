@@ -28,7 +28,7 @@ const DestinationRateCard = ({ rate, loadings }) => {
         <div>DestinationRateId : {rate.DestinationRateId}</div>
         <div className="d-flex align-items-center">
           <Button
-            onClick={() => navigate("/rules/rates/update")}
+            onClick={() => navigate("/rules/destination_rates/update")}
             style={{ marginRight: 8 }}
             color="primary"
             size="sm"

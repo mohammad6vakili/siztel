@@ -4,29 +4,34 @@ import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
   {
-    name: "ConnectFee",
+    name: "DestinationId",
     minWidth: "100px",
-    selector: (row) => row.ConnectFee,
+    selector: (row) => row.DestinationId,
   },
   {
-    name: "RateUnit",
+    name: "RateId",
     minWidth: "100px",
-    selector: (row) => row.RateUnit,
+    selector: (row) => row.RateId,
   },
   {
-    name: "RateIncrement",
+    name: "RoundingMethod",
     minWidth: "100px",
-    selector: (row) => row.RateIncrement,
+    selector: (row) => row.RoundingMethod,
   },
   {
-    name: "GroupIntervalStart",
+    name: "RoundingDecimals",
     minWidth: "100px",
-    selector: (row) => row.GroupIntervalStart,
+    selector: (row) => row.RoundingDecimals,
   },
   {
-    name: "Rate",
+    name: "MaxCost",
     minWidth: "100px",
-    selector: (row) => row.Rate,
+    selector: (row) => row.MaxCost,
+  },
+  {
+    name: "MaxCostStrategy",
+    minWidth: "100px",
+    selector: (row) => row.MaxCostStrategy,
   },
   {
     name: "Actions",
