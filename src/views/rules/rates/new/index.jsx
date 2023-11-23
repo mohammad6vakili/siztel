@@ -19,12 +19,13 @@ import {
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
-import useRates from "../../../../hooks/use_rates";
+import { useDispatch, useSelector } from "react-redux";
+import { setSlots } from "../../../../redux/rates_slice";
 
 const RatesNew = () => {
   const { skin } = useSkin();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { slotData, setSlotData } = useRates();
 
   const [slotFormData, setSlotFormData] = useState({
     ConnectFee: 0,
@@ -34,8 +35,10 @@ const RatesNew = () => {
     Rate: 0,
   });
 
+  const slots = useSelector((state) => state.rates.slots);
+
   const handleAddSlot = () => {
-    let array = [...slotData];
+    let array = [...slots];
     if (slotFormData.RateUnit.length === 0) {
       toast.error("Please enter RateUnit.");
     } else if (slotFormData.RateIncrement.length === 0) {
@@ -44,7 +47,7 @@ const RatesNew = () => {
       toast.error("Please enter GroupIntervalStart.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
-      setSlotData(array);
+      dispatch(setSlots(array));
       setSlotFormData({
         ConnectFee: 0,
         RateUnit: "",
@@ -200,7 +203,7 @@ const RatesNew = () => {
                   className="react-dataTable"
                   style={{ background: "red" }}
                   sortIcon={<ChevronDown size={10} />}
-                  data={slotData}
+                  data={slots}
                   theme={skin === "dark" ? "darkTheme" : ""}
                 />
               </Col>

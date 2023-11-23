@@ -41,42 +41,42 @@ const TimingNew = () => {
             <Row>
               {/* TimingId */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="TimingId">
                   TimingId
                 </Label>
                 <Input id="TimingId" name="TimingId" />
               </Col>
               {/* Years */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="Years">
                   Years
                 </Label>
                 <Input id="Years" name="Years" />
               </Col>
               {/* Months */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="Months">
                   Months
                 </Label>
                 <Input id="Months" name="Months" />
               </Col>
               {/* MonthDays */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="MonthDays">
                   Month days
                 </Label>
                 <Input id="MonthDays" name="MonthDays" />
               </Col>
               {/* WeekDays */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="WeekDays">
                   Week days
                 </Label>
                 <Input id="WeekDays" name="WeekDays" />
               </Col>
               {/* Time */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="Time">
                   Time
                 </Label>
                 <Input id="Time" name="Time" />
