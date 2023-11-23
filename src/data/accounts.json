@@ -1,0 +1,115 @@
+{
+    "id": null,
+    "result": {
+        "ID": "cgrates.org:999809999900004",
+        "BalanceMap": {
+            "*data": [
+                {
+                    "Uuid": "ed07e1bd-4a8e-4ef5-b587-4e179f49a46c",
+                    "ID": "1G_DATA",
+                    "Value": 10000000,
+                    "ExpirationDate": "2024-01-14T00:00:00Z",
+                    "Weight": 10,
+                    "DestinationIDs": {
+                        "DEST_999": true
+                    },
+                    "RatingSubject": "999809999900004",
+                    "Categories": {
+                        "data": true
+                    },
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": false
+                }
+            ],
+            "*monetary": [
+                {
+                    "Uuid": "f10ad31b-88fd-4cbf-896b-801606f84616",
+                    "ID": "BASE_BALANCE",
+                    "Value": 10000,
+                    "ExpirationDate": "2024-01-14T00:00:00Z",
+                    "Weight": 10,
+                    "DestinationIDs": {
+                        "DEST_999": true
+                    },
+                    "RatingSubject": "999809999900004",
+                    "Categories": {},
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": true
+                }
+            ]
+        },
+        // "UnitCounters": null,
+        "ActionTriggers": [
+            {
+                "ID": "AT_BASIC",
+                "UniqueID": "4a8e82cc-c3a6-4f12-a144-b3d081d84cb9",
+                "ThresholdType": "*min_balance",
+                "ThresholdValue": 1,
+                "Recurrent": false,
+                "MinSleep": 0,
+                "ExpirationDate": "2024-09-14T00:00:00Z",
+                "ActivationDate": "2023-03-14T00:00:00Z",
+                "Balance": {
+                    "Uuid": null,
+                    "ID": "MONEY_BALANCE",
+                    "Type": "*monetary",
+                    "Value": null,
+                    "ExpirationDate": null,
+                    "Weight": 10,
+                    "DestinationIDs": null,
+                    "RatingSubject": null,
+                    "Categories": {
+                        "data": true
+                    },
+                    "SharedGroups": null,
+                    "TimingIDs": null,
+                    "Timings": null,
+                    "Disabled": null,
+                    "Factor": null,
+                    "Blocker": null
+                },
+                "Weight": 10,
+                "ActionsID": "DISABLE_ACCOUNT",
+                "MinQueuedItems": 0,
+                "Executed": false,
+                "LastExecutionTime": "0001-01-01T00:00:00Z"
+            }
+        ],
+        "AllowNegative": true,
+        "Disabled": false,
+        "UpdateTime": "2023-11-22T13:17:06.460628+03:30"
+    },
+    "error": null
+}

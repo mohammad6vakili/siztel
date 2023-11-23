@@ -23,24 +23,32 @@ const RateCard = ({ rate, loadings }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Card>
-      <CardHeader style={{ cursor: "pointer" }} onClick={toggle}>
-        <CardTitle>RateId : {rate.RateId}</CardTitle>
+    <Card
+      className="border-bottom"
+      style={{ borderRadius: 0, marginBottom: 0 }}
+    >
+      <div
+        style={{ cursor: "pointer", padding: "0 12px", height: 48 }}
+        onClick={toggle}
+        className="d-flex flex-row align-items-center justify-content-between"
+      >
+        <div>RateId : {rate.RateId}</div>
         <div className="d-flex align-items-center">
           <Button
             onClick={() => navigate("/rules/rates/update")}
             style={{ marginRight: 8 }}
             color="primary"
+            size="sm"
           >
             Update
           </Button>
           {isOpen ? (
-            <IoIosArrowUp fontSize={22} />
+            <IoIosArrowUp fontSize={18} />
           ) : (
-            <IoIosArrowDown fontSize={22} />
+            <IoIosArrowDown fontSize={18} />
           )}
         </div>
-      </CardHeader>
+      </div>
       <Collapse isOpen={isOpen}>
         <CardBody>
           <div className="react-dataTable mv_datatable_container">

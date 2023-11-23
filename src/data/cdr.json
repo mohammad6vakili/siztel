@@ -1,0 +1,28 @@
+
+        {
+            "CGRID": "7ca96535a8cae9413420a2b8ef0383128558db66",
+            "RunID": "*default",
+            // "OrderID": 11,
+            // "OriginHost": "",
+            // "Source": "",
+            "OriginID": "smf.localdomain;1699438858;2;app_gy",
+            "ToR": "*data",
+            "RequestType": "*prepaid",
+            "Tenant": "cgrates.org",
+            "Category": "data",
+            // "Account": "999809999900004",
+            "Subject": "999809999900004",
+            // "Destination": "99980",
+            "SetupTime": "0001-01-01T00:00:00Z",
+            "AnswerTime": "2023-11-08T13:54:00+03:30",
+            "Usage": "0",
+            "ExtraFields": {
+                "AuthApplicationId": "4",
+                "IMEI": "3534900698733153"
+            },
+            // "CostSource": "*sessions",
+            "Cost": 0,
+            "CostDetails": "{\"CGRID\":\"7ca96535a8cae9413420a2b8ef0383128558db66\",\"RunID\":\"\",\"StartTime\":\"0001-01-01T00:00:00Z\",\"Usage\":0,\"Cost\":0,\"Charges\":[],\"AccountSummary\":{\"Tenant\":\"cgrates.org\",\"ID\":\"999809999900004\",\"BalanceSummaries\":[{\"UUID\":\"3afc6717-e547-4380-b6a0-d0f92033f83a\",\"ID\":\"1G_DATA\",\"Type\":\"*data\",\"Initial\":35087360,\"Value\":35087360,\"Disabled\":false},{\"UUID\":\"d2c2ccbb-f211-4c47-b26f-82ff977d03f8\",\"ID\":\"BASE_BALANCE\",\"Type\":\"*monetary\",\"Initial\":100000,\"Value\":100000,\"Disabled\":false}],\"AllowNegative\":true,\"Disabled\":false},\"Rating\":{},\"Accounting\":{},\"RatingFilters\":{},\"Rates\":{},\"Timings\":{}}",
+            // "ExtraInfo": "",
+            // "PreRated": false
+        }
