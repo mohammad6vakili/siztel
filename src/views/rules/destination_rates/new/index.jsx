@@ -77,7 +77,7 @@ const DestinationRatesNew = () => {
         <Card className="w-100">
           {/* card header */}
           <CardHeader className="border-bottom">
-            <CardTitle>New Rate Form</CardTitle>
+            <CardTitle>New Destination Rate Form</CardTitle>
           </CardHeader>
           {/* card body */}
           <CardBody className="pt-2">
