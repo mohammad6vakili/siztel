@@ -57,7 +57,6 @@ const TimingRoot = () => {
           New Timing
         </Button>
       </Col>
-
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getTimings ? (
