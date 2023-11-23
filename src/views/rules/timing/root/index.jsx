@@ -7,9 +7,12 @@ import DataTable from "react-data-table-component";
 import ReactPaginate from "react-paginate";
 import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
+import { Col, Button } from "reactstrap";
 import TimingData from "../../../../data/timing.json";
+import { useNavigate } from "react-router-dom";
 
 const TimingRoot = () => {
+  const navigate = useNavigate();
   const { skin } = useSkin();
   const { loadings, paginates, setPaginates } = useTiming();
 
@@ -44,7 +47,18 @@ const TimingRoot = () => {
 
   return (
     <Fragment>
-      <Breadcrumbs title="Timing" data={[{ title: "Timing" }]} />
+      <Col className="position-relative" xs={12}>
+        <Breadcrumbs title="Timing" data={[{ title: "Timing" }]} />
+        <Button
+          onClick={() => navigate("/rules/timing/new")}
+          color="primary"
+          style={{ position: "absolute", right: 0, top: 0 }}
+        >
+          New Timing
+        </Button>
+      </Col>
+
+      {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getTimings ? (
           <Fragment>

@@ -1,4 +1,5 @@
 import { Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export const columns = [
   {
@@ -38,9 +39,11 @@ export const columns = [
     selector: (row) => row.uuid,
     cell: (row) => {
       return (
-        <Button style={{ padding: 6 }} size="sm" color="primary">
-          Update
-        </Button>
+        <Link to={"/rules/timing/update"}>
+          <Button style={{ padding: 6 }} size="sm" color="primary">
+            Update
+          </Button>
+        </Link>
       );
     },
   },
