@@ -18,6 +18,7 @@ import CustomButton from "../../../../components/button";
 
 const TimingNew = () => {
   const navigate = useNavigate();
+
   return (
     <Fragment>
       <Breadcrumbs title="New Timing" data={[{ title: "New Timing" }]} />
