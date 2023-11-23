@@ -12,7 +12,9 @@ const useRates = () => {
     total: 1,
   });
 
-  const exports = { loadings, paginates, setPaginates };
+  const [slotData, setSlotData] = useState([]);
+
+  const exports = { loadings, paginates, setPaginates, slotData, setSlotData };
   return exports;
 };
 export default useRates;
