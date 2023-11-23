@@ -14,14 +14,7 @@ import {
 } from "react-feather";
 
 // ** Reactstrap Imports
-import {
-  Breadcrumb,
-  DropdownMenu,
-  DropdownItem,
-  BreadcrumbItem,
-  DropdownToggle,
-  UncontrolledButtonDropdown,
-} from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 const BreadCrumbs = (props) => {
   // ** Props
