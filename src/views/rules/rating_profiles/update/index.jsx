@@ -106,10 +106,10 @@ const RatingProfilesUpdate = () => {
                 <Input id="Subject" name="Subject" />
               </Col>
             </Row>
-            {/* slots */}
+            {/* Activations */}
             <Row>
               <Col xs="12">
-                <CardTitle>Slots</CardTitle>
+                <CardTitle>Activations</CardTitle>
               </Col>
               {/* ActivationTime */}
               <Col xs="12" sm="6" md="3" className="mb-1">
