@@ -13,6 +13,7 @@ import dataTables from "@src/views/tables/data-tables/store";
 import permissions from "@src/views/apps/roles-permissions/store";
 import rates from "./rates_slice";
 import destinationRates from "./destination_rates_slice";
+import ratingPlans from "./rating_plans_slice";
 
 const rootReducer = {
   auth,
@@ -29,6 +30,7 @@ const rootReducer = {
   permissions,
   rates,
   destinationRates,
+  ratingPlans,
 };
 
 export default rootReducer;
