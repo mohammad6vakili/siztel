@@ -1,11 +1,11 @@
 import { Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setSlots } from "../../../../../redux/rating_profiles_slice";
+import { setSlots } from "../../../../../redux/shared_groups_slice";
 
 const SlotAction = ({ id }) => {
   const dispatch = useDispatch();
 
-  const slots = useSelector((state) => state.ratingProfiles.slots);
+  const slots = useSelector((state) => state.sharedGroups.slots);
 
   return (
     <Button
