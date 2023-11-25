@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const actionsSlice = createSlice({
-  name: "actionsSlice",
+  name: "actions",
   initialState: {
     slots: [],
   },
