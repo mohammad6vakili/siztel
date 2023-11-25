@@ -17,6 +17,7 @@ import ratingPlans from "./rating_plans_slice";
 import ratingProfiles from "./rating_profiles_slice";
 import sharedGroups from "./shared_groups_slice";
 import actions from "./actions_slice";
+import actionTriggers from "./action_triggers_slice";
 
 const rootReducer = {
   auth,
@@ -37,6 +38,7 @@ const rootReducer = {
   ratingProfiles,
   sharedGroups,
   actions,
+  actionTriggers,
 };
 
 export default rootReducer;
