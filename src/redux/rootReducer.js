@@ -14,6 +14,7 @@ import permissions from "@src/views/apps/roles-permissions/store";
 import rates from "./rates_slice";
 import destinationRates from "./destination_rates_slice";
 import ratingPlans from "./rating_plans_slice";
+import ratingProfiles from "./rating_profiles_slice";
 
 const rootReducer = {
   auth,
@@ -31,6 +32,7 @@ const rootReducer = {
   rates,
   destinationRates,
   ratingPlans,
+  ratingProfiles,
 };
 
 export default rootReducer;

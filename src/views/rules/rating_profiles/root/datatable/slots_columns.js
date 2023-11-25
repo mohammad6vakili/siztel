@@ -4,19 +4,19 @@ import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
   {
-    name: "DestinationRateId",
+    name: "ActivationTime",
     minWidth: "100px",
-    selector: (row) => row.DestinationRateId,
+    selector: (row) => row.ActivationTime,
   },
   {
-    name: "TimingId",
+    name: "RatingPlanId",
     minWidth: "100px",
-    selector: (row) => row.TimingId,
+    selector: (row) => row.RatingPlanId,
   },
   {
-    name: "Weight",
+    name: "FallbackSubjects",
     minWidth: "100px",
-    selector: (row) => row.Weight,
+    selector: (row) => row.FallbackSubjects,
   },
   {
     name: "Actions",
