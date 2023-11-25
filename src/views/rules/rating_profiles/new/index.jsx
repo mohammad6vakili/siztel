@@ -181,7 +181,7 @@ const RatingProfilesNew = () => {
                 <DataTable
                   noDataComponent={
                     <div style={{ margin: "24px 0" }}>
-                      No Destination Rate Added Yet.
+                      No Activation Added Yet.
                     </div>
                   }
                   noHeader

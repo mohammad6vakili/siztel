@@ -157,9 +157,7 @@ const RatingPlansUpdate = () => {
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>
-                      No Destination Rate Added Yet.
-                    </div>
+                    <div style={{ margin: "24px 0" }}>No Slot Added Yet.</div>
                   }
                   noHeader
                   columns={slots_columns}
