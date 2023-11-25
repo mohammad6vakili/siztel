@@ -15,6 +15,7 @@ import rates from "./rates_slice";
 import destinationRates from "./destination_rates_slice";
 import ratingPlans from "./rating_plans_slice";
 import ratingProfiles from "./rating_profiles_slice";
+import sharedGroups from "./shared_groups_slice";
 
 const rootReducer = {
   auth,
@@ -33,6 +34,7 @@ const rootReducer = {
   destinationRates,
   ratingPlans,
   ratingProfiles,
+  sharedGroups,
 };
 
 export default rootReducer;
