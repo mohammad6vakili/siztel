@@ -1,11 +1,11 @@
 import { Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setSlots } from "../../../../../redux/actions_slice";
+import { setSlots } from "../../../../../redux/action_triggers_slice";
 
 const SlotAction = ({ id }) => {
   const dispatch = useDispatch();
 
-  const slots = useSelector((state) => state.actions.slots);
+  const slots = useSelector((state) => state.actionTriggers.slots);
 
   return (
     <Button
