@@ -1,11 +1,11 @@
 import { Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setSlots } from "../../../../../redux/invoice_slice";
+import { setSlots } from "../../../../../redux/cdr_slice";
 
 const CostPriceAction = ({ id }) => {
   const dispatch = useDispatch();
 
-  const slots = useSelector((state) => state.invoice.slots);
+  const slots = useSelector((state) => state.cdr.slots);
 
   return (
     <Button
