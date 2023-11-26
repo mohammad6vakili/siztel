@@ -19,6 +19,7 @@ import sharedGroups from "./shared_groups_slice";
 import actions from "./actions_slice";
 import actionTriggers from "./action_triggers_slice";
 import invoice from "./invoice_slice";
+import cdr from "./cdr_slice";
 
 const rootReducer = {
   auth,
@@ -41,6 +42,7 @@ const rootReducer = {
   actions,
   actionTriggers,
   invoice,
+  cdr,
 };
 
 export default rootReducer;
