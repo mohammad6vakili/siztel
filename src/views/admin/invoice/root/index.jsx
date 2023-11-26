@@ -50,7 +50,7 @@ const InvoiceRoot = () => {
       <Col className="position-relative" xs={12}>
         <Breadcrumbs title="Invoice" data={[{ title: "Invoice" }]} />
         <Button
-          onClick={() => navigate("/rules/actions/new")}
+          onClick={() => navigate("/admin/invoice/new")}
           color="primary"
           style={{ position: "absolute", right: 0, top: 0 }}
         >

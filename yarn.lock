@@ -1448,6 +1448,13 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@hassanmojab/react-modern-calendar-datepicker@^3.1.7":
+  "integrity" "sha512-dX/FXGcvIW31dgA1fcFJkHmIx3k4AqX166SfCQ6weBb0ZLr6C/f5YzcXVop19ifX18ezEw11Xb+l02JGj4+R6g=="
+  "resolved" "https://registry.npmjs.org/@hassanmojab/react-modern-calendar-datepicker/-/react-modern-calendar-datepicker-3.1.7.tgz"
+  "version" "3.1.7"
+  dependencies:
+    "jalaali-js" "^1.1.0"
+
 "@hookform/resolvers@2.8.3":
   "integrity" "sha512-9G6/vCUNvg3O4MeAK4l749syOz/2r1DF/Pq3Njuk3sI4ObHoRyV0nxio5NrNLGC+7N1Ixu9vJ/loNhaUNXTX6A=="
   "resolved" "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-2.8.3.tgz"
@@ -7490,6 +7497,11 @@
   dependencies:
     "html-escaper" "^2.0.0"
     "istanbul-lib-report" "^3.0.0"
+
+"jalaali-js@^1.1.0":
+  "integrity" "sha512-io974va+Qyu+UfuVX3UIAgJlxLhAMx9Y8VMfh+IG00Js7hXQo1qNQuwSiSa0xxco0SVgx5HWNkaiCcV+aZ8WPw=="
+  "resolved" "https://registry.npmjs.org/jalaali-js/-/jalaali-js-1.2.6.tgz"
+  "version" "1.2.6"
 
 "jest-changed-files@^26.6.2":
   "integrity" "sha512-fDS7szLcY9sCtIip8Fjry9oGf3I2ht/QT21bAHm5Dmf0mD4X3ReNUf17y+bO6fR8WgbIZTlbyG1ak/53cbRzKQ=="

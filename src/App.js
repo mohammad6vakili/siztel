@@ -10,6 +10,8 @@ import { getRoutes } from "./router/routes";
 import { useLayout } from "@hooks/useLayout";
 import { createTheme } from "react-data-table-component";
 
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+
 const App = () => {
   const [allRoutes, setAllRoutes] = useState([]);
 

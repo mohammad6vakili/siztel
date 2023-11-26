@@ -6,7 +6,7 @@ import todo from "@src/views/apps/todo/store";
 import chat from "@src/views/apps/chat/store";
 import users from "@src/views/apps/user/store";
 import email from "@src/views/apps/email/store";
-import invoice from "@src/views/apps/invoice/store";
+// import invoice from "@src/views/apps/invoice/store";
 import calendar from "@src/views/apps/calendar/store";
 import ecommerce from "@src/views/apps/ecommerce/store";
 import dataTables from "@src/views/tables/data-tables/store";
@@ -18,6 +18,7 @@ import ratingProfiles from "./rating_profiles_slice";
 import sharedGroups from "./shared_groups_slice";
 import actions from "./actions_slice";
 import actionTriggers from "./action_triggers_slice";
+import invoice from "./invoice_slice";
 
 const rootReducer = {
   auth,
@@ -27,7 +28,7 @@ const rootReducer = {
   users,
   navbar,
   layout,
-  invoice,
+  // invoice,
   calendar,
   ecommerce,
   dataTables,
@@ -39,6 +40,7 @@ const rootReducer = {
   sharedGroups,
   actions,
   actionTriggers,
+  invoice,
 };
 
 export default rootReducer;
