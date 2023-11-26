@@ -96,8 +96,8 @@
     "yup": "0.32.8"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "craco start --openssl-legacy-provider",
+    "build": "craco build --openssl-legacy-provider",
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.js\"",
