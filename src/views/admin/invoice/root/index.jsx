@@ -66,7 +66,7 @@ const InvoiceRoot = () => {
                 loadings.getInvoices ? (
                   ""
                 ) : (
-                  <div style={{ margin: "24px 0" }}>No Timing Founded!</div>
+                  <div style={{ margin: "24px 0" }}>No Invoice Founded!</div>
                 )
               }
               noHeader
