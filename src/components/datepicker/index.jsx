@@ -22,7 +22,7 @@ const CustomDatePicker = ({
         minimumDate={minimumDate}
         maximumDate={maximumDate}
         locale={"en"}
-        calendarPopperPosition="bottom"
+        calendarPopperPosition="top"
         calendarClassName="responsive-calendar"
         {...props}
       />

@@ -76,26 +76,6 @@ const InvoiceNew = () => {
                 </Label>
                 <Input id="AccountImsi" name="AccountImsi" />
               </Col>
-              {/* StartTime */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="StartTime">
-                  StartTime
-                </Label>
-                <CustomDatePicker
-                  inputName="StartTime"
-                  inputPlaceholder="Click to open calendar"
-                />
-              </Col>
-              {/* EndTime */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="EndTime">
-                  EndTime
-                </Label>
-                <CustomDatePicker
-                  inputName="StartTime"
-                  inputPlaceholder="Click to open calendar"
-                />
-              </Col>
               {/* InvoicePrice */}
               <Col xs="12" sm="6" md="4" className="mb-1">
                 <Label className="form-label" for="InvoicePrice">
@@ -125,6 +105,26 @@ const InvoiceNew = () => {
                 <Label className="form-label" for="UpdatedAt">
                   UpdatedAt
                 </Label>{" "}
+                <CustomDatePicker
+                  inputName="StartTime"
+                  inputPlaceholder="Click to open calendar"
+                />
+              </Col>
+              {/* StartTime */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="StartTime">
+                  StartTime
+                </Label>
+                <CustomDatePicker
+                  inputName="StartTime"
+                  inputPlaceholder="Click to open calendar"
+                />
+              </Col>
+              {/* EndTime */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="EndTime">
+                  EndTime
+                </Label>
                 <CustomDatePicker
                   inputName="StartTime"
                   inputPlaceholder="Click to open calendar"

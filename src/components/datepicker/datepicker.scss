@@ -3,15 +3,16 @@
   position: relative;
   display: flex;
   align-items: center;
-  z-index: 99 !important;
+  z-index: 9 !important;
 }
 .custom_datepicker_wrapper > svg {
   position: absolute;
   right: 8px !important;
-  z-index: 9999;
+  z-index: 99;
 }
 .custom_datepicker_wrapper > div {
   width: 100%;
+  z-index: 0 !important;
 }
 .DatePicker__calendarContainer {
   z-index: 9999 !important;
@@ -19,7 +20,7 @@
 
 .responsive-calendar {
   font-size: 7px !important;
-  z-index: 9999 !important;
+  z-index: 999 !important;
 }
 .custom_datepicker {
   margin-top: 2px;
