@@ -41,15 +41,15 @@ const DefaultRoute = "/admin/accounts";
 
 // ** Merge Routes
 const Routes = [
-  ...AuthenticationRoutes,
-  ...AppRoutes,
-  ...PagesRoutes,
-  ...UiElementRoutes,
-  ...ExtensionsRoutes,
-  ...PageLayoutsRoutes,
-  ...FormRoutes,
-  ...TablesRoutes,
-  ...ChartsRoutes,
+  // ...AuthenticationRoutes,
+  // ...AppRoutes,
+  // ...PagesRoutes,
+  // ...UiElementRoutes,
+  // ...ExtensionsRoutes,
+  // ...PageLayoutsRoutes,
+  // ...FormRoutes,
+  // ...TablesRoutes,
+  // ...ChartsRoutes,
   ...adminRoutes,
   ...rulesRoutes,
 ];

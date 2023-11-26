@@ -27,7 +27,7 @@ const Router = ({ allRoutes }) => {
   };
 
   useEffect(() => {
-    navigate("/");
+    // navigate("/");
   }, []);
 
   const routes = useRoutes([
@@ -36,21 +36,6 @@ const Router = ({ allRoutes }) => {
       index: true,
       element: <Navigate replace to={getHomeRoute()} />,
     },
-    // {
-    //   path: "/login",
-    //   element: <BlankLayout />,
-    //   children: [{ path: "/login", element: <Login /> }],
-    // },
-    // {
-    //   path: "/register",
-    //   element: <BlankLayout />,
-    //   children: [{ path: "/register", element: <Register /> }],
-    // },
-    // {
-    //   path: "/register/verify",
-    //   element: <BlankLayout />,
-    //   children: [{ path: "/register/verify", element: <VerifyEmailBasic /> }],
-    // },
     // {
     //   path: "/auth/not-auth",
     //   element: <BlankLayout />,
