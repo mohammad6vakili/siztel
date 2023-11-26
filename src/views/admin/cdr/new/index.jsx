@@ -21,7 +21,6 @@ import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/cdr_slice";
-import CustomDatePicker from "../../../../components/datepicker";
 
 const CdrNew = () => {
   const { skin } = useSkin();
