@@ -16,10 +16,10 @@ const PrivateRoute = ({ children, route }) => {
     if (route.meta) {
       restrictedRoute = route.meta.restricted;
     }
-    if (!localStorage.getItem("token")) {
-      return <Navigate to="/login" />;
-    }
-    if (localStorage.getItem("token") && restrictedRoute) {
+    // if (!localStorage.getItem("token")) {
+    //   return <Navigate to="/login" />;
+    // }
+    if (restrictedRoute) {
       return <Navigate to="/" />;
     }
   }

@@ -1,5 +1,5 @@
 // ** Router imports
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 
 // ** Router imports
 import { useRoutes, Navigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import BlankLayout from "@layouts/BlankLayout";
 
 // ** Utils
 import { getUserData, getHomeRouteForLoggedInUser } from "../utility/Utils";
+import { useNavigate } from "react-router-dom";
 
 // ** Components
 const Error = lazy(() => import("../views/pages/misc/Error"));
@@ -20,9 +21,14 @@ const VerifyEmailBasic = lazy(() =>
 const NotAuthorized = lazy(() => import("../views/pages/misc/NotAuthorized"));
 
 const Router = ({ allRoutes }) => {
+  const navigate = useNavigate();
   const getHomeRoute = () => {
     return getHomeRouteForLoggedInUser("admin");
   };
+
+  useEffect(() => {
+    navigate("/");
+  }, []);
 
   const routes = useRoutes([
     {
