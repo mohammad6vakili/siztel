@@ -1,11 +1,382 @@
-{
-"account_imsi":  "TEXT"      ,
-"start_time"  :  "TIMESTAMP" ,
-"end_time"     : "TIMESTAMP" ,
-"invoice_price": "NUMERIC"   ,
-"cost_details" : "jsonb"     ,
-"status"       : "TEXT"      ,
-"created_at"   : "TIMESTAMP" ,
-"updated_at"   : "TIMESTAMP",
-"deleted_at"   : "TIMESTAMP"
-}
+[
+    {
+        "id":1,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":2,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":3,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":4,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":5,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":6,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":7,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":8,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":9,
+        "AccountImsi":"test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    },
+    {
+        "id":10,
+        "AccountImsi":"1test",
+        "StartTime":"2023/04/25",
+        "EndTime":"2023/05/25",
+        "InvoicePrice":24000,
+        "Status":"Active",
+        "CreatedAt":"2022/04/22",
+        "UpdatedAt":"2022/04/22",
+        "DeletedAt":"2022/04/22",
+        "CostDetails":[
+            {
+                "id":1,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":2,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":3,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":4,
+                "title":"item title",
+                "cost":25000
+            },
+            {
+                "id":5,
+                "title":"item title",
+                "cost":25000
+            }
+        ]
+    }
+]
