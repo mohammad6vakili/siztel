@@ -10,6 +10,7 @@ import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import AccountsData from "../../../../data/accounts.json";
 import { useNavigate } from "react-router-dom";
+import Filterbar from "./components/filterbar";
 
 const AccountsRoot = () => {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ const AccountsRoot = () => {
           New Account
         </Button>
       </Col>
+      <Filterbar />
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getAccounts ? (
