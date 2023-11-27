@@ -22,6 +22,7 @@ import invoice from "./invoice_slice";
 import cdr from "./cdr_slice";
 import actionPlans from "./action_plans_slice";
 import chargers from "./chargers_slice";
+import accounts from "./accounts_slice";
 
 const rootReducer = {
   auth,
@@ -47,6 +48,7 @@ const rootReducer = {
   cdr,
   actionPlans,
   chargers,
+  accounts,
 };
 
 export default rootReducer;
