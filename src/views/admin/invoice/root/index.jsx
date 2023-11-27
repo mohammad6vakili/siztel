@@ -7,7 +7,6 @@ import DataTable from "react-data-table-component";
 import ReactPaginate from "react-paginate";
 import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
-import { Col, Button } from "reactstrap";
 import InvoiceData from "../../../../data/invoice.json";
 import { useNavigate } from "react-router-dom";
 
@@ -47,16 +46,7 @@ const InvoiceRoot = () => {
 
   return (
     <Fragment>
-      <Col className="position-relative" xs={12}>
-        <Breadcrumbs title="Invoice" data={[{ title: "Invoice" }]} />
-        <Button
-          onClick={() => navigate("/admin/invoice/new")}
-          color="primary"
-          style={{ position: "absolute", right: 0, top: 0 }}
-        >
-          New Invoice
-        </Button>
-      </Col>
+      <Breadcrumbs title="Invoice" data={[{ title: "Invoice" }]} />
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getInvoices ? (

@@ -7,7 +7,6 @@ import DataTable from "react-data-table-component";
 import ReactPaginate from "react-paginate";
 import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
-import { Col, Button } from "reactstrap";
 import CdrData from "../../../../data/cdr.json";
 import { useNavigate } from "react-router-dom";
 
@@ -47,16 +46,7 @@ const CdrRoot = () => {
 
   return (
     <Fragment>
-      <Col className="position-relative" xs={12}>
-        <Breadcrumbs title="CDR" data={[{ title: "CDR" }]} />
-        <Button
-          onClick={() => navigate("/admin/cdr/new")}
-          color="primary"
-          style={{ position: "absolute", right: 0, top: 0 }}
-        >
-          New CDR
-        </Button>
-      </Col>{" "}
+      <Breadcrumbs title="CDR" data={[{ title: "CDR" }]} />
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getCdr ? (
