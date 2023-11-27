@@ -21,10 +21,10 @@ export default [
         navLink: "/rules/action_triggers",
       },
       {
-        id: "actionBlands",
-        title: "Action Blands",
+        id: "actionPlans",
+        title: "Action Plans",
         icon: <Circle size={12} />,
-        navLink: "/rules/action_blands",
+        navLink: "/rules/action_plans",
       },
       {
         id: "chargers",

@@ -1,14 +1,14 @@
 import { lazy } from "react";
 
 // action_blands
-const ActionBlandsRoot = lazy(() =>
-  import("../../views/rules/action_blands/root/index")
+const ActionPlansRoot = lazy(() =>
+  import("../../views/rules/action_plans/root/index")
 );
-const ActionBlandsNew = lazy(() =>
-  import("../../views/rules/action_blands/new/index")
+const ActionPlansNew = lazy(() =>
+  import("../../views/rules/action_plans/new/index")
 );
-const ActionBlandsUpdate = lazy(() =>
-  import("../../views/rules/action_blands/update/index")
+const ActionPlansUpdate = lazy(() =>
+  import("../../views/rules/action_plans/update/index")
 );
 // action_triggers
 const ActionTriggersRoot = lazy(() =>
@@ -103,18 +103,18 @@ const TimingUpdate = lazy(() =>
 );
 
 const rulesRoutes = [
-  // action_blands
+  // action_plans
   {
-    path: "/rules/action_blands",
-    element: <ActionBlandsRoot />,
+    path: "/rules/action_plans",
+    element: <ActionPlansRoot />,
   },
   {
-    path: "/rules/action_blands/new",
-    element: <ActionBlandsNew />,
+    path: "/rules/action_plans/new",
+    element: <ActionPlansNew />,
   },
   {
-    path: "/rules/action_blands/update",
-    element: <ActionBlandsUpdate />,
+    path: "/rules/action_plans/update",
+    element: <ActionPlansUpdate />,
   },
   // action_triggers
   {

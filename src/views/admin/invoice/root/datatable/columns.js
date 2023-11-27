@@ -42,19 +42,4 @@ export const columns = [
     minWidth: "100px",
     selector: (row) => row.DeletedAt,
   },
-  {
-    name: "Actions",
-    minWidth: "120px",
-    maxWidth: "120px",
-    selector: (row) => row.uuid,
-    cell: (row) => {
-      return (
-        <Link to={"/admin/invoice/update"}>
-          <Button style={{ padding: 6 }} size="sm" color="primary">
-            Update
-          </Button>
-        </Link>
-      );
-    },
-  },
 ];

@@ -11,15 +11,9 @@ const AccountsUpdate = lazy(() =>
 
 // cdr
 const CdrRoot = lazy(() => import("../../views/admin/cdr/root/index"));
-const CdrNew = lazy(() => import("../../views/admin/cdr/new/index"));
-const CdrUpdate = lazy(() => import("../../views/admin/cdr/update/index"));
 
 // invoice
 const InvoiceRoot = lazy(() => import("../../views/admin/invoice/root/index"));
-const InvoiceNew = lazy(() => import("../../views/admin/invoice/new/index"));
-const InvoiceUpdate = lazy(() =>
-  import("../../views/admin/invoice/update/index")
-);
 
 const adminRoutes = [
   // accounts
@@ -40,26 +34,11 @@ const adminRoutes = [
     path: "/admin/cdr",
     element: <CdrRoot />,
   },
-  {
-    path: "/admin/cdr/new",
-    element: <CdrNew />,
-  },
-  {
-    path: "/admin/cdr/update",
-    element: <CdrUpdate />,
-  },
+
   // invoice
   {
     path: "/admin/invoice",
     element: <InvoiceRoot />,
-  },
-  {
-    path: "/admin/invoice/new",
-    element: <InvoiceNew />,
-  },
-  {
-    path: "/admin/invoice/update",
-    element: <InvoiceUpdate />,
   },
 ];
 

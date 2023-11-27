@@ -72,19 +72,4 @@ export const columns = [
     minWidth: "160px",
     selector: (row) => row.IMEI,
   },
-  {
-    name: "Actions",
-    minWidth: "120px",
-    maxWidth: "120px",
-    selector: (row) => row.uuid,
-    cell: (row) => {
-      return (
-        <Link to={"/admin/cdr/update"}>
-          <Button style={{ padding: 6 }} size="sm" color="primary">
-            Update
-          </Button>
-        </Link>
-      );
-    },
-  },
 ];

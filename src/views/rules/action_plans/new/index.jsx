@@ -1,14 +1,14 @@
 import { Fragment } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 
-const ActionBlandsUpdate = () => {
+const ActionPlansNew = () => {
   return (
     <Fragment>
       <Breadcrumbs
-        title="Update Action Bland"
-        data={[{ title: "Update Action Bland" }]}
+        title="New Action Plan"
+        data={[{ title: "New Action Plan" }]}
       />
     </Fragment>
   );
 };
-export default ActionBlandsUpdate;
+export default ActionPlansNew;
