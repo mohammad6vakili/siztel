@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { createActionSchema } from "../utility/schemas/index";
+import { useSelector } from "react-redux";
 
 const useActions = () => {
   const navigate = useNavigate();
@@ -14,21 +15,11 @@ const useActions = () => {
     updateAction: false,
   });
 
+  const slots = useSelector((state) => state.actions.slots);
+
   const [paginates, setPaginates] = useState({
     current: 1,
     total: 1,
-  });
-
-  const createActionController = useFormik({
-    initialValues: {
-      TPid: "",
-      ID: "",
-      Actions: [],
-    },
-    validationSchema: createActionSchema,
-    onSubmit: (values) => {
-      toast.success("Done");
-    },
   });
 
   const getActions = async () => {
@@ -41,35 +32,36 @@ const useActions = () => {
     }
   };
 
-  const createAction = async () => {
+  const createActionController = useFormik({
+    initialValues: {
+      TPid: "",
+      ID: "",
+      Actions: [],
+    },
+    validationSchema: createActionSchema,
+    onSubmit: (values) => {
+      if (slots.length === 0) {
+        toast.error("You must add at least one action.");
+      } else {
+        createAction(values, slots);
+      }
+    },
+  });
+
+  const createAction = async (values, slots) => {
+    const newSlots = slots.map((obj) => {
+      const { id, ...rest } = obj;
+      return rest;
+    });
     try {
       setLoadings({ ...loadings, createAction: true });
       const response = await httpService.post("", {
         method: "APIerSv1.SetTPActions",
         params: [
           {
-            TPid: "DEFAULT",
-            ID: "DATA_INC_100",
-            Actions: [
-              {
-                Identifier: "*topup",
-                BalanceId: "1G_DATA",
-                BalanceType: "*data",
-                Units: "100",
-                ExpiryTime: "2024-01-14T00:00:00Z",
-                Filter: "",
-                TimingTags: "*asap",
-                DestinationIds: "DEST_999",
-                RatingSubject: "*any",
-                Categories: "data",
-                SharedGroups: "",
-                BalanceWeight: "10",
-                ExtraParameters: "",
-                BalanceBlocker: "false",
-                BalanceDisabled: "false",
-                Weight: 10,
-              },
-            ],
+            TPid: values.TPid,
+            ID: values.ID,
+            Actions: newSlots,
           },
         ],
       });

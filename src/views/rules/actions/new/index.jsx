@@ -382,7 +382,7 @@ const ActionsNew = () => {
                   }
                 />
               </Col>
-
+              {/* action */}
               <Col
                 xs="12"
                 sm="6"
@@ -398,6 +398,7 @@ const ActionsNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
