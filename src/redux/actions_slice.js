@@ -15,9 +15,13 @@ export const actionsSlice = createSlice({
     setSelectedAction: (state, action) => {
       state.selectedAction = action.payload;
     },
+    setDeleteModal: (state, action) => {
+      state.deleteModal = action.payload;
+    },
   },
 });
 
-export const { setSlots, setSelectedAction } = actionsSlice.actions;
+export const { setSlots, setSelectedAction, setDeleteModal } =
+  actionsSlice.actions;
 
 export default actionsSlice.reducer;
