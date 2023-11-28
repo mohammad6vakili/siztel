@@ -13,6 +13,7 @@ const useActions = () => {
     getActions: false,
     createAction: false,
     updateAction: false,
+    deleteAction: false,
   });
 
   const slots = useSelector((state) => state.actions.slots);

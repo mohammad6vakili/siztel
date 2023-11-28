@@ -7,10 +7,17 @@ import { Col, Button } from "reactstrap";
 import ActionsData from "../../../../data/actions.json";
 import { useNavigate } from "react-router-dom";
 import ActionCard from "./components/action_card";
+import Confirm from "../../../../components/confirm/index";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/actions_slice";
 
 const ActionsRoot = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { loadings, paginates, setPaginates } = useActions();
+
+  const selectedAction = useSelector((state) => state.actions.selectedAction);
+  const deleteModal = useSelector((state) => state.actions.deleteModal);
 
   const handlePagination = (page) => {
     console.log(page);
@@ -65,6 +72,20 @@ const ActionsRoot = () => {
           <ProgressLoading />
         </div>
       ) : null}
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this action?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteAction}
+        yesAction={() => alert("Delete...")}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };

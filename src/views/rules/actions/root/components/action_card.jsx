@@ -7,7 +7,10 @@ import { useSkin } from "@hooks/useSkin";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSelectedAction } from "../../../../../redux/actions_slice";
+import {
+  setSelectedAction,
+  setDeleteModal,
+} from "../../../../../redux/actions_slice";
 
 const ActionCard = ({ row, loadings }) => {
   const { skin } = useSkin();
@@ -34,6 +37,7 @@ const ActionCard = ({ row, loadings }) => {
           <Button
             onClick={() => {
               dispatch(setSelectedAction(row));
+              dispatch(setDeleteModal(1));
             }}
             style={{ marginRight: 8 }}
             color="danger"
