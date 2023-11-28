@@ -91,10 +91,37 @@ const useActions = () => {
       if (slots.length === 0) {
         toast.error("You must add at least one action.");
       } else {
-        createAction(values, slots);
+        updateAction(values, slots);
       }
     },
   });
+
+  const updateAction = async (values, slots) => {
+    const newSlots = slots.map((obj) => {
+      const { id, ...rest } = obj;
+      return rest;
+    });
+    try {
+      setLoadings({ ...loadings, updateAction: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.SetTPActions",
+        params: [
+          {
+            TPid: values.TPid,
+            ID: values.ID,
+            Actions: newSlots,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, updateAction: false });
+      if (response.status === 200) {
+        toast.success("Successfully Updated!");
+        navigate("/rules/actions");
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, updateAction: false });
+    }
+  };
 
   const exports = {
     createActionController,
