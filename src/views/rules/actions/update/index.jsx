@@ -114,7 +114,6 @@ const ActionsUpdate = () => {
       updateActionController.setFieldValue("TPid", selectedAction?.TPid);
       updateActionController.setFieldValue("ID", selectedAction?.ID);
       dispatch(setSlots(selectedAction.Slots));
-      console.log("first", selectedAction);
     }
   }, [selectedAction]);
 
