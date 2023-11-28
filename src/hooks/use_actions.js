@@ -80,6 +80,22 @@ const useActions = () => {
     }
   };
 
+  const updateActionController = useFormik({
+    initialValues: {
+      TPid: "",
+      ID: "",
+      Actions: [],
+    },
+    validationSchema: createActionSchema,
+    onSubmit: (values) => {
+      if (slots.length === 0) {
+        toast.error("You must add at least one action.");
+      } else {
+        createAction(values, slots);
+      }
+    },
+  });
+
   const exports = {
     createActionController,
     loadings,
