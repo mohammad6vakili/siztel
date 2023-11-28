@@ -55,9 +55,9 @@ const ActionsRoot = () => {
       </Col>
       {/* datatable */}
       {!loadings.getActions &&
-        ActionsData?.map((rate, index) => (
+        ActionsData?.map((row, index) => (
           <Fragment key={index}>
-            <ActionCard rate={rate} loadings={loadings} />
+            <ActionCard row={row} loadings={loadings} />
           </Fragment>
         ))}
       {loadings.getActions ? (

@@ -6,10 +6,13 @@ import { Card, CardBody, Button, Collapse } from "reactstrap";
 import { useSkin } from "@hooks/useSkin";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedAction } from "../../../../../redux/actions_slice";
 
-const ActionCard = ({ rate, loadings }) => {
+const ActionCard = ({ row, loadings }) => {
   const { skin } = useSkin();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,11 +28,24 @@ const ActionCard = ({ rate, loadings }) => {
         onClick={toggle}
         className="d-flex flex-row align-items-center justify-content-between"
       >
-        <div>TPid : {rate.TPid}</div>
-        <div>ID : {rate.ID}</div>
+        <div>TPid : {row.TPid}</div>
+        <div>ID : {row.ID}</div>
         <div className="d-flex align-items-center">
           <Button
-            onClick={() => navigate("/rules/actions/update")}
+            onClick={() => {
+              dispatch(setSelectedAction(row));
+            }}
+            style={{ marginRight: 8 }}
+            color="danger"
+            size="sm"
+          >
+            Delete
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/rules/actions/update");
+              dispatch(setSelectedAction(row));
+            }}
             style={{ marginRight: 8 }}
             color="primary"
             size="sm"
@@ -49,7 +65,7 @@ const ActionCard = ({ rate, loadings }) => {
             <Fragment>
               <DataTable
                 noDataComponent={
-                  loadings.getRates ? (
+                  loadings.getrows ? (
                     ""
                   ) : (
                     <div style={{ margin: "24px 0" }}>No Action Founded!</div>
@@ -60,7 +76,7 @@ const ActionCard = ({ rate, loadings }) => {
                 className="react-dataTable"
                 style={{ background: "red" }}
                 sortIcon={<ChevronDown size={10} />}
-                data={rate.Slots}
+                data={row.Slots}
                 theme={skin === "dark" ? "darkTheme" : ""}
               />
             </Fragment>

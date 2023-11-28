@@ -125,6 +125,7 @@ const useActions = () => {
 
   const exports = {
     createActionController,
+    updateActionController,
     loadings,
     paginates,
     setPaginates,

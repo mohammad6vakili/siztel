@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
@@ -16,34 +16,44 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/actions_slice";
+import useActions from "../../../../hooks/use_actions";
+import CustomDatePicker from "../../../../components/datepicker/index";
 
 const ActionsUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { updateActionController, loadings } = useActions();
+
+  const [ExpiryTime, setExpiryTime] = useState(null);
 
   const [slotFormData, setSlotFormData] = useState({
     Identifier: "",
     BalanceId: "",
     BalanceType: "",
-    BalanceWeight: "",
-    DestinationId: "",
-    Direction: "",
+    Units: "",
     ExpiryTime: "",
-    ExtraParameters: "",
+    Filter: "",
+    TimingTags: "",
+    DestinationIds: "",
     RatingSubject: "",
-    Category: "",
-    SharedGroup: "",
-    Units: 0,
+    Categories: "",
+    SharedGroups: "",
+    BalanceWeight: "",
+    ExtraParameters: "",
+    BalanceBlocker: false,
+    BalanceDisabled: false,
     Weight: 0,
   });
 
   const slots = useSelector((state) => state.actions.slots);
+  const selectedAction = useSelector((state) => state.actions.selectedAction);
 
   const handleAddSlot = () => {
     let array = [...slots];
@@ -53,22 +63,26 @@ const ActionsUpdate = () => {
       toast.error("Please enter BalanceId.");
     } else if (slotFormData.BalanceType.length === 0) {
       toast.error("Please enter BalanceType.");
-    } else if (slotFormData.BalanceWeight.length === 0) {
-      toast.error("Please enter BalanceWeight.");
-    } else if (slotFormData.DestinationId.length === 0) {
-      toast.error("Please enter DestinationId.");
-    } else if (slotFormData.Direction.length === 0) {
-      toast.error("Please enter Direction.");
+    } else if (slotFormData.Units.length === 0) {
+      toast.error("Please enter Units.");
     } else if (slotFormData.ExpiryTime.length === 0) {
       toast.error("Please enter ExpiryTime.");
-    } else if (slotFormData.ExtraParameters.length === 0) {
-      toast.error("Please enter ExtraParameters.");
+    } else if (slotFormData.Filter.length === 0) {
+      toast.error("Please enter Filter.");
+    } else if (slotFormData.TimingTags.length === 0) {
+      toast.error("Please enter TimingTags.");
+    } else if (slotFormData.DestinationIds.length === 0) {
+      toast.error("Please enter DestinationIds.");
     } else if (slotFormData.RatingSubject.length === 0) {
       toast.error("Please enter RatingSubject.");
-    } else if (slotFormData.Category.length === 0) {
-      toast.error("Please enter Category.");
-    } else if (slotFormData.SharedGroup.length === 0) {
-      toast.error("Please enter SharedGroup.");
+    } else if (slotFormData.Categories.length === 0) {
+      toast.error("Please enter Categories.");
+    } else if (slotFormData.SharedGroups.length === 0) {
+      toast.error("Please enter SharedGroups.");
+    } else if (slotFormData.BalanceWeight.length === 0) {
+      toast.error("Please enter BalanceWeight.");
+    } else if (slotFormData.ExtraParameters.length === 0) {
+      toast.error("Please enter ExtraParameters.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
       dispatch(setSlots(array));
@@ -76,29 +90,34 @@ const ActionsUpdate = () => {
         Identifier: "",
         BalanceId: "",
         BalanceType: "",
-        BalanceWeight: "",
-        DestinationId: "",
-        Direction: "",
+        Units: "",
         ExpiryTime: "",
-        ExtraParameters: "",
+        Filter: "",
+        TimingTags: "",
+        DestinationIds: "",
         RatingSubject: "",
-        Category: "",
-        SharedGroup: "",
-        Units: 0,
+        Categories: "",
+        SharedGroups: "",
+        BalanceWeight: "",
+        ExtraParameters: "",
+        BalanceBlocker: false,
+        BalanceDisabled: false,
         Weight: 0,
       });
     }
   };
 
+  useEffect(() => {
+    if (!selectedAction) {
+      navigate("/rules/actions");
+    }
+  }, [selectedAction]);
+
   return (
     <Fragment>
       <Breadcrumbs title="Update Action" data={[{ title: "Update Action" }]} />
       <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          navigate("/rules/actions");
-          toast.success("Successfully Updated!");
-        }}
+        onSubmit={updateActionController.handleSubmit}
         className="d-flex flex-column align-items-center"
       >
         <Card className="w-100">
@@ -110,21 +129,58 @@ const ActionsUpdate = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* ActionsId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="ActionsId">
-                  ActionsId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="ActionsId" name="ActionsId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={updateActionController.values.TPid}
+                  onChange={updateActionController.handleChange}
+                  invalid={
+                    updateActionController.touched.TPid &&
+                    updateActionController.errors.TPid
+                  }
+                />
+                {updateActionController.touched.TPid &&
+                updateActionController.errors.TPid ? (
+                  <FormFeedback>
+                    {updateActionController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={updateActionController.values.ID}
+                  onChange={updateActionController.handleChange}
+                  invalid={
+                    updateActionController.touched.ID &&
+                    updateActionController.errors.ID
+                  }
+                />
+                {updateActionController.touched.ID &&
+                updateActionController.errors.ID ? (
+                  <FormFeedback>
+                    {updateActionController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* slots */}
+            {/* Actions */}
             <Row>
               <Col xs="12">
                 <CardTitle>Actions</CardTitle>
               </Col>
               {/* Identifier */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="Identifier">
                   Identifier
                 </Label>
@@ -141,7 +197,7 @@ const ActionsUpdate = () => {
                 />
               </Col>
               {/* BalanceId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="BalanceId">
                   BalanceId
                 </Label>
@@ -158,7 +214,7 @@ const ActionsUpdate = () => {
                 />
               </Col>
               {/* BalanceType */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="BalanceType">
                   BalanceType
                 </Label>
@@ -174,93 +230,93 @@ const ActionsUpdate = () => {
                   }
                 />
               </Col>
-              {/* BalanceWeight */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="BalanceWeight">
-                  BalanceWeight
+              {/* Units */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="Units">
+                  Units
                 </Label>
                 <Input
-                  id="BalanceWeight"
-                  name="BalanceWeight"
-                  value={slotFormData.BalanceWeight}
+                  id="Units"
+                  name="Units"
+                  value={slotFormData.Units}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      BalanceWeight: e.target.value,
-                    })
-                  }
-                />
-              </Col>
-              {/* DestinationId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="DestinationId">
-                  DestinationId
-                </Label>
-                <Input
-                  id="DestinationId"
-                  name="DestinationId"
-                  value={slotFormData.DestinationId}
-                  onChange={(e) =>
-                    setSlotFormData({
-                      ...slotFormData,
-                      DestinationId: e.target.value,
-                    })
-                  }
-                />
-              </Col>
-              {/* Direction */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="Direction">
-                  Direction
-                </Label>
-                <Input
-                  id="Direction"
-                  name="Direction"
-                  value={slotFormData.Direction}
-                  onChange={(e) =>
-                    setSlotFormData({
-                      ...slotFormData,
-                      Direction: e.target.value,
+                      Units: e.target.value,
                     })
                   }
                 />
               </Col>
               {/* ExpiryTime */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="ExpiryTime">
                   ExpiryTime
                 </Label>
+                <CustomDatePicker
+                  inputPlaceholder="Click to open calendar"
+                  value={ExpiryTime}
+                  onChange={(value) => {
+                    setExpiryTime(value);
+                    setSlotFormData({
+                      ...slotFormData,
+                      ExpiryTime: `${value.year}-${value.month}-${value.day}T00:00:00Z`,
+                    });
+                  }}
+                />
+              </Col>
+              {/* Filter */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="Filter">
+                  Filter
+                </Label>
                 <Input
-                  id="ExpiryTime"
-                  name="ExpiryTime"
-                  value={slotFormData.ExpiryTime}
+                  id="Filter"
+                  name="Filter"
+                  value={slotFormData.Filter}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      ExpiryTime: e.target.value,
+                      Filter: e.target.value,
                     })
                   }
                 />
               </Col>
-              {/* ExtraParameters */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="ExtraParameters">
-                  ExtraParameters
+              {/* TimingTags */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="TimingTags">
+                  TimingTags
                 </Label>
                 <Input
-                  id="ExtraParameters"
-                  name="ExtraParameters"
-                  value={slotFormData.ExtraParameters}
+                  id="TimingTags"
+                  name="TimingTags"
+                  value={slotFormData.TimingTags}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      ExtraParameters: e.target.value,
+                      TimingTags: e.target.value,
+                    })
+                  }
+                />
+              </Col>
+              {/* DestinationIds */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="DestinationIds">
+                  DestinationIds
+                </Label>
+                <Input
+                  id="DestinationIds"
+                  name="DestinationIds"
+                  value={slotFormData.DestinationIds}
+                  onChange={(e) =>
+                    setSlotFormData({
+                      ...slotFormData,
+                      DestinationIds: e.target.value,
                     })
                   }
                 />
               </Col>
               {/* RatingSubject */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RatingSubject">
                   RatingSubject
                 </Label>
@@ -276,60 +332,76 @@ const ActionsUpdate = () => {
                   }
                 />
               </Col>
-              {/* Category */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="Category">
-                  Category
+              {/* Categories */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="Categories">
+                  Categories
                 </Label>
                 <Input
-                  id="Category"
-                  name="Category"
-                  value={slotFormData.Category}
+                  id="Categories"
+                  name="Categories"
+                  value={slotFormData.Categories}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Category: e.target.value,
+                      Categories: e.target.value,
                     })
                   }
                 />
               </Col>
-              {/* SharedGroup */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="SharedGroup">
-                  SharedGroup
+              {/* SharedGroups */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="SharedGroups">
+                  SharedGroups
                 </Label>
                 <Input
-                  id="SharedGroup"
-                  name="SharedGroup"
-                  value={slotFormData.SharedGroup}
+                  id="SharedGroups"
+                  name="SharedGroups"
+                  value={slotFormData.SharedGroups}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      SharedGroup: e.target.value,
+                      SharedGroups: e.target.value,
                     })
                   }
                 />
               </Col>
-              {/* Units */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
-                <Label className="form-label" for="Units">
-                  Units
+              {/* BalanceWeight */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="BalanceWeight">
+                  BalanceWeight
                 </Label>
                 <Input
-                  type="number"
-                  id="Units"
-                  name="Units"
-                  value={slotFormData.Units}
+                  id="BalanceWeight"
+                  name="BalanceWeight"
+                  value={slotFormData.BalanceWeight}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Units: e.target.value,
+                      BalanceWeight: e.target.value,
+                    })
+                  }
+                />
+              </Col>
+              {/* ExtraParameters */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="ExtraParameters">
+                  ExtraParameters
+                </Label>
+                <Input
+                  id="ExtraParameters"
+                  name="ExtraParameters"
+                  value={slotFormData.ExtraParameters}
+                  onChange={(e) =>
+                    setSlotFormData({
+                      ...slotFormData,
+                      ExtraParameters: e.target.value,
                     })
                   }
                 />
               </Col>
               {/* Weight */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="Weight">
                   Weight
                 </Label>
@@ -346,11 +418,51 @@ const ActionsUpdate = () => {
                   }
                 />
               </Col>
-
+              {/* BalanceBlocker */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="BalanceBlocker">
+                  BalanceBlocker
+                </Label>
+                <div className="form-check">
+                  <Input
+                    id="BalanceBlocker"
+                    name="BalanceBlocker"
+                    type="checkbox"
+                    checked={slotFormData.BalanceBlocker}
+                    onChange={(e) =>
+                      setSlotFormData({
+                        ...slotFormData,
+                        BalanceBlocker: e.target.checked,
+                      })
+                    }
+                  />
+                </div>
+              </Col>
+              {/* BalanceDisabled */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="BalanceDisabled">
+                  BalanceDisabled
+                </Label>
+                <div className="form-check">
+                  <Input
+                    id="BalanceDisabled"
+                    name="BalanceDisabled"
+                    checked={slotFormData.BalanceDisabled}
+                    type="checkbox"
+                    onChange={(e) =>
+                      setSlotFormData({
+                        ...slotFormData,
+                        BalanceDisabled: e.target.checked,
+                      })
+                    }
+                  />
+                </div>
+              </Col>
+              {/* action */}
               <Col
                 xs="12"
                 sm="6"
-                md="2"
+                md="3"
                 className="mb-1 d-flex align-items-end"
               >
                 <CustomButton
@@ -362,6 +474,7 @@ const ActionsUpdate = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
@@ -382,7 +495,7 @@ const ActionsUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateAction}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
