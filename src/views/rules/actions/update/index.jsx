@@ -110,6 +110,11 @@ const ActionsUpdate = () => {
   useEffect(() => {
     if (!selectedAction) {
       navigate("/rules/actions");
+    } else {
+      updateActionController.setFieldValue("TPid", selectedAction?.TPid);
+      updateActionController.setFieldValue("ID", selectedAction?.ID);
+      dispatch(setSlots(selectedAction.Slots));
+      console.log("first", selectedAction);
     }
   }, [selectedAction]);
 
