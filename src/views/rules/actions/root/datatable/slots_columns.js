@@ -1,5 +1,3 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
 import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
@@ -19,19 +17,9 @@ export const slots_columns = [
     selector: (row) => row.BalanceType,
   },
   {
-    name: "BalanceWeight",
-    minWidth: "130px",
-    selector: (row) => row.BalanceWeight,
-  },
-  {
-    name: "DestinationId",
-    minWidth: "120px",
-    selector: (row) => row.DestinationId,
-  },
-  {
-    name: "Direction",
+    name: "Units",
     minWidth: "100px",
-    selector: (row) => row.Direction,
+    selector: (row) => row.Units,
   },
   {
     name: "ExpiryTime",
@@ -39,9 +27,19 @@ export const slots_columns = [
     selector: (row) => row.ExpiryTime,
   },
   {
-    name: "ExtraParameters",
+    name: "Filter",
+    minWidth: "100px",
+    selector: (row) => row.Filter,
+  },
+  {
+    name: "TimingTags",
+    minWidth: "120px",
+    selector: (row) => row.TimingTags,
+  },
+  {
+    name: "DestinationIds",
     minWidth: "140px",
-    selector: (row) => row.ExtraParameters,
+    selector: (row) => row.DestinationIds,
   },
   {
     name: "RatingSubject",
@@ -49,19 +47,40 @@ export const slots_columns = [
     selector: (row) => row.RatingSubject,
   },
   {
-    name: "Category",
+    name: "Categories",
     minWidth: "100px",
-    selector: (row) => row.Category,
+    selector: (row) => row.Categories,
   },
   {
-    name: "SharedGroup",
-    minWidth: "120px",
-    selector: (row) => row.SharedGroup,
+    name: "SharedGroups",
+    minWidth: "130px",
+    selector: (row) => row.SharedGroups,
   },
   {
-    name: "Units",
-    minWidth: "100px",
-    selector: (row) => row.Units,
+    name: "BalanceWeight",
+    minWidth: "130px",
+    selector: (row) => row.BalanceWeight,
+  },
+  {
+    name: "ExtraParameters",
+    minWidth: "140px",
+    selector: (row) => row.ExtraParameters,
+  },
+  {
+    name: "BalanceBlocker",
+    minWidth: "130px",
+    selector: (row) => row.BalanceBlocker,
+    cell: (row) => {
+      return JSON.stringify(row.BalanceBlocker);
+    },
+  },
+  {
+    name: "BalanceDisabled",
+    minWidth: "140px",
+    selector: (row) => row.BalanceDisabled,
+    cell: (row) => {
+      return JSON.stringify(row.BalanceDisabled);
+    },
   },
   {
     name: "Weight",

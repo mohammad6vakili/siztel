@@ -53,6 +53,11 @@ const useActions = () => {
       const { id, ...rest } = obj;
       return rest;
     });
+    console.log({
+      TPid: values.TPid,
+      ID: values.ID,
+      Actions: newSlots,
+    });
     try {
       setLoadings({ ...loadings, createAction: true });
       const response = await httpService.post("", {

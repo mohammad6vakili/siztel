@@ -25,7 +25,8 @@ const ActionCard = ({ rate, loadings }) => {
         onClick={toggle}
         className="d-flex flex-row align-items-center justify-content-between"
       >
-        <div>ActionsId : {rate.ActionsId}</div>
+        <div>TPid : {rate.TPid}</div>
+        <div>ID : {rate.ID}</div>
         <div className="d-flex align-items-center">
           <Button
             onClick={() => navigate("/rules/actions/update")}
@@ -55,13 +56,10 @@ const ActionCard = ({ rate, loadings }) => {
                   )
                 }
                 noHeader
-                // pagination
                 columns={columns}
-                // paginationPerPage={10}
                 className="react-dataTable"
                 style={{ background: "red" }}
                 sortIcon={<ChevronDown size={10} />}
-                // paginationComponent={CustomPagination}
                 data={rate.Slots}
                 theme={skin === "dark" ? "darkTheme" : ""}
               />
