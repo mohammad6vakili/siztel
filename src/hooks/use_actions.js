@@ -3,6 +3,7 @@ import useHttp from "./use_http";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import { createActionSchema } from "../utility/schemas/index";
 
 const useActions = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const useActions = () => {
       ID: "",
       Actions: [],
     },
-    validationSchema: null,
+    validationSchema: createActionSchema,
     onSubmit: (values) => {
       toast.success("Done");
     },
@@ -82,7 +83,12 @@ const useActions = () => {
     }
   };
 
-  const exports = { createAction, loadings, paginates, setPaginates };
+  const exports = {
+    createActionController,
+    loadings,
+    paginates,
+    setPaginates,
+  };
   return exports;
 };
 export default useActions;

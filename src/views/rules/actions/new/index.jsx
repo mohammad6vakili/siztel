@@ -16,6 +16,7 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
@@ -27,7 +28,7 @@ const ActionsNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { createAction, loadings } = useActions();
+  const { createActionController, loadings } = useActions();
 
   const [slotFormData, setSlotFormData] = useState({
     Identifier: "",
@@ -96,10 +97,7 @@ const ActionsNew = () => {
     <Fragment>
       <Breadcrumbs title="New Action" data={[{ title: "New Action" }]} />
       <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          createAction();
-        }}
+        onSubmit={createActionController.handleSubmit}
         className="d-flex flex-column align-items-center"
       >
         <Card className="w-100">
@@ -111,15 +109,52 @@ const ActionsNew = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* ActionsId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="ActionsId">
-                  ActionsId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="ActionsId" name="ActionsId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createActionController.values.TPid}
+                  onChange={createActionController.handleChange}
+                  invalid={
+                    createActionController.touched.TPid &&
+                    createActionController.errors.TPid
+                  }
+                />
+                {createActionController.touched.TPid &&
+                createActionController.errors.TPid ? (
+                  <FormFeedback>
+                    {createActionController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createActionController.values.ID}
+                  onChange={createActionController.handleChange}
+                  invalid={
+                    createActionController.touched.ID &&
+                    createActionController.errors.ID
+                  }
+                />
+                {createActionController.touched.ID &&
+                createActionController.errors.ID ? (
+                  <FormFeedback>
+                    {createActionController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* slots */}
+            {/* Actions */}
             <Row>
               <Col xs="12">
                 <CardTitle>Actions</CardTitle>
