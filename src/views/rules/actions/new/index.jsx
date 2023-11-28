@@ -21,11 +21,13 @@ import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/actions_slice";
+import useActions from "../../../../hooks/use_actions";
 
 const ActionsNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { createAction, loadings } = useActions();
 
   const [slotFormData, setSlotFormData] = useState({
     Identifier: "",
@@ -96,8 +98,7 @@ const ActionsNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/actions");
-          toast.success("Successfully Created!");
+          createAction();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -382,7 +383,7 @@ const ActionsNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createAction}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
