@@ -4,12 +4,12 @@ import SlotAction from "../components/slot_action";
 export const slots_columns = [
   {
     name: "ID",
-    minWidth: "100px",
+    minWidth: "80px",
     selector: (row) => row.ID,
   },
   {
     name: "UniqueID",
-    minWidth: "320px",
+    minWidth: "100px",
     selector: (row) => row.UniqueID,
   },
   {
@@ -23,21 +23,13 @@ export const slots_columns = [
     selector: (row) => row.ThresholdValue,
   },
   {
-    name: "Recurrent",
-    minWidth: "100px",
-    selector: (row) => row.Recurrent,
-    cell: (row) => {
-      return JSON.stringify(row.Recurrent);
-    },
-  },
-  {
     name: "MinSleep",
     minWidth: "100px",
     selector: (row) => row.MinSleep,
   },
   {
     name: "ExpirationDate",
-    minWidth: "100px",
+    minWidth: "130px",
     selector: (row) => row.ExpirationDate,
     cell: (row) => {
       return moment(row.ExpirationDate).format("YYYY-MM-DD");
@@ -45,10 +37,10 @@ export const slots_columns = [
   },
   {
     name: "ActivationDate",
-    minWidth: "100px",
+    minWidth: "130px",
     selector: (row) => row.ActivationDate,
     cell: (row) => {
-      return moment(row.ExpirationDate).format("YYYY-MM-DD");
+      return moment(row.ActivationDate).format("YYYY-MM-DD");
     },
   },
   {
@@ -58,7 +50,7 @@ export const slots_columns = [
   },
   {
     name: "BalanceType",
-    minWidth: "100px",
+    minWidth: "120px",
     selector: (row) => row.BalanceType,
   },
   {
@@ -75,6 +67,9 @@ export const slots_columns = [
     name: "BalanceExpirationDate",
     minWidth: "180px",
     selector: (row) => row.BalanceExpirationDate,
+    cell: (row) => {
+      return moment(row.BalanceExpirationDate).format("YYYY-MM-DD");
+    },
   },
   {
     name: "BalanceTimingTags",
@@ -113,13 +108,21 @@ export const slots_columns = [
   },
   {
     name: "ActionsId",
-    minWidth: "170px",
+    minWidth: "140px",
     selector: (row) => row.ActionsId,
   },
   {
     name: "MinQueuedItems",
     minWidth: "150px",
     selector: (row) => row.MinQueuedItems,
+  },
+  {
+    name: "Recurrent",
+    minWidth: "100px",
+    selector: (row) => row.Recurrent,
+    cell: (row) => {
+      return JSON.stringify(row.Recurrent);
+    },
   },
   {
     name: "Actions",
