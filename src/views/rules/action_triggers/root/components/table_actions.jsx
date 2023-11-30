@@ -2,9 +2,9 @@ import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
-  setSelectedAction,
+  setSelectedEntity,
   setDeleteModal,
-} from "../../../../../redux/actions_slice";
+} from "../../../../../redux/action_triggers_slice";
 
 const TableActions = ({ row }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const TableActions = ({ row }) => {
     <div className="d-flex align-items-center">
       <Button
         onClick={() => {
-          dispatch(setSelectedAction(row));
+          dispatch(setSelectedEntity(row));
           dispatch(setDeleteModal(1));
         }}
         style={{ marginRight: 8 }}

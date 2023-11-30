@@ -10,11 +10,20 @@ import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
 import { useSkin } from "@hooks/useSkin";
 import ActionTriggersData from "../../../../data/action_triggers.json";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/action_triggers_slice";
 
 const ActionTriggersRoot = () => {
   const { skin } = useSkin();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loadings, paginates, setPaginates } = useActionTriggers();
+
+  const deleteModal = useSelector((state) => state.actionTriggers.deleteModal);
+  const selectedEntity = useSelector(
+    (state) => state.actionTriggers.selectedEntity
+  );
 
   const handlePagination = (page) => {
     console.log(page);
@@ -88,6 +97,20 @@ const ActionTriggersRoot = () => {
           <ProgressLoading />
         </div>
       ) : null}
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this action trigger?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        // yesLoading={loadings.deleteAction}
+        yesAction={() => alert(selectedEntity?.TPid)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };
