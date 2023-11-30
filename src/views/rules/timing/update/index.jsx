@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
   Card,
@@ -13,11 +13,24 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
+import useTiming from "../../../../hooks/use_timing";
 
 const TimingUpdate = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { updateTimingController, loadings } = useTiming();
+
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/timing");
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -25,8 +38,8 @@ const TimingUpdate = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/timing");
-          toast.success("Successfully Updated!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          updateTimingController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -39,47 +52,159 @@ const TimingUpdate = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row>
-              {/* TimingId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  TimingId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="TimingId" name="TimingId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={updateTimingController.values.TPid}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.TPid &&
+                    updateTimingController.errors.TPid
+                  }
+                />
+                {updateTimingController.touched.TPid &&
+                updateTimingController.errors.TPid ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
               </Col>
-              {/* Years */}
+              {/* ID */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  Years
+                <Label className="form-label" for="ID">
+                  ID
                 </Label>
-                <Input id="Years" name="Years" />
-              </Col>
-              {/* Months */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  Months
-                </Label>
-                <Input id="Months" name="Months" />
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={updateTimingController.values.ID}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.ID &&
+                    updateTimingController.errors.ID
+                  }
+                />
+                {updateTimingController.touched.ID &&
+                updateTimingController.errors.ID ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
               {/* MonthDays */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  Month days
+                <Label className="form-label" for="MonthDays">
+                  MonthDays
                 </Label>
-                <Input id="MonthDays" name="MonthDays" />
+                <Input
+                  id="MonthDays"
+                  name="MonthDays"
+                  value={updateTimingController.values.MonthDays}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.MonthDays &&
+                    updateTimingController.errors.MonthDays
+                  }
+                />
+                {updateTimingController.touched.MonthDays &&
+                updateTimingController.errors.MonthDays ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.MonthDays}
+                  </FormFeedback>
+                ) : null}
               </Col>
-              {/* WeekDays */}
+              {/* Months */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  Week days
+                <Label className="form-label" for="Months">
+                  Months
                 </Label>
-                <Input id="WeekDays" name="WeekDays" />
+                <Input
+                  id="Months"
+                  name="Months"
+                  value={updateTimingController.values.Months}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.Months &&
+                    updateTimingController.errors.Months
+                  }
+                />
+                {updateTimingController.touched.Months &&
+                updateTimingController.errors.Months ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.Months}
+                  </FormFeedback>
+                ) : null}
               </Col>
               {/* Time */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
+                <Label className="form-label" for="Time">
                   Time
                 </Label>
-                <Input id="Time" name="Time" />
+                <Input
+                  id="Time"
+                  name="Time"
+                  value={updateTimingController.values.Time}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.Time &&
+                    updateTimingController.errors.Time
+                  }
+                />
+                {updateTimingController.touched.Time &&
+                updateTimingController.errors.Time ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.Time}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* WeekDays */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="WeekDays">
+                  WeekDays
+                </Label>
+                <Input
+                  id="WeekDays"
+                  name="WeekDays"
+                  value={updateTimingController.values.WeekDays}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.WeekDays &&
+                    updateTimingController.errors.WeekDays
+                  }
+                />
+                {updateTimingController.touched.WeekDays &&
+                updateTimingController.errors.WeekDays ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.WeekDays}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* Years */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="Years">
+                  Years
+                </Label>
+                <Input
+                  id="Years"
+                  name="Years"
+                  value={updateTimingController.values.Years}
+                  onChange={updateTimingController.handleChange}
+                  invalid={
+                    updateTimingController.touched.Years &&
+                    updateTimingController.errors.Years
+                  }
+                />
+                {updateTimingController.touched.Years &&
+                updateTimingController.errors.Years ? (
+                  <FormFeedback>
+                    {updateTimingController.errors.Years}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
           </CardBody>
@@ -87,7 +212,7 @@ const TimingUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateTiming}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
