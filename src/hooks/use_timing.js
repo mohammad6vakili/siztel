@@ -26,38 +26,34 @@ const useTiming = () => {
     },
     validationSchema: createTimingSchema,
     onSubmit: (values) => {
-      // createCharger(values);
+      createTiming(values);
     },
   });
 
-  const createCharger = async (values) => {
+  const createTiming = async (values) => {
     try {
-      setLoadings({ ...loadings, createCharger: true });
+      setLoadings({ ...loadings, createTiming: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.SetTPCharger",
+        method: "APIerSv1.SetTPTiming",
         params: [
           {
             TPid: values.TPid,
-            Tenant: values.Tenant,
             ID: values.ID,
-            FilterIDs: values.FilterIDs,
-            ActivationInterval: {
-              ActivationTime: values.ActivationTime,
-              ExpiryTime: values.ExpiryTime,
-            },
-            RunID: values.RunID,
-            AttributeIDs: values.AttributeIDs,
-            Weight: values.Weight,
+            MonthDays: values.MonthDays,
+            Months: values.Months,
+            Time: values.Time,
+            WeekDays: values.WeekDays,
+            Years: values.Years,
           },
         ],
       });
-      setLoadings({ ...loadings, createCharger: false });
+      setLoadings({ ...loadings, createTiming: false });
       if (response.status === 200) {
         toast.success("Successfully Created!");
-        navigate("/rules/chargers");
+        navigate("/rules/timing");
       }
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, createCharger: false });
+      setLoadings({ ...loadings, createTiming: false });
     }
   };
 
