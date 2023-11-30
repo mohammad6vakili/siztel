@@ -10,11 +10,18 @@ import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import TimingData from "../../../../data/timing.json";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setDeleteModal } from "../../../../redux/timing_slice";
+import Confirm from "../../../../components/confirm";
 
 const TimingRoot = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
   const { loadings, paginates, setPaginates } = useTiming();
+
+  const deleteModal = useSelector((state) => state.timing.deleteModal);
+  const selectedEntity = useSelector((state) => state.timing.selectedEntity);
 
   const handlePagination = (page) => {
     console.log(page);
@@ -87,6 +94,20 @@ const TimingRoot = () => {
             <ProgressLoading />
           </div>
         ) : null}
+        {/* delete modal */}
+        <Confirm
+          visible={deleteModal}
+          setVisible={setDeleteModal}
+          title={"Are you sure you want to delete this action?"}
+          noAction={() => dispatch(setDeleteModal(false))}
+          noColor={"secondary"}
+          noTitle={"Cancel"}
+          yesLoading={loadings.deleteAction}
+          yesAction={() => alert(selectedEntity?.TPid)}
+          yesColor={"danger"}
+          yesTitle={"Delete"}
+          type={"global"}
+        />
       </div>
     </Fragment>
   );
