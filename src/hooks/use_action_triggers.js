@@ -52,7 +52,7 @@ const useActionTriggers = () => {
           {
             TPid: values.TPid,
             ID: values.ID,
-            Actions: newSlots,
+            ActionTriggers: newSlots,
           },
         ],
       });
@@ -95,7 +95,7 @@ const useActionTriggers = () => {
           {
             TPid: values.TPid,
             ID: values.ID,
-            Actions: newSlots,
+            ActionTriggers: newSlots,
           },
         ],
       });
