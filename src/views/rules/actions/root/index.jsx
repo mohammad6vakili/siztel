@@ -101,7 +101,7 @@ const ActionsRoot = () => {
         noColor={"secondary"}
         noTitle={"Cancel"}
         yesLoading={loadings.deleteAction}
-        yesAction={() => alert("Delete...")}
+        yesAction={() => alert(selectedAction?.TPid)}
         yesColor={"danger"}
         yesTitle={"Delete"}
         type={"global"}

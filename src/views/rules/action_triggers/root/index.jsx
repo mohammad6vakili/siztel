@@ -4,11 +4,15 @@ import useActionTriggers from "../../../../hooks/use_action_triggers";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
-import ActionTriggersData from "../../../../data/action_triggers.json";
 import { useNavigate } from "react-router-dom";
-import ActionCard from "./components/action_trigger_card";
+import DataTable from "react-data-table-component";
+import { ChevronDown } from "react-feather";
+import { columns } from "./datatable/columns";
+import { useSkin } from "@hooks/useSkin";
+import ActionTriggersData from "../../../../data/action_triggers.json";
 
 const ActionTriggersRoot = () => {
+  const { skin } = useSkin();
   const navigate = useNavigate();
   const { loadings, paginates, setPaginates } = useActionTriggers();
 
@@ -56,13 +60,29 @@ const ActionTriggersRoot = () => {
           New Action Trigger
         </Button>
       </Col>
-      {/* datatable */}
-      {!loadings.getActionTriggers &&
-        ActionTriggersData?.map((rate, index) => (
-          <Fragment key={index}>
-            <ActionCard rate={rate} loadings={loadings} />
-          </Fragment>
-        ))}
+      {!loadings.getChargers ? (
+        <Fragment>
+          <DataTable
+            noDataComponent={
+              loadings.getChargers ? (
+                ""
+              ) : (
+                <div style={{ margin: "24px 0" }}>No Charger Founded!</div>
+              )
+            }
+            noHeader
+            pagination
+            columns={columns}
+            paginationPerPage={10}
+            className="react-dataTable"
+            style={{ background: "red" }}
+            sortIcon={<ChevronDown size={10} />}
+            paginationComponent={CustomPagination}
+            data={ActionTriggersData}
+            theme={skin === "dark" ? "darkTheme" : ""}
+          />
+        </Fragment>
+      ) : null}
       {loadings.getActionTriggers ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
