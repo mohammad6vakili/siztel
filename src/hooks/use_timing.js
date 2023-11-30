@@ -75,36 +75,38 @@ const useTiming = () => {
 
   const updateTiming = async (values) => {
     try {
-      setLoadings({ ...loadings, updateCharger: true });
+      setLoadings({ ...loadings, updateTiming: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.SetTPCharger",
+        method: "APIerSv1.SetTPTiming",
         params: [
           {
             TPid: values.TPid,
-            Tenant: values.Tenant,
             ID: values.ID,
-            FilterIDs: values.FilterIDs,
-            ActivationInterval: {
-              ActivationTime: values.ActivationTime,
-              ExpiryTime: values.ExpiryTime,
-            },
-            RunID: values.RunID,
-            AttributeIDs: values.AttributeIDs,
-            Weight: values.Weight,
+            MonthDays: values.MonthDays,
+            Months: values.Months,
+            Time: values.Time,
+            WeekDays: values.WeekDays,
+            Years: values.Years,
           },
         ],
       });
-      setLoadings({ ...loadings, updateCharger: false });
+      setLoadings({ ...loadings, updateTiming: false });
       if (response.status === 200) {
-        toast.success("Successfully Created!");
-        navigate("/rules/chargers");
+        toast.success("Successfully Updated!");
+        navigate("/rules/timing");
       }
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, updateCharger: false });
+      setLoadings({ ...loadings, updateTiming: false });
     }
   };
 
-  const exports = { createTimingController, loadings, paginates, setPaginates };
+  const exports = {
+    createTimingController,
+    updateTimingController,
+    loadings,
+    paginates,
+    setPaginates,
+  };
   return exports;
 };
 export default useTiming;
