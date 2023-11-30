@@ -69,11 +69,11 @@ const ActionTriggersRoot = () => {
           New Action Trigger
         </Button>
       </Col>
-      {!loadings.getChargers ? (
+      {!loadings.getActionTriggers ? (
         <Fragment>
           <DataTable
             noDataComponent={
-              loadings.getChargers ? (
+              loadings.getActionTriggers ? (
                 ""
               ) : (
                 <div style={{ margin: "24px 0" }}>No Charger Founded!</div>

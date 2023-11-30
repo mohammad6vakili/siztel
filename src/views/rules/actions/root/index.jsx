@@ -64,11 +64,11 @@ const ActionsRoot = () => {
           New Action
         </Button>
       </Col>
-      {!loadings.getChargers ? (
+      {!loadings.getActions ? (
         <Fragment>
           <DataTable
             noDataComponent={
-              loadings.getChargers ? (
+              loadings.getActions ? (
                 ""
               ) : (
                 <div style={{ margin: "24px 0" }}>No Charger Founded!</div>

@@ -6,11 +6,24 @@ import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
 import ActionPlansData from "../../../../data/action_plans.json";
 import { useNavigate } from "react-router-dom";
-import ActionPlanCard from "./components/action_plan_card";
+import { columns } from "./datatable/columns";
+import DataTable from "react-data-table-component";
+import { ChevronDown } from "react-feather";
+import { useSkin } from "@hooks/useSkin";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/action_plans_slice";
 
 const ActionPlansRoot = () => {
+  const { skin } = useSkin();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loadings, paginates, setPaginates } = useActionPlans();
+
+  const deleteModal = useSelector((state) => state.actionPlans.deleteModal);
+  const selectedEntity = useSelector(
+    (state) => state.actionPlans.selectedEntity
+  );
 
   const handlePagination = (page) => {
     console.log(page);
@@ -54,17 +67,48 @@ const ActionPlansRoot = () => {
         </Button>
       </Col>
       {/* datatable */}
-      {!loadings.getActionPlans &&
-        ActionPlansData?.map((rate, index) => (
-          <Fragment key={index}>
-            <ActionPlanCard rate={rate} loadings={loadings} />
-          </Fragment>
-        ))}
+      {!loadings.getActionPlans ? (
+        <Fragment>
+          <DataTable
+            noDataComponent={
+              loadings.getActionPlans ? (
+                ""
+              ) : (
+                <div style={{ margin: "24px 0" }}>No Charger Founded!</div>
+              )
+            }
+            noHeader
+            pagination
+            columns={columns}
+            paginationPerPage={10}
+            className="react-dataTable"
+            style={{ background: "red" }}
+            sortIcon={<ChevronDown size={10} />}
+            paginationComponent={CustomPagination}
+            data={ActionPlansData}
+            theme={skin === "dark" ? "darkTheme" : ""}
+          />
+        </Fragment>
+      ) : null}
       {loadings.getActionPlans ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
         </div>
       ) : null}
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this action plan?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteActionTrigger}
+        yesAction={() => alert(selectedEntity?.TPid)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };
