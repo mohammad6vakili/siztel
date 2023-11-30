@@ -45,7 +45,7 @@ const useActionPlans = () => {
       return rest;
     });
     try {
-      setLoadings({ ...loadings, createAction: true });
+      setLoadings({ ...loadings, createActionPlan: true });
       const response = await httpService.post("", {
         method: "APIerSv1.SetTPActionPlan",
         params: [
@@ -56,13 +56,13 @@ const useActionPlans = () => {
           },
         ],
       });
-      setLoadings({ ...loadings, createAction: false });
+      setLoadings({ ...loadings, createActionPlan: false });
       if (response.status === 200) {
         toast.success("Successfully Created!");
         navigate("/rules/action_plans");
       }
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, createAction: false });
+      setLoadings({ ...loadings, createActionPlan: false });
     }
   };
 
@@ -88,7 +88,7 @@ const useActionPlans = () => {
       return rest;
     });
     try {
-      setLoadings({ ...loadings, updateAction: true });
+      setLoadings({ ...loadings, updateActionPlan: true });
       const response = await httpService.post("", {
         method: "APIerSv1.SetTPActionPlan",
         params: [
@@ -99,13 +99,13 @@ const useActionPlans = () => {
           },
         ],
       });
-      setLoadings({ ...loadings, updateAction: false });
+      setLoadings({ ...loadings, updateActionPlan: false });
       if (response.status === 200) {
         toast.success("Successfully Updated!");
         navigate("/rules/action_plans");
       }
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, updateAction: false });
+      setLoadings({ ...loadings, updateActionPlan: false });
     }
   };
 

@@ -5,6 +5,10 @@ export const createActionSchema = yup.object({
   ID: yup.string().required("The ID field is required."),
 });
 
+export const createChargerSchema = yup.object({
+  TPid: yup.string().required("The TPid field is required."),
+});
+
 // export const registerSchema = yup.object({
 //   first_name: yup.string().required("The first name field is required."),
 //   last_name: yup.string().required("The last name field is required."),
