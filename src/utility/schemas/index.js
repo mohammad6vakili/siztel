@@ -21,6 +21,16 @@ export const createChargerSchema = yup.object({
     .required("The AttributeIDs field is required."),
 });
 
+export const createTimingSchema = yup.object({
+  TPid: yup.string().required("The TPid field is required."),
+  ID: yup.string().required("The ID field is required."),
+  MonthDays: yup.string().required("The MonthDays field is required."),
+  Months: yup.string().required("The Months field is required."),
+  Time: yup.string().required("The Time field is required."),
+  WeekDays: yup.string().required("The WeekDays field is required."),
+  Years: yup.string().required("The Years field is required."),
+});
+
 // export const registerSchema = yup.object({
 //   first_name: yup.string().required("The first name field is required."),
 //   last_name: yup.string().required("The last name field is required."),

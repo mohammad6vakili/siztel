@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createTimingSchema } from "../utility/schemas/index";
 
 const useTiming = () => {
   const [loadings, setLoadings] = useState({
@@ -23,7 +24,7 @@ const useTiming = () => {
       WeekDays: "",
       Years: "",
     },
-    validationSchema: null,
+    validationSchema: createTimingSchema,
     onSubmit: (values) => {
       // createCharger(values);
     },
