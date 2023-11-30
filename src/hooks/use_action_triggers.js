@@ -66,8 +66,52 @@ const useActionTriggers = () => {
     }
   };
 
+  const updateActionTriggerController = useFormik({
+    initialValues: {
+      TPid: "",
+      ID: "",
+      Actions: [],
+    },
+    validationSchema: createActionSchema,
+    onSubmit: (values) => {
+      if (slots.length === 0) {
+        toast.error("You must add at least one action trigger.");
+      } else {
+        updateActionTrigger(values, slots);
+      }
+    },
+  });
+
+  const updateActionTrigger = async (values, slots) => {
+    const newSlots = slots.map((obj) => {
+      const { id, ...rest } = obj;
+      return rest;
+    });
+    try {
+      setLoadings({ ...loadings, createActionTrigger: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.SetTPActionTriggers",
+        params: [
+          {
+            TPid: values.TPid,
+            ID: values.ID,
+            Actions: newSlots,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, createActionTrigger: false });
+      if (response.status === 200) {
+        toast.success("Successfully Updated!");
+        navigate("/rules/action_triggers");
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, createActionTrigger: false });
+    }
+  };
+
   const exports = {
     createActionTriggerController,
+    updateActionTriggerController,
     loadings,
     paginates,
     setPaginates,

@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -29,7 +29,8 @@ const ActionTriggersNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { createActionTriggerController, loadings } = useActionTriggers();
+  const [searchParams] = useSearchParams();
+  const { updateActionTriggerController, loadings } = useActionTriggers();
 
   const [slotFormData, setSlotFormData] = useState({
     ID: "",
@@ -134,6 +135,15 @@ const ActionTriggersNew = () => {
     }
   };
 
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/action_triggers");
+    }
+  }, []);
+
   return (
     <Fragment>
       <Breadcrumbs
@@ -144,7 +154,7 @@ const ActionTriggersNew = () => {
         onSubmit={(e) => {
           e.preventDefault();
           window.scroll({ top: 0, behavior: "smooth" });
-          createActionTriggerController.handleSubmit();
+          updateActionTriggerController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -165,17 +175,17 @@ const ActionTriggersNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
-                  value={createActionTriggerController.values.TPid}
-                  onChange={createActionTriggerController.handleChange}
+                  value={updateActionTriggerController.values.TPid}
+                  onChange={updateActionTriggerController.handleChange}
                   invalid={
-                    createActionTriggerController.touched.TPid &&
-                    createActionTriggerController.errors.TPid
+                    updateActionTriggerController.touched.TPid &&
+                    updateActionTriggerController.errors.TPid
                   }
                 />
-                {createActionTriggerController.touched.TPid &&
-                createActionTriggerController.errors.TPid ? (
+                {updateActionTriggerController.touched.TPid &&
+                updateActionTriggerController.errors.TPid ? (
                   <FormFeedback>
-                    {createActionTriggerController.errors.TPid}
+                    {updateActionTriggerController.errors.TPid}
                   </FormFeedback>
                 ) : null}
               </Col>
@@ -187,17 +197,17 @@ const ActionTriggersNew = () => {
                 <Input
                   id="ID"
                   name="ID"
-                  value={createActionTriggerController.values.ID}
-                  onChange={createActionTriggerController.handleChange}
+                  value={updateActionTriggerController.values.ID}
+                  onChange={updateActionTriggerController.handleChange}
                   invalid={
-                    createActionTriggerController.touched.ID &&
-                    createActionTriggerController.errors.ID
+                    updateActionTriggerController.touched.ID &&
+                    updateActionTriggerController.errors.ID
                   }
                 />
-                {createActionTriggerController.touched.ID &&
-                createActionTriggerController.errors.ID ? (
+                {updateActionTriggerController.touched.ID &&
+                updateActionTriggerController.errors.ID ? (
                   <FormFeedback>
-                    {createActionTriggerController.errors.ID}
+                    {updateActionTriggerController.errors.ID}
                   </FormFeedback>
                 ) : null}
               </Col>
