@@ -16,16 +16,19 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/action_plans_slice";
+import useActionPlans from "../../../../hooks/use_action_plans";
 
 const ActionPlansNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { createActionPlanController, loadings } = useActionPlans();
 
   const [slotFormData, setSlotFormData] = useState({
     ActionsId: "",
@@ -61,8 +64,8 @@ const ActionPlansNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/action_plans");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createActionPlanController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -80,14 +83,44 @@ const ActionPlansNew = () => {
                 <Label className="form-label" for="TPid">
                   TPid
                 </Label>
-                <Input id="TPid" name="TPid" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createActionPlanController.values.TPid}
+                  onChange={createActionPlanController.handleChange}
+                  invalid={
+                    createActionPlanController.touched.TPid &&
+                    createActionPlanController.errors.TPid
+                  }
+                />
+                {createActionPlanController.touched.TPid &&
+                createActionPlanController.errors.TPid ? (
+                  <FormFeedback>
+                    {createActionPlanController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
               </Col>
-              {/* Id */}
+              {/* ID */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="Id">
-                  Id
+                <Label className="form-label" for="ID">
+                  ID
                 </Label>
-                <Input id="Id" name="Id" />
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createActionPlanController.values.ID}
+                  onChange={createActionPlanController.handleChange}
+                  invalid={
+                    createActionPlanController.touched.ID &&
+                    createActionPlanController.errors.ID
+                  }
+                />
+                {createActionPlanController.touched.ID &&
+                createActionPlanController.errors.ID ? (
+                  <FormFeedback>
+                    {createActionPlanController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
             {/* slots */}
@@ -96,7 +129,7 @@ const ActionPlansNew = () => {
                 <CardTitle>Actions</CardTitle>
               </Col>
               {/* ActionsId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="ActionsId">
                   ActionsId
                 </Label>
@@ -113,7 +146,7 @@ const ActionPlansNew = () => {
                 />
               </Col>
               {/* TimingId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="TimingId">
                   TimingId
                 </Label>
@@ -130,7 +163,7 @@ const ActionPlansNew = () => {
                 />
               </Col>
               {/* Weight */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="Weight">
                   Weight
                 </Label>
@@ -147,10 +180,11 @@ const ActionPlansNew = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
-                md="2"
+                md="3"
                 className="mb-1 d-flex align-items-end"
               >
                 <CustomButton
@@ -162,10 +196,13 @@ const ActionPlansNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>No Action Added Yet.</div>
+                    <div style={{ margin: "24px 0" }}>
+                      No Action Plan Added Yet.
+                    </div>
                   }
                   noHeader
                   columns={slots_columns}
@@ -182,7 +219,7 @@ const ActionPlansNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createActionPlan}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}

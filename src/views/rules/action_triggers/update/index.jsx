@@ -25,7 +25,7 @@ import { setSlots } from "../../../../redux/action_triggers_slice";
 import CustomDatePicker from "../../../../components/datepicker/index";
 import useActionTriggers from "../../../../hooks/use_action_triggers";
 
-const ActionTriggersNew = () => {
+const ActionTriggersUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -648,4 +648,4 @@ const ActionTriggersNew = () => {
     </Fragment>
   );
 };
-export default ActionTriggersNew;
+export default ActionTriggersUpdate;

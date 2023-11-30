@@ -32,7 +32,7 @@ const useActionPlans = () => {
     validationSchema: createActionSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
-        toast.error("You must add at least one action.");
+        toast.error("You must add at least one action plan.");
       } else {
         createActionPlan(values, slots);
       }
@@ -75,7 +75,7 @@ const useActionPlans = () => {
     validationSchema: createActionSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
-        toast.error("You must add at least one action.");
+        toast.error("You must add at least one action plan.");
       } else {
         updateActionPlan(values, slots);
       }
