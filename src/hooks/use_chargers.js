@@ -73,8 +73,14 @@ const useChargers = () => {
   const updateChargerController = useFormik({
     initialValues: {
       TPid: "",
+      Tenant: "",
       ID: "",
-      Actions: [],
+      ActivationTime: "",
+      ExpiryTime: "",
+      RunID: "",
+      Weight: 0,
+      FilterIDs: [],
+      AttributeIDs: [],
     },
     validationSchema: createChargerSchema,
     onSubmit: (values) => {
