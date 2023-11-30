@@ -105,7 +105,7 @@ const ActionTriggersRoot = () => {
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}
-        // yesLoading={loadings.deleteAction}
+        yesLoading={loadings.deleteActionTrigger}
         yesAction={() => alert(selectedEntity?.TPid)}
         yesColor={"danger"}
         yesTitle={"Delete"}

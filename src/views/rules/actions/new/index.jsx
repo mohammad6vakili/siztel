@@ -110,7 +110,11 @@ const ActionsNew = () => {
     <Fragment>
       <Breadcrumbs title="New Action" data={[{ title: "New Action" }]} />
       <Form
-        onSubmit={createActionController.handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault();
+          window.scroll({ top: 0, behavior: "smooth" });
+          createActionController.handleSubmit();
+        }}
         className="d-flex flex-column align-items-center"
       >
         <Card className="w-100">

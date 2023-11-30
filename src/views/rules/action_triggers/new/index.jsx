@@ -16,17 +16,20 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/action_triggers_slice";
 import CustomDatePicker from "../../../../components/datepicker/index";
+import useActionTriggers from "../../../../hooks/use_action_triggers";
 
 const ActionTriggersNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { createActionTriggerController, loadings } = useActionTriggers();
 
   const [slotFormData, setSlotFormData] = useState({
     ID: "",
@@ -140,8 +143,8 @@ const ActionTriggersNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/action_triggers");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createActionTriggerController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -159,20 +162,50 @@ const ActionTriggersNew = () => {
                 <Label className="form-label" for="TPid">
                   TPid
                 </Label>
-                <Input id="TPid" name="TPid" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createActionTriggerController.values.TPid}
+                  onChange={createActionTriggerController.handleChange}
+                  invalid={
+                    createActionTriggerController.touched.TPid &&
+                    createActionTriggerController.errors.TPid
+                  }
+                />
+                {createActionTriggerController.touched.TPid &&
+                createActionTriggerController.errors.TPid ? (
+                  <FormFeedback>
+                    {createActionTriggerController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
               </Col>
               {/* ID */}
               <Col xs="12" sm="6" md="4" className="mb-1">
                 <Label className="form-label" for="ID">
                   ID
                 </Label>
-                <Input id="ID" name="ID" />
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createActionTriggerController.values.ID}
+                  onChange={createActionTriggerController.handleChange}
+                  invalid={
+                    createActionTriggerController.touched.ID &&
+                    createActionTriggerController.errors.ID
+                  }
+                />
+                {createActionTriggerController.touched.ID &&
+                createActionTriggerController.errors.ID ? (
+                  <FormFeedback>
+                    {createActionTriggerController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
             {/* slots */}
             <Row>
               <Col xs="12">
-                <CardTitle>Actions</CardTitle>
+                <CardTitle>Action Triggers</CardTitle>
               </Col>
               {/* ID */}
               <Col xs="12" sm="6" md="3" className="mb-1">
@@ -573,7 +606,9 @@ const ActionTriggersNew = () => {
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>No Action Added Yet.</div>
+                    <div style={{ margin: "24px 0" }}>
+                      No Action Trigger Added Yet.
+                    </div>
                   }
                   noHeader
                   columns={slots_columns}
@@ -590,7 +625,7 @@ const ActionTriggersNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createActionTrigger}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
