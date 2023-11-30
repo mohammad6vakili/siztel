@@ -4,99 +4,119 @@
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":2,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":3,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":4,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":5,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":6,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":7,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":8,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":9,
         "TPid":"test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     },
     {
         "id":10,
         "TPid":"1test",
         "Tenant":"test",
         "ID":"test",
+        "FilterIDs":["test1","test2"],
         "ActivationTime":"test",
         "ExpiryTime":"test",
         "RunID":"Active",
-        "Weight":"test"
+        "Weight":10,
+        "AttributeIDs":["*none","test1","test2"]
     }
 ]
