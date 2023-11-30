@@ -20,7 +20,7 @@ const ActionsRoot = () => {
   const dispatch = useDispatch();
   const { loadings, paginates, setPaginates } = useActions();
 
-  const selectedAction = useSelector((state) => state.actions.selectedAction);
+  const selectedEntity = useSelector((state) => state.actions.selectedEntity);
   const deleteModal = useSelector((state) => state.actions.deleteModal);
 
   const handlePagination = (page) => {
@@ -101,7 +101,7 @@ const ActionsRoot = () => {
         noColor={"secondary"}
         noTitle={"Cancel"}
         yesLoading={loadings.deleteAction}
-        yesAction={() => alert(selectedAction?.TPid)}
+        yesAction={() => alert(selectedEntity?.TPid)}
         yesColor={"danger"}
         yesTitle={"Delete"}
         type={"global"}
