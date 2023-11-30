@@ -5,7 +5,7 @@ const useHttp = () => {
   const httpService = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
-      // Accept: "application/json",
+      Accept: "application/json",
     },
   });
 

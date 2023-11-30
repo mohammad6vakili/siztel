@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -28,6 +28,7 @@ import CustomDatePicker from "../../../../components/datepicker/index";
 const ActionsUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { updateActionController, loadings } = useActions();
 
@@ -53,7 +54,6 @@ const ActionsUpdate = () => {
   });
 
   const slots = useSelector((state) => state.actions.slots);
-  const selectedAction = useSelector((state) => state.actions.selectedAction);
 
   const handleAddSlot = () => {
     let array = [...slots];
@@ -104,18 +104,18 @@ const ActionsUpdate = () => {
         BalanceDisabled: false,
         Weight: 0,
       });
+      setExpiryTime(null);
     }
   };
 
   useEffect(() => {
-    if (!selectedAction) {
-      navigate("/rules/actions");
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
     } else {
-      updateActionController.setFieldValue("TPid", selectedAction?.TPid);
-      updateActionController.setFieldValue("ID", selectedAction?.ID);
-      dispatch(setSlots(selectedAction.Slots));
+      navigate("/rules/actions");
     }
-  }, [selectedAction]);
+  }, []);
 
   return (
     <Fragment>
