@@ -285,6 +285,91 @@ const ChargersNew = () => {
                   </button>
                 </Col>
               ))}
+              {/* AttributeIDs */}
+              <Col xs="12" className="mb-1">
+                <Label className="form-label" for="AttributeIDs">
+                  AttributeIDs
+                </Label>
+                <div className="position-relative d-flex align-items-center">
+                  <Input
+                    id="AttributeIDs"
+                    name="AttributeIDs"
+                    value={AttributeIDsValue}
+                    onChange={(e) => setAttributeIDsValue(e.target.value)}
+                    invalid={
+                      createChargerController.touched.AttributeIDs &&
+                      createChargerController.errors.AttributeIDs
+                    }
+                  />
+                  <button
+                    type="button"
+                    style={{
+                      right: 35,
+                      borderRadius: "50%",
+                      border: "none",
+                      background: "transparent",
+                      width: 30,
+                      height: 30,
+                      border: "1px solid rgba(200,200,200,.5)",
+                      color: "white",
+                      fontSize: 18,
+                      cursor: "pointer",
+                    }}
+                    className="position-absolute"
+                    onClick={() => {
+                      if (AttributeIDsValue.length === 0) {
+                        toast.error("Enter Attribute Id value.");
+                      } else {
+                        let array = [
+                          ...createChargerController.values.AttributeIDs,
+                        ];
+                        array.push(AttributeIDsValue);
+                        createChargerController.setFieldValue(
+                          "AttributeIDs",
+                          array
+                        );
+                        setAttributeIDsValue("");
+                      }
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+                {createChargerController.touched.AttributeIDs &&
+                createChargerController.errors.AttributeIDs ? (
+                  <FormFeedback style={{ display: "block" }}>
+                    {createChargerController.errors.AttributeIDs}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {createChargerController.values.AttributeIDs.map(
+                (item, index) => (
+                  <Col xs="12" className="mb-1 d-flex align-items-center">
+                    <span>{index + 1} -</span>
+                    <span>{item}</span>
+                    <button
+                      type="button"
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        marginLeft: "auto",
+                      }}
+                      onClick={() => {
+                        let array = [
+                          ...createChargerController.values.AttributeIDs,
+                        ];
+                        array = array.filter((intem, i) => i !== index);
+                        createChargerController.setFieldValue(
+                          "AttributeIDs",
+                          array
+                        );
+                      }}
+                    >
+                      <IoMdClose style={{ fontSize: 14, color: "red" }} />
+                    </button>
+                  </Col>
+                )
+              )}
             </Row>
           </CardBody>
           {/* card footer */}
