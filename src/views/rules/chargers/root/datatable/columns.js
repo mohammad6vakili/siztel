@@ -1,5 +1,4 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import TableActions from "../component/table_actions";
 
 export const columns = [
   {
@@ -8,48 +7,11 @@ export const columns = [
     selector: (row) => row.TPid,
   },
   {
-    name: "Tenant",
+    name: "Operations",
     minWidth: "100px",
-    selector: (row) => row.Tenant,
-  },
-  {
-    name: "ID",
-    minWidth: "100px",
-    selector: (row) => row.ID,
-  },
-  {
-    name: "ActivationTime",
-    minWidth: "100px",
-    selector: (row) => row.ActivationTime,
-  },
-  {
-    name: "ExpiryTime",
-    minWidth: "100px",
-    selector: (row) => row.ExpiryTime,
-  },
-  {
-    name: "RunID",
-    minWidth: "100px",
-    selector: (row) => row.RunID,
-  },
-  {
-    name: "Weight",
-    minWidth: "100px",
-    selector: (row) => row.Weight,
-  },
-  {
-    name: "Actions",
-    minWidth: "120px",
-    maxWidth: "120px",
-    selector: (row) => row.uuid,
+    selector: (row) => row.TPid,
     cell: (row) => {
-      return (
-        <Link to={"/rules/chargers/update"}>
-          <Button style={{ padding: 6 }} size="sm" color="primary">
-            Update
-          </Button>
-        </Link>
-      );
+      return <TableActions row={row} />;
     },
   },
 ];

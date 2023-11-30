@@ -10,11 +10,18 @@ import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import ChargersData from "../../../../data/chargers.json";
 import { useNavigate } from "react-router-dom";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/chargers_slice";
 
 const ChargersRoot = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
   const { loadings, paginates, setPaginates } = useChargers();
+
+  const deleteModal = useSelector((state) => state.chargers.deleteModal);
+  const selectedEntity = useSelector((state) => state.chargers.selectedEntity);
 
   const handlePagination = (page) => {
     console.log(page);
@@ -87,6 +94,20 @@ const ChargersRoot = () => {
             <ProgressLoading />
           </div>
         ) : null}
+        {/* delete modal */}
+        <Confirm
+          visible={deleteModal}
+          setVisible={setDeleteModal}
+          title={"Are you sure you want to delete this action?"}
+          noAction={() => dispatch(setDeleteModal(false))}
+          noColor={"secondary"}
+          noTitle={"Cancel"}
+          yesLoading={loadings.deleteAction}
+          yesAction={() => alert(selectedEntity?.TPid)}
+          yesColor={"danger"}
+          yesTitle={"Delete"}
+          type={"global"}
+        />
       </div>
     </Fragment>
   );

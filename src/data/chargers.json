@@ -1,7 +1,7 @@
 [
     {
         "id":1,
-        "TPid":"test",
+        "TPid":"1",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -13,7 +13,7 @@
     },
     {
         "id":2,
-        "TPid":"test",
+        "TPid":"2",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -25,7 +25,7 @@
     },
     {
         "id":3,
-        "TPid":"test",
+        "TPid":"3",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -37,7 +37,7 @@
     },
     {
         "id":4,
-        "TPid":"test",
+        "TPid":"4",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -49,7 +49,7 @@
     },
     {
         "id":5,
-        "TPid":"test",
+        "TPid":"5",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -61,7 +61,7 @@
     },
     {
         "id":6,
-        "TPid":"test",
+        "TPid":"6",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -73,7 +73,7 @@
     },
     {
         "id":7,
-        "TPid":"test",
+        "TPid":"7",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -85,7 +85,7 @@
     },
     {
         "id":8,
-        "TPid":"test",
+        "TPid":"8",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -97,7 +97,7 @@
     },
     {
         "id":9,
-        "TPid":"test",
+        "TPid":"9",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
@@ -109,7 +109,7 @@
     },
     {
         "id":10,
-        "TPid":"1test",
+        "TPid":"10",
         "Tenant":"test",
         "ID":"test",
         "FilterIDs":["test1","test2"],
