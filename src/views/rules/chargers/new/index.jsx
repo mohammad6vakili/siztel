@@ -233,8 +233,8 @@ const ChargersNew = () => {
                       width: 30,
                       height: 30,
                       border: "1px solid rgba(200,200,200,.5)",
-                      color: "white",
                       fontSize: 18,
+                      color: "#73bcf0",
                       cursor: "pointer",
                     }}
                     className="position-absolute"
@@ -311,7 +311,7 @@ const ChargersNew = () => {
                       width: 30,
                       height: 30,
                       border: "1px solid rgba(200,200,200,.5)",
-                      color: "white",
+                      color: "#73bcf0",
                       fontSize: 18,
                       cursor: "pointer",
                     }}

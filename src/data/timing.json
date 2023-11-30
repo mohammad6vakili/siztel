@@ -1,92 +1,102 @@
 [
     {
         "id":1,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":2,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":3,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":4,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":5,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":6,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":7,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":8,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":9,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     },
     {
         "id":10,
-        "TimingId":"1",
-        "Years":"22",
-        "Months":"11",
-        "MonthDays":"5",
-        "WeekDays":"3",
-        "Time":"12"
+        "TPid": "DEFAULT",
+        "ID": "START_DAY",
+        "MonthDays": "*any",
+        "Months": "*any",
+        "Time": "00:00:00",
+        "WeekDays": "*any",
+        "Years": "*any"
     }
 ]
