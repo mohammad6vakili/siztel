@@ -22,6 +22,7 @@ import invoice from "./invoice_slice";
 import cdr from "./cdr_slice";
 import actionPlans from "./action_plans_slice";
 import chargers from "./chargers_slice";
+import timing from "./timing_slice";
 import accounts from "./accounts_slice";
 
 const rootReducer = {
@@ -48,6 +49,7 @@ const rootReducer = {
   cdr,
   actionPlans,
   chargers,
+  timing,
   accounts,
 };
 
