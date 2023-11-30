@@ -102,7 +102,7 @@ const TimingRoot = () => {
           noAction={() => dispatch(setDeleteModal(false))}
           noColor={"secondary"}
           noTitle={"Cancel"}
-          yesLoading={loadings.deleteAction}
+          yesLoading={loadings.deleteTiming}
           yesAction={() => alert(selectedEntity?.TPid)}
           yesColor={"danger"}
           yesTitle={"Delete"}

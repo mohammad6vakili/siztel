@@ -103,7 +103,7 @@ const ActionPlansRoot = () => {
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}
-        yesLoading={loadings.deleteActionTrigger}
+        yesLoading={loadings.deleteActionPlan}
         yesAction={() => alert(selectedEntity?.TPid)}
         yesColor={"danger"}
         yesTitle={"Delete"}
