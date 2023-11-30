@@ -57,25 +57,23 @@ const useTiming = () => {
     }
   };
 
-  const updateChargerController = useFormik({
+  const updateTimingController = useFormik({
     initialValues: {
       TPid: "",
-      Tenant: "",
       ID: "",
-      ActivationTime: "",
-      ExpiryTime: "",
-      RunID: "",
-      Weight: 0,
-      FilterIDs: [],
-      AttributeIDs: [],
+      MonthDays: "",
+      Months: "",
+      Time: "",
+      WeekDays: "",
+      Years: "",
     },
-    validationSchema: createChargerSchema,
+    validationSchema: createTimingSchema,
     onSubmit: (values) => {
-      updateActionPlan(values);
+      updateTiming(values);
     },
   });
 
-  const updateActionPlan = async (values) => {
+  const updateTiming = async (values) => {
     try {
       setLoadings({ ...loadings, updateCharger: true });
       const response = await httpService.post("", {
