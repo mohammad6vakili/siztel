@@ -98,7 +98,7 @@ const TimingRoot = () => {
         <Confirm
           visible={deleteModal}
           setVisible={setDeleteModal}
-          title={"Are you sure you want to delete this action?"}
+          title={"Are you sure you want to delete this timing?"}
           noAction={() => dispatch(setDeleteModal(false))}
           noColor={"secondary"}
           noTitle={"Cancel"}

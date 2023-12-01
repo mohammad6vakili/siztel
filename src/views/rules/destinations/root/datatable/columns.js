@@ -1,4 +1,4 @@
-import TableActions from "../component/table_actions";
+import TableActions from "../components/table_actions";
 
 export const columns = [
   {

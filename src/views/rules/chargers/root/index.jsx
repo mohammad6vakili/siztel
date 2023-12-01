@@ -98,7 +98,7 @@ const ChargersRoot = () => {
         <Confirm
           visible={deleteModal}
           setVisible={setDeleteModal}
-          title={"Are you sure you want to delete this action?"}
+          title={"Are you sure you want to delete this charger?"}
           noAction={() => dispatch(setDeleteModal(false))}
           noColor={"secondary"}
           noTitle={"Cancel"}

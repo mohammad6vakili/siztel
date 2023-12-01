@@ -10,11 +10,20 @@ import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import DestinationsData from "../../../../data/destinations.json";
 import { useNavigate } from "react-router-dom";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/destinations_slice";
 
 const DestinationsRoot = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
   const { loadings, paginates, setPaginates } = useDestinations();
+
+  const selectedEntity = useSelector(
+    (state) => state.destinations.selectedEntity
+  );
+  const deleteModal = useSelector((state) => state.destinations.deleteModal);
 
   const handlePagination = (page) => {
     console.log(page);
@@ -90,6 +99,20 @@ const DestinationsRoot = () => {
           </div>
         ) : null}
       </div>
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this destination?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteTiming}
+        yesAction={() => alert(selectedEntity?.TPid)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };
