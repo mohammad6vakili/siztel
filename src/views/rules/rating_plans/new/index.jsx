@@ -16,19 +16,23 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/rating_plans_slice";
+import useRatingPlans from "../../../../hooks/use_rating_plans";
 
 const RatingPlansNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { createRatingPlanController, loadings } = useRatingPlans();
+
   const [slotFormData, setSlotFormData] = useState({
-    DestinationRateId: "",
+    DestinationRatesId: "",
     TimingId: "",
     Weight: 0,
   });
@@ -37,15 +41,15 @@ const RatingPlansNew = () => {
 
   const handleAddSlot = () => {
     let array = [...slots];
-    if (slotFormData.DestinationRateId.length === 0) {
-      toast.error("Please enter DestinationRateId.");
+    if (slotFormData.DestinationRatesId.length === 0) {
+      toast.error("Please enter DestinationRatesId.");
     } else if (slotFormData.TimingId.length === 0) {
       toast.error("Please enter TimingId.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
       dispatch(setSlots(array));
       setSlotFormData({
-        DestinationRateId: "",
+        DestinationRatesId: "",
         TimingId: "",
         Weight: 0,
       });
@@ -61,8 +65,8 @@ const RatingPlansNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/rating_plans");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createRatingPlanController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -75,34 +79,71 @@ const RatingPlansNew = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* RatingPlanId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="RatingPlanId">
-                  RatingPlanId
-                </Label>
-                <Input id="RatingPlanId" name="RatingPlanId" />
-              </Col>
-            </Row>
-            {/* slots */}
-            <Row>
-              <Col xs="12">
-                <CardTitle>Slots</CardTitle>
-              </Col>
-              {/* DestinationRateId */}
-              <Col xs="12" sm="6" md="3" className="mb-1">
-                <Label className="form-label" for="DestinationRateId">
-                  DestinationRateId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
                 <Input
-                  value={slotFormData.DestinationRateId}
+                  id="TPid"
+                  name="TPid"
+                  value={createRatingPlanController.values.TPid}
+                  onChange={createRatingPlanController.handleChange}
+                  invalid={
+                    createRatingPlanController.touched.TPid &&
+                    createRatingPlanController.errors.TPid
+                  }
+                />
+                {createRatingPlanController.touched.TPid &&
+                createRatingPlanController.errors.TPid ? (
+                  <FormFeedback>
+                    {createRatingPlanController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createRatingPlanController.values.ID}
+                  onChange={createRatingPlanController.handleChange}
+                  invalid={
+                    createRatingPlanController.touched.ID &&
+                    createRatingPlanController.errors.ID
+                  }
+                />
+                {createRatingPlanController.touched.ID &&
+                createRatingPlanController.errors.ID ? (
+                  <FormFeedback>
+                    {createRatingPlanController.errors.ID}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+            </Row>
+            {/* RatingPlanBindings */}
+            <Row>
+              <Col xs="12">
+                <CardTitle>Rating Plan Bindings</CardTitle>
+              </Col>
+              {/* DestinationRatesId */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="DestinationRatesId">
+                  DestinationRatesId
+                </Label>
+                <Input
+                  value={slotFormData.DestinationRatesId}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      DestinationRateId: e.target.value,
+                      DestinationRatesId: e.target.value,
                     })
                   }
-                  id="DestinationRateId"
-                  name="DestinationRateId"
+                  id="DestinationRatesId"
+                  name="DestinationRatesId"
                 />
               </Col>
               {/* TimingId */}
@@ -139,6 +180,7 @@ const RatingPlansNew = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -154,6 +196,7 @@ const RatingPlansNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
@@ -174,7 +217,7 @@ const RatingPlansNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createRatingPlan}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
