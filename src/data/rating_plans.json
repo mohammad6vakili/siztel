@@ -1,35 +1,36 @@
 [
     {
         "id":1,
-        "RatingPlanId":"1",
+        "TPid":"1",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -37,35 +38,36 @@
     },
     {
         "id":2,
-        "RatingPlanId":"2",
+        "TPid":"2",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -73,35 +75,36 @@
     },
     {
         "id":3,
-        "RatingPlanId":"3",
+        "TPid":"3",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -109,35 +112,36 @@
     },
     {
         "id":4,
-        "RatingPlanId":"4",
+        "TPid":"4",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -145,35 +149,36 @@
     },
     {
         "id":5,
-        "RatingPlanId":"5",
+        "TPid":"5",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -181,35 +186,36 @@
     },
     {
         "id":6,
-        "RatingPlanId":"6",
+        "TPid":"6",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -217,35 +223,36 @@
     },
     {
         "id":7,
-        "RatingPlanId":"7",
+        "TPid":"7",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -253,35 +260,36 @@
     },
     {
         "id":8,
-        "RatingPlanId":"8",
+        "TPid":"8",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -289,35 +297,36 @@
     },
     {
         "id":9,
-        "RatingPlanId":"9",
+        "TPid":"9",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
@@ -325,35 +334,36 @@
     },
     {
         "id":10,
-        "RatingPlanId":"10",
+        "TPid":"10",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":2,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":3,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":4,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             },
             {
                 "id":5,
-                "DestinationRateId":"hwjiqw89-ww",
+                "DestinationRatesId":"hwjiqw89-ww",
                 "TimingId":"test",
                 "Weight":22
             }
