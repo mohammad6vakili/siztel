@@ -16,16 +16,20 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/rates_slice";
+import useRates from "../../../../hooks/use_rates";
 
 const RatesNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { createRateController, loadings } = useRates();
 
   const [slotFormData, setSlotFormData] = useState({
     ConnectFee: 0,
@@ -64,8 +68,8 @@ const RatesNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/rates");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createRateController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -78,18 +82,53 @@ const RatesNew = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* RateId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="RateId">
-                  RateId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="RateId" name="RateId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createRateController.values.TPid}
+                  onChange={createRateController.handleChange}
+                  invalid={
+                    createRateController.touched.TPid &&
+                    createRateController.errors.TPid
+                  }
+                />
+                {createRateController.touched.TPid &&
+                createRateController.errors.TPid ? (
+                  <FormFeedback>
+                    {createRateController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createRateController.values.ID}
+                  onChange={createRateController.handleChange}
+                  invalid={
+                    createRateController.touched.ID &&
+                    createRateController.errors.ID
+                  }
+                />
+                {createRateController.touched.ID &&
+                createRateController.errors.ID ? (
+                  <FormFeedback>{createRateController.errors.ID}</FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* slots */}
+            {/* RateSlots */}
             <Row>
               <Col xs="12">
-                <CardTitle>Slots</CardTitle>
+                <CardTitle>Rate Slots</CardTitle>
               </Col>
               {/* ConnectFee */}
               <Col xs="12" sm="6" md="2" className="mb-1">
@@ -178,6 +217,7 @@ const RatesNew = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -193,10 +233,13 @@ const RatesNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>No Slot Added Yet.</div>
+                    <div style={{ margin: "24px 0" }}>
+                      No Rate Slot Added Yet.
+                    </div>
                   }
                   noHeader
                   columns={slots_columns}
@@ -213,7 +256,7 @@ const RatesNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createRate}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
