@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createChargerSchema } from "../utility/schemas/index";
+import { createDestinationSchema } from "../utility/schemas/index";
 import { useFormik } from "formik";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ const useDestinations = () => {
       ID: "",
       Prefixes: [],
     },
-    validationSchema: null,
+    validationSchema: createDestinationSchema,
     onSubmit: (values) => {
       createDestination(values);
     },
@@ -61,7 +61,7 @@ const useDestinations = () => {
       ID: "",
       Prefixes: [],
     },
-    validationSchema: null,
+    validationSchema: createDestinationSchema,
     onSubmit: (values) => {
       updateDestination(values);
     },
@@ -90,7 +90,13 @@ const useDestinations = () => {
     }
   };
 
-  const exports = { loadings, paginates, setPaginates };
+  const exports = {
+    createDestinationController,
+    updateDestinationController,
+    loadings,
+    paginates,
+    setPaginates,
+  };
   return exports;
 };
 export default useDestinations;

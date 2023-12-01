@@ -31,6 +31,12 @@ export const createTimingSchema = yup.object({
   Years: yup.string().required("The Years field is required."),
 });
 
+export const createDestinationSchema = yup.object({
+  TPid: yup.string().required("The TPid field is required."),
+  ID: yup.string().required("The ID field is required."),
+  Prefixes: yup.array().min(1).required("The Prefixes field is required."),
+});
+
 // export const registerSchema = yup.object({
 //   first_name: yup.string().required("The first name field is required."),
 //   last_name: yup.string().required("The last name field is required."),
