@@ -84,11 +84,11 @@ const useChargers = () => {
     },
     validationSchema: createChargerSchema,
     onSubmit: (values) => {
-      updateActionPlan(values);
+      updateCharger(values);
     },
   });
 
-  const updateActionPlan = async (values) => {
+  const updateCharger = async (values) => {
     try {
       setLoadings({ ...loadings, updateCharger: true });
       const response = await httpService.post("", {
