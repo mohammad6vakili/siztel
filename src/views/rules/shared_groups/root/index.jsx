@@ -6,11 +6,24 @@ import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
 import SharedGroupsData from "../../../../data/shared_groups.json";
 import { useNavigate } from "react-router-dom";
-import SharedGroupCard from "./components/shared_group_card";
+import { columns } from "./datatable/columns";
+import DataTable from "react-data-table-component";
+import { ChevronDown } from "react-feather";
+import { useSkin } from "@hooks/useSkin";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/shared_groups_slice";
 
 const SharedGroupsRoot = () => {
+  const { skin } = useSkin();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loadings, paginates, setPaginates } = useSharedGroups();
+
+  const deleteModal = useSelector((state) => state.sharedGroups.deleteModal);
+  const selectedEntity = useSelector(
+    (state) => state.sharedGroups.selectedEntity
+  );
 
   const handlePagination = (page) => {
     console.log(page);
@@ -57,17 +70,48 @@ const SharedGroupsRoot = () => {
         </Button>
       </Col>
       {/* datatable */}
-      {!loadings.getSharedGroups &&
-        SharedGroupsData?.map((rate, index) => (
-          <Fragment key={index}>
-            <SharedGroupCard rate={rate} loadings={loadings} />
-          </Fragment>
-        ))}
+      {!loadings.getSharedGroups ? (
+        <Fragment>
+          <DataTable
+            noDataComponent={
+              loadings.getSharedGroups ? (
+                ""
+              ) : (
+                <div style={{ margin: "24px 0" }}>No Shared Group Founded!</div>
+              )
+            }
+            noHeader
+            pagination
+            columns={columns}
+            paginationPerPage={10}
+            className="react-dataTable"
+            style={{ background: "red" }}
+            sortIcon={<ChevronDown size={10} />}
+            paginationComponent={CustomPagination}
+            data={SharedGroupsData}
+            theme={skin === "dark" ? "darkTheme" : ""}
+          />
+        </Fragment>
+      ) : null}
       {loadings.getSharedGroups ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
         </div>
       ) : null}
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this shared group?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteSharedGroup}
+        yesAction={() => alert(selectedEntity?.TPid)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };

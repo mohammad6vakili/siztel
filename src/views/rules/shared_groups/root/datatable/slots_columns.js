@@ -1,5 +1,3 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
 import SlotAction from "../components/slot_action";
 
 export const slots_columns = [

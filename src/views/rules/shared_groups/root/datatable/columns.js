@@ -1,17 +1,17 @@
+import TableActions from "../components/table_actions";
+
 export const columns = [
   {
-    name: "Account",
+    name: "TPid",
     minWidth: "100px",
-    selector: (row) => row.Account,
+    selector: (row) => row.TPid,
   },
   {
-    name: "Strategy",
+    name: "Operations",
     minWidth: "100px",
-    selector: (row) => row.Strategy,
-  },
-  {
-    name: "RatingSubject",
-    minWidth: "100px",
-    selector: (row) => row.RatingSubject,
+    selector: (row) => row.TPid,
+    cell: (row) => {
+      return <TableActions row={row} />;
+    },
   },
 ];
