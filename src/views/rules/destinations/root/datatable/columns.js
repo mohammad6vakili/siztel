@@ -1,30 +1,17 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import TableActions from "../component/table_actions";
 
 export const columns = [
   {
-    name: "DestinationId",
+    name: "TPid",
     minWidth: "100px",
-    selector: (row) => row.DestinationId,
+    selector: (row) => row.TPid,
   },
   {
-    name: "Prefixes",
-    minWidth: "300px",
-    selector: (row) => row.Prefixes,
-  },
-  {
-    name: "Actions",
-    minWidth: "120px",
-    maxWidth: "120px",
-    selector: (row) => row.uuid,
+    name: "Operations",
+    minWidth: "100px",
+    selector: (row) => row.TPid,
     cell: (row) => {
-      return (
-        <Link to={"/rules/destinations/update"}>
-          <Button style={{ padding: 6 }} size="sm" color="primary">
-            Update
-          </Button>
-        </Link>
-      );
+      return <TableActions row={row} />;
     },
   },
 ];
