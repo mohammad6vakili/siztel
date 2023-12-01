@@ -72,11 +72,11 @@ const DestinationRatesRoot = () => {
         </Button>
       </Col>
       {/* datatable */}
-      {!loadings.getActionPlans ? (
+      {!loadings.getDestinationRates ? (
         <Fragment>
           <DataTable
             noDataComponent={
-              loadings.getActionPlans ? (
+              loadings.getDestinationRates ? (
                 ""
               ) : (
                 <div style={{ margin: "24px 0" }}>No Rate Founded!</div>
@@ -95,7 +95,7 @@ const DestinationRatesRoot = () => {
           />
         </Fragment>
       ) : null}
-      {loadings.getActionPlans ? (
+      {loadings.getDestinationRates ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
         </div>

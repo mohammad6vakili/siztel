@@ -74,7 +74,7 @@ const RatingProfilesRoot = () => {
         <Fragment>
           <DataTable
             noDataComponent={
-              loadings.getActionPlans ? (
+              loadings.getRatingProfiles ? (
                 ""
               ) : (
                 <div style={{ margin: "24px 0" }}>

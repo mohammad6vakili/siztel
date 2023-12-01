@@ -67,11 +67,11 @@ const RatingPlansRoot = () => {
         </Button>
       </Col>
       {/* datatable */}
-      {!loadings.getActionPlans ? (
+      {!loadings.getRatingPlans ? (
         <Fragment>
           <DataTable
             noDataComponent={
-              loadings.getActionPlans ? (
+              loadings.getRatingPlans ? (
                 ""
               ) : (
                 <div style={{ margin: "24px 0" }}>No Rating Plan Founded!</div>
@@ -90,7 +90,7 @@ const RatingPlansRoot = () => {
           />
         </Fragment>
       ) : null}
-      {loadings.getActionPlans ? (
+      {loadings.getRatingPlans ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
         </div>
