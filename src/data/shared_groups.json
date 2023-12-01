@@ -1,8 +1,9 @@
 [
     {
         "id":1,
-        "SharedGroupsId":"1",
-        "Slots":[
+        "TPid":"1",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -37,8 +38,9 @@
     },
     {
         "id":2,
-        "SharedGroupsId":"2",
-        "Slots":[
+        "TPid":"2",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -73,8 +75,9 @@
     },
     {
         "id":3,
-        "SharedGroupsId":"3",
-        "Slots":[
+        "TPid":"3",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -109,8 +112,9 @@
     },
     {
         "id":4,
-        "SharedGroupsId":"4",
-        "Slots":[
+        "TPid":"4",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -145,8 +149,9 @@
     },
     {
         "id":5,
-        "SharedGroupsId":"5",
-        "Slots":[
+        "TPid":"5",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -181,8 +186,9 @@
     },
     {
         "id":6,
-        "SharedGroupsId":"6",
-        "Slots":[
+        "TPid":"6",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -217,8 +223,9 @@
     },
     {
         "id":7,
-        "SharedGroupsId":"7",
-        "Slots":[
+        "TPid":"7",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -253,8 +260,9 @@
     },
     {
         "id":8,
-        "SharedGroupsId":"8",
-        "Slots":[
+        "TPid":"8",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -289,8 +297,9 @@
     },
     {
         "id":9,
-        "SharedGroupsId":"9",
-        "Slots":[
+        "TPid":"9",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
@@ -325,8 +334,9 @@
     },
     {
         "id":10,
-        "SharedGroupsId":"10",
-        "Slots":[
+        "TPid":"10",
+        "ID":"test",
+        "SharedGroups":[
             {
                 "id":1,
                 "Account":250,
