@@ -108,7 +108,7 @@ const DestinationRatesRoot = () => {
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}
-        yesLoading={loadings.deleteRatae}
+        yesLoading={loadings.deleteDestinationRate}
         yesAction={() => alert(selectedEntity?.TPid)}
         yesColor={"danger"}
         yesTitle={"Delete"}

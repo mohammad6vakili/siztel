@@ -62,6 +62,7 @@ const RatesUpdate = () => {
       });
     }
   };
+
   useEffect(() => {
     let entity_id = searchParams.get("entity_id");
     if (entity_id) {
