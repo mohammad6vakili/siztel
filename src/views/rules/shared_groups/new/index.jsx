@@ -16,16 +16,20 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/shared_groups_slice";
+import useSharedGroups from "../../../../hooks/use_shared_groups";
 
 const SharedGroupsNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { createSharedGroupController, loadings } = useSharedGroups();
 
   const [slotFormData, setSlotFormData] = useState({
     Account: "",
@@ -63,8 +67,8 @@ const SharedGroupsNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/shared_groups");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createSharedGroupController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -77,18 +81,55 @@ const SharedGroupsNew = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* SharedGroupsId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="SharedGroupsId">
-                  SharedGroupsId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="SharedGroupsId" name="SharedGroupsId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createSharedGroupController.values.TPid}
+                  onChange={createSharedGroupController.handleChange}
+                  invalid={
+                    createSharedGroupController.touched.TPid &&
+                    createSharedGroupController.errors.TPid
+                  }
+                />
+                {createSharedGroupController.touched.TPid &&
+                createSharedGroupController.errors.TPid ? (
+                  <FormFeedback>
+                    {createSharedGroupController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createSharedGroupController.values.ID}
+                  onChange={createSharedGroupController.handleChange}
+                  invalid={
+                    createSharedGroupController.touched.ID &&
+                    createSharedGroupController.errors.ID
+                  }
+                />
+                {createSharedGroupController.touched.ID &&
+                createSharedGroupController.errors.ID ? (
+                  <FormFeedback>
+                    {createSharedGroupController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* account params */}
+            {/* SharedGroups */}
             <Row>
               <Col xs="12">
-                <CardTitle>Account Params</CardTitle>
+                <CardTitle>Shared Groups</CardTitle>
               </Col>
               {/* Account */}
               <Col xs="12" sm="6" md="3" className="mb-1">
@@ -141,6 +182,7 @@ const SharedGroupsNew = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -156,11 +198,12 @@ const SharedGroupsNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
                     <div style={{ margin: "24px 0" }}>
-                      No Account Param Added Yet.
+                      No Shared Group Added Yet.
                     </div>
                   }
                   noHeader
@@ -178,7 +221,7 @@ const SharedGroupsNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createSharedGroup}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
