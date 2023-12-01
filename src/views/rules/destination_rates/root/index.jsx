@@ -104,7 +104,7 @@ const DestinationRatesRoot = () => {
       <Confirm
         visible={deleteModal}
         setVisible={setDeleteModal}
-        title={"Are you sure you want to delete this rate?"}
+        title={"Are you sure you want to delete this detination rate?"}
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}

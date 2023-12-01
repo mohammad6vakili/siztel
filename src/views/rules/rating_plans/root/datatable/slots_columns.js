@@ -1,12 +1,10 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
 import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
   {
-    name: "DestinationRateId",
+    name: "DestinationRatesId",
     minWidth: "100px",
-    selector: (row) => row.DestinationRateId,
+    selector: (row) => row.DestinationRatesId,
   },
   {
     name: "TimingId",
