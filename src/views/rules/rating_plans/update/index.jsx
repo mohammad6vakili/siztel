@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -16,19 +16,24 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/rating_plans_slice";
+import useRatingPlans from "../../../../hooks/use_rating_plans";
 
 const RatingPlansUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const { updateRatingPlanController, loadings } = useRatingPlans();
 
   const [slotFormData, setSlotFormData] = useState({
-    DestinationRateId: "",
+    DestinationRatesId: "",
     TimingId: "",
     Weight: 0,
   });
@@ -37,20 +42,29 @@ const RatingPlansUpdate = () => {
 
   const handleAddSlot = () => {
     let array = [...slots];
-    if (slotFormData.DestinationRateId.length === 0) {
-      toast.error("Please enter DestinationRateId.");
+    if (slotFormData.DestinationRatesId.length === 0) {
+      toast.error("Please enter DestinationRatesId.");
     } else if (slotFormData.TimingId.length === 0) {
       toast.error("Please enter TimingId.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
       dispatch(setSlots(array));
       setSlotFormData({
-        DestinationRateId: "",
+        DestinationRatesId: "",
         TimingId: "",
         Weight: 0,
       });
     }
   };
+
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/rating_plans");
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -61,8 +75,8 @@ const RatingPlansUpdate = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/rating_plans");
-          toast.success("Successfully Updated!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          updateRatingPlanController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -75,34 +89,71 @@ const RatingPlansUpdate = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* RatingPlanId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="RatingPlanId">
-                  RatingPlanId
-                </Label>
-                <Input id="RatingPlanId" name="RatingPlanId" />
-              </Col>
-            </Row>
-            {/* slots */}
-            <Row>
-              <Col xs="12">
-                <CardTitle>Slots</CardTitle>
-              </Col>
-              {/* DestinationRateId */}
-              <Col xs="12" sm="6" md="3" className="mb-1">
-                <Label className="form-label" for="DestinationRateId">
-                  DestinationRateId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
                 <Input
-                  value={slotFormData.DestinationRateId}
+                  id="TPid"
+                  name="TPid"
+                  value={updateRatingPlanController.values.TPid}
+                  onChange={updateRatingPlanController.handleChange}
+                  invalid={
+                    updateRatingPlanController.touched.TPid &&
+                    updateRatingPlanController.errors.TPid
+                  }
+                />
+                {updateRatingPlanController.touched.TPid &&
+                updateRatingPlanController.errors.TPid ? (
+                  <FormFeedback>
+                    {updateRatingPlanController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={updateRatingPlanController.values.ID}
+                  onChange={updateRatingPlanController.handleChange}
+                  invalid={
+                    updateRatingPlanController.touched.ID &&
+                    updateRatingPlanController.errors.ID
+                  }
+                />
+                {updateRatingPlanController.touched.ID &&
+                updateRatingPlanController.errors.ID ? (
+                  <FormFeedback>
+                    {updateRatingPlanController.errors.ID}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+            </Row>
+            {/* RatingPlanBindings */}
+            <Row>
+              <Col xs="12">
+                <CardTitle>Rating Plan Bindings</CardTitle>
+              </Col>
+              {/* DestinationRatesId */}
+              <Col xs="12" sm="6" md="3" className="mb-1">
+                <Label className="form-label" for="DestinationRatesId">
+                  DestinationRatesId
+                </Label>
+                <Input
+                  value={slotFormData.DestinationRatesId}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      DestinationRateId: e.target.value,
+                      DestinationRatesId: e.target.value,
                     })
                   }
-                  id="DestinationRateId"
-                  name="DestinationRateId"
+                  id="DestinationRatesId"
+                  name="DestinationRatesId"
                 />
               </Col>
               {/* TimingId */}
@@ -139,6 +190,7 @@ const RatingPlansUpdate = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -154,10 +206,13 @@ const RatingPlansUpdate = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>No Slot Added Yet.</div>
+                    <div style={{ margin: "24px 0" }}>
+                      No Rating Plan Bindings Added Yet.
+                    </div>
                   }
                   noHeader
                   columns={slots_columns}
@@ -174,7 +229,7 @@ const RatingPlansUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateRatingPlan}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}

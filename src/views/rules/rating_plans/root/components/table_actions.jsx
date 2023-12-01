@@ -25,7 +25,7 @@ const TableActions = ({ row }) => {
       </Button>
       <Button
         onClick={() => {
-          navigate(`/rules/destination_rates/update?entity_id=${row.TPid}`);
+          navigate(`/rules/rating_plans/update?entity_id=${row.TPid}`);
         }}
         style={{ marginRight: 8 }}
         color="primary"
