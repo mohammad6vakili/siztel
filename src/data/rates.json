@@ -1,8 +1,9 @@
 [
     {
         "id":1,
-        "RateId":"1",
-        "Slots":[
+        "TPid":"1",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -47,8 +48,9 @@
     },
     {
         "id":2,
-        "RateId":"2",
-        "Slots":[
+        "TPid":"2",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -93,8 +95,9 @@
     },
     {
         "id":3,
-        "RateId":"3",
-        "Slots":[
+        "TPid":"3",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -139,8 +142,9 @@
     },
     {
         "id":4,
-        "RateId":"4",
-        "Slots":[
+        "TPid":"4",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -185,8 +189,9 @@
     },
     {
         "id":5,
-        "RateId":"5",
-        "Slots":[
+        "TPid":"5",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -231,8 +236,9 @@
     },
     {
         "id":6,
-        "RateId":"6",
-        "Slots":[
+        "TPid":"6",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -277,8 +283,9 @@
     },
     {
         "id":7,
-        "RateId":"7",
-        "Slots":[
+        "TPid":"7",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -323,8 +330,9 @@
     },
     {
         "id":8,
-        "RateId":"8",
-        "Slots":[
+        "TPid":"8",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -369,8 +377,9 @@
     },
     {
         "id":9,
-        "RateId":"9",
-        "Slots":[
+        "TPid":"9",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
@@ -415,8 +424,9 @@
     },
     {
         "id":10,
-        "RateId":"10",
-        "Slots":[
+        "TPid":"10",
+        "ID":"RATE_BASIC",
+        "RateSlots":[
             {
                 "id":1,
                 "ConnectFee":250,
