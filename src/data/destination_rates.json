@@ -1,50 +1,51 @@
 [
     {
         "id":1,
-        "DestinationRateId":"1",
+        "TPid":"1",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -52,50 +53,51 @@
     },
     {
         "id":2,
-        "DestinationRateId":"2",
+        "TPid":"2",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -103,50 +105,51 @@
     },
     {
         "id":3,
-        "DestinationRateId":"3",
+        "TPid":"3",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -154,50 +157,51 @@
     },
     {
         "id":4,
-        "DestinationRateId":"4",
+        "TPid":"4",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -205,50 +209,51 @@
     },
     {
         "id":5,
-        "DestinationRateId":"5",
+        "TPid":"5",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -256,50 +261,51 @@
     },
     {
         "id":6,
-        "DestinationRateId":"6",
+        "TPid":"6",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -307,50 +313,51 @@
     },
     {
         "id":7,
-        "DestinationRateId":"7",
+        "TPid":"7",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -358,50 +365,51 @@
     },
     {
         "id":8,
-        "DestinationRateId":"8",
+        "TPid":"8",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -409,50 +417,51 @@
     },
     {
         "id":9,
-        "DestinationRateId":"9",
+        "TPid":"9",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
@@ -460,50 +469,51 @@
     },
     {
         "id":10,
-        "DestinationRateId":"10",
+        "TPid":"10",
+        "ID":"test",
         "Slots":[
             {
                 "id":1,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":2,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":3,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":4,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             },
             {
                 "id":5,
-                "DestinationId":250,
+                "DestinationId":"test",
                 "RateId":"test",
                 "RoundingMethod":"test",
-                "RoundingDecimals":"test",
+                "RoundingDecimals":4,
                 "MaxCost":45,
                 "MaxCostStrategy":"test"
             }
