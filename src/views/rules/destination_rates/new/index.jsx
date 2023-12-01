@@ -16,16 +16,20 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/destination_rates_slice";
+import useDestinationRates from "../../../../hooks/use_destination_rates";
 
 const DestinationRatesNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { createDestinationRateController, loadings } = useDestinationRates();
 
   const [slotFormData, setSlotFormData] = useState({
     DestinationId: "",
@@ -33,7 +37,7 @@ const DestinationRatesNew = () => {
     RoundingMethod: "",
     RoundingDecimals: 0,
     MaxCost: 0,
-    MaxCostStrategy: 0,
+    MaxCostStrategy: "",
   });
 
   const slots = useSelector((state) => state.destinationRates.slots);
@@ -46,6 +50,8 @@ const DestinationRatesNew = () => {
       toast.error("Please enter RateId.");
     } else if (slotFormData.RoundingMethod.length === 0) {
       toast.error("Please enter RoundingMethod.");
+    } else if (slotFormData.MaxCostStrategy.length === 0) {
+      toast.error("Please enter MaxCostStrategy.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
       dispatch(setSlots(array));
@@ -55,7 +61,7 @@ const DestinationRatesNew = () => {
         RoundingMethod: "",
         RoundingDecimals: 0,
         MaxCost: 0,
-        MaxCostStrategy: 0,
+        MaxCostStrategy: "",
       });
     }
   };
@@ -69,8 +75,8 @@ const DestinationRatesNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/destination_rates");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createDestinationRateController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -83,12 +89,49 @@ const DestinationRatesNew = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* DestinationRateId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="DestinationRateId">
-                  DestinationRateId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="DestinationRateId" name="DestinationRateId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={createDestinationRateController.values.TPid}
+                  onChange={createDestinationRateController.handleChange}
+                  invalid={
+                    createDestinationRateController.touched.TPid &&
+                    createDestinationRateController.errors.TPid
+                  }
+                />
+                {createDestinationRateController.touched.TPid &&
+                createDestinationRateController.errors.TPid ? (
+                  <FormFeedback>
+                    {createDestinationRateController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={createDestinationRateController.values.ID}
+                  onChange={createDestinationRateController.handleChange}
+                  invalid={
+                    createDestinationRateController.touched.ID &&
+                    createDestinationRateController.errors.ID
+                  }
+                />
+                {createDestinationRateController.touched.ID &&
+                createDestinationRateController.errors.ID ? (
+                  <FormFeedback>
+                    {createDestinationRateController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
             {/* slots */}
@@ -97,7 +140,7 @@ const DestinationRatesNew = () => {
                 <CardTitle>Destination Rates</CardTitle>
               </Col>
               {/* DestinationId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="DestinationId">
                   DestinationId
                 </Label>
@@ -114,7 +157,7 @@ const DestinationRatesNew = () => {
                 />
               </Col>
               {/* RateId */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RateId">
                   RateId
                 </Label>
@@ -131,7 +174,7 @@ const DestinationRatesNew = () => {
                 />
               </Col>
               {/* RoundingMethod */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RoundingMethod">
                   RoundingMethod
                 </Label>
@@ -148,7 +191,7 @@ const DestinationRatesNew = () => {
                 />
               </Col>
               {/* RoundingDecimals */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RoundingDecimals">
                   RoundingDecimals
                 </Label>
@@ -166,7 +209,7 @@ const DestinationRatesNew = () => {
                 />
               </Col>
               {/* MaxCost */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="MaxCost">
                   MaxCost
                 </Label>
@@ -184,12 +227,11 @@ const DestinationRatesNew = () => {
                 />
               </Col>
               {/* MaxCostStrategy */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="MaxCostStrategy">
                   MaxCostStrategy
                 </Label>
                 <Input
-                  type="number"
                   id="MaxCostStrategy"
                   name="MaxCostStrategy"
                   value={slotFormData.MaxCostStrategy}
@@ -201,10 +243,11 @@ const DestinationRatesNew = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
-                md="2"
+                md="3"
                 className="mb-1 d-flex align-items-end"
               >
                 <CustomButton
@@ -216,6 +259,7 @@ const DestinationRatesNew = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
@@ -238,7 +282,7 @@ const DestinationRatesNew = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.createDestinationRate}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}

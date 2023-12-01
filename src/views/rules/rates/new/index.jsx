@@ -129,7 +129,7 @@ const RatesNew = () => {
                 <CardTitle>Rate Slots</CardTitle>
               </Col>
               {/* ConnectFee */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="ConnectFee">
                   Connect Fee
                 </Label>
@@ -147,7 +147,7 @@ const RatesNew = () => {
                 />
               </Col>
               {/* RateUnit */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RateUnit">
                   Rate Unit
                 </Label>
@@ -164,7 +164,7 @@ const RatesNew = () => {
                 />
               </Col>
               {/* RateIncrement */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="RateIncrement">
                   Rate Increment
                 </Label>
@@ -181,7 +181,7 @@ const RatesNew = () => {
                 />
               </Col>
               {/* GroupIntervalStart */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="GroupIntervalStart">
                   Group IntervalStart
                 </Label>
@@ -198,7 +198,7 @@ const RatesNew = () => {
                 />
               </Col>
               {/* Rate */}
-              <Col xs="12" sm="6" md="2" className="mb-1">
+              <Col xs="12" sm="6" md="3" className="mb-1">
                 <Label className="form-label" for="Rate">
                   Rate
                 </Label>
@@ -219,7 +219,7 @@ const RatesNew = () => {
               <Col
                 xs="12"
                 sm="6"
-                md="2"
+                md="3"
                 className="mb-1 d-flex align-items-end"
               >
                 <CustomButton
