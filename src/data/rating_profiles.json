@@ -1,392 +1,422 @@
 [
     {
         "id":1,
-        "Direction":"1",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"1",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":2,
-        "Direction":"2",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"2",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":3,
-        "Direction":"3",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"3",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":4,
-        "Direction":"4",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"4",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":5,
-        "Direction":"5",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"5",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":6,
-        "Direction":"6",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"6",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":7,
-        "Direction":"7",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"7",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":8,
-        "Direction":"8",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"8",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":9,
-        "Direction":"9",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"9",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     },
     {
         "id":10,
-        "Direction":"10",
-        "Tenant":"hello",
-        "Category":"test category",
-        "Subject":"test sub",
-        "Slots":[
+        "TPid":"10",
+        "LoadId":"hello",
+        "Tenant":"test Tenant",
+        "Category":"test sub",
+        "Subject":"test",
+        "Overwrite":true,
+        "RatingPlanActivations":[
             {
                 "id":1,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":2,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":3,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":4,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             },
             {
                 "id":5,
-                "ActivationTime":"hwjiqw89-ww",
+                "ActivationTime":"2014-01-14T00:00:00Z",
                 "RatingPlanId":"test",
-                "FallbackSubjects":"test"
+                "FallbackKeys":"test"
             }
-        ]
+        ],
+        "APIOpts":{}
     }
 ]
