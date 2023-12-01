@@ -24,6 +24,7 @@ import actionPlans from "./action_plans_slice";
 import chargers from "./chargers_slice";
 import timing from "./timing_slice";
 import accounts from "./accounts_slice";
+import destinations from "./destinations_slice";
 
 const rootReducer = {
   auth,
@@ -51,6 +52,7 @@ const rootReducer = {
   chargers,
   timing,
   accounts,
+  destinations,
 };
 
 export default rootReducer;
