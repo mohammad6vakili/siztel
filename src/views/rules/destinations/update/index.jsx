@@ -183,7 +183,7 @@ const DestinationsUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateDestination}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}

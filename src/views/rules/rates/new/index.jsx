@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -27,7 +26,6 @@ import useRates from "../../../../hooks/use_rates";
 const RatesNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { createRateController, loadings } = useRates();
 

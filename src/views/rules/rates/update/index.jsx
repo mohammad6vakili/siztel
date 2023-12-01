@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -16,16 +15,19 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/rates_slice";
+import useRates from "../../../../hooks/use_rates";
 
 const RatesUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+  const { updateActionPlanController, loadings } = useRates();
 
   const [slotFormData, setSlotFormData] = useState({
     ConnectFee: 0,
@@ -64,8 +66,8 @@ const RatesUpdate = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/rates");
-          toast.success("Successfully Updated!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          updateActionPlanController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -78,18 +80,55 @@ const RatesUpdate = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* RateId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="RateId">
-                  RateId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="RateId" name="RateId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={updateActionPlanController.values.TPid}
+                  onChange={updateActionPlanController.handleChange}
+                  invalid={
+                    updateActionPlanController.touched.TPid &&
+                    updateActionPlanController.errors.TPid
+                  }
+                />
+                {updateActionPlanController.touched.TPid &&
+                updateActionPlanController.errors.TPid ? (
+                  <FormFeedback>
+                    {updateActionPlanController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={updateActionPlanController.values.ID}
+                  onChange={updateActionPlanController.handleChange}
+                  invalid={
+                    updateActionPlanController.touched.ID &&
+                    updateActionPlanController.errors.ID
+                  }
+                />
+                {updateActionPlanController.touched.ID &&
+                updateActionPlanController.errors.ID ? (
+                  <FormFeedback>
+                    {updateActionPlanController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* slots */}
+            {/* RateSlots */}
             <Row>
               <Col xs="12">
-                <CardTitle>Slots</CardTitle>
+                <CardTitle>Rate Slots</CardTitle>
               </Col>
               {/* ConnectFee */}
               <Col xs="12" sm="6" md="2" className="mb-1">
@@ -178,6 +217,7 @@ const RatesUpdate = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -193,10 +233,13 @@ const RatesUpdate = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
-                    <div style={{ margin: "24px 0" }}>No Slot Added Yet.</div>
+                    <div style={{ margin: "24px 0" }}>
+                      No Rate Slot Added Yet.
+                    </div>
                   }
                   noHeader
                   columns={slots_columns}
@@ -213,7 +256,7 @@ const RatesUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateRate}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
