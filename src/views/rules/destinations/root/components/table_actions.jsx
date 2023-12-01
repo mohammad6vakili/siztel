@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   setSelectedEntity,
   setDeleteModal,
-} from "../../../../../redux/timing_slice";
+} from "../../../../../redux/destinations_slice";
 
 const TableActions = ({ row }) => {
   const navigate = useNavigate();
