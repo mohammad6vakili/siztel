@@ -66,7 +66,7 @@ const useRates = () => {
     }
   };
 
-  const updateActionPlanController = useFormik({
+  const updateRateController = useFormik({
     initialValues: {
       TPid: "",
       ID: "",
@@ -111,7 +111,7 @@ const useRates = () => {
 
   const exports = {
     createRateController,
-    updateActionPlanController,
+    updateRateController,
     loadings,
     paginates,
     setPaginates,

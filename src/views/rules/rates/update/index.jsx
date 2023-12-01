@@ -30,7 +30,7 @@ const RatesUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
 
-  const { updateActionPlanController, loadings } = useRates();
+  const { updateRateController, loadings } = useRates();
 
   const [slotFormData, setSlotFormData] = useState({
     ConnectFee: 0,
@@ -78,7 +78,7 @@ const RatesUpdate = () => {
         onSubmit={(e) => {
           e.preventDefault();
           window.scroll({ top: 0, behavior: "smooth" });
-          updateActionPlanController.handleSubmit();
+          updateRateController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -99,17 +99,17 @@ const RatesUpdate = () => {
                 <Input
                   id="TPid"
                   name="TPid"
-                  value={updateActionPlanController.values.TPid}
-                  onChange={updateActionPlanController.handleChange}
+                  value={updateRateController.values.TPid}
+                  onChange={updateRateController.handleChange}
                   invalid={
-                    updateActionPlanController.touched.TPid &&
-                    updateActionPlanController.errors.TPid
+                    updateRateController.touched.TPid &&
+                    updateRateController.errors.TPid
                   }
                 />
-                {updateActionPlanController.touched.TPid &&
-                updateActionPlanController.errors.TPid ? (
+                {updateRateController.touched.TPid &&
+                updateRateController.errors.TPid ? (
                   <FormFeedback>
-                    {updateActionPlanController.errors.TPid}
+                    {updateRateController.errors.TPid}
                   </FormFeedback>
                 ) : null}
               </Col>
@@ -121,18 +121,16 @@ const RatesUpdate = () => {
                 <Input
                   id="ID"
                   name="ID"
-                  value={updateActionPlanController.values.ID}
-                  onChange={updateActionPlanController.handleChange}
+                  value={updateRateController.values.ID}
+                  onChange={updateRateController.handleChange}
                   invalid={
-                    updateActionPlanController.touched.ID &&
-                    updateActionPlanController.errors.ID
+                    updateRateController.touched.ID &&
+                    updateRateController.errors.ID
                   }
                 />
-                {updateActionPlanController.touched.ID &&
-                updateActionPlanController.errors.ID ? (
-                  <FormFeedback>
-                    {updateActionPlanController.errors.ID}
-                  </FormFeedback>
+                {updateRateController.touched.ID &&
+                updateRateController.errors.ID ? (
+                  <FormFeedback>{updateRateController.errors.ID}</FormFeedback>
                 ) : null}
               </Col>
             </Row>
