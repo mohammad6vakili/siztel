@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useState } from "react";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import useHttp from "./use_http";
@@ -30,7 +29,7 @@ const useRates = () => {
       ID: "",
       RateSlots: [],
     },
-    validationSchema: null,
+    validationSchema: createActionSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rate slot.");
@@ -73,7 +72,7 @@ const useRates = () => {
       ID: "",
       RateSlots: [],
     },
-    validationSchema: null,
+    validationSchema: createActionSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rate slot.");

@@ -1,30 +1,17 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import TableActions from "../components/table_actions";
 
 export const columns = [
   {
-    name: "ConnectFee",
+    name: "TPid",
     minWidth: "100px",
-    selector: (row) => row.ConnectFee,
+    selector: (row) => row.TPid,
   },
   {
-    name: "RateUnit",
+    name: "Operations",
     minWidth: "100px",
-    selector: (row) => row.RateUnit,
-  },
-  {
-    name: "RateIncrement",
-    minWidth: "100px",
-    selector: (row) => row.RateIncrement,
-  },
-  {
-    name: "GroupIntervalStart",
-    minWidth: "100px",
-    selector: (row) => row.GroupIntervalStart,
-  },
-  {
-    name: "Rate",
-    minWidth: "100px",
-    selector: (row) => row.Rate,
+    selector: (row) => row.TPid,
+    cell: (row) => {
+      return <TableActions row={row} />;
+    },
   },
 ];

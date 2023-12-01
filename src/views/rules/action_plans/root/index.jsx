@@ -74,7 +74,7 @@ const ActionPlansRoot = () => {
               loadings.getActionPlans ? (
                 ""
               ) : (
-                <div style={{ margin: "24px 0" }}>No Charger Founded!</div>
+                <div style={{ margin: "24px 0" }}>No Action Plan Founded!</div>
               )
             }
             noHeader
