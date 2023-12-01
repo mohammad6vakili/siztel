@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import useHttp from "./use_http";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createActionSchema } from "../utility/schemas/index";
+import { createRatingProfileSchema } from "../utility/schemas/index";
 
 const useRatingProfiles = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const useRatingProfiles = () => {
       RatingPlanActivations: [],
       APIOpts: {},
     },
-    validationSchema: null,
+    validationSchema: createRatingProfileSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rating plan activation.");
@@ -88,7 +88,7 @@ const useRatingProfiles = () => {
       RatingPlanActivations: [],
       APIOpts: {},
     },
-    validationSchema: createActionSchema,
+    validationSchema: createRatingProfileSchema,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rating plan activation.");
