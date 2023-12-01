@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -16,16 +16,21 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/shared_groups_slice";
+import useSharedGroups from "../../../../hooks/use_shared_groups";
 
 const SharedGroupsUpdate = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const { updateSharedGroupController, loadings } = useSharedGroups();
 
   const [slotFormData, setSlotFormData] = useState({
     Account: "",
@@ -54,6 +59,15 @@ const SharedGroupsUpdate = () => {
     }
   };
 
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/shared_groups");
+    }
+  }, []);
+
   return (
     <Fragment>
       <Breadcrumbs
@@ -63,8 +77,8 @@ const SharedGroupsUpdate = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/rules/shared_groups");
-          toast.success("Successfully Updated!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          updateSharedGroupController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -77,18 +91,55 @@ const SharedGroupsUpdate = () => {
           <CardBody className="pt-2">
             {/* form fields */}
             <Row className="border-bottom mb-1">
-              {/* SharedGroupsId */}
+              {/* TPid */}
               <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="SharedGroupsId">
-                  SharedGroupsId
+                <Label className="form-label" for="TPid">
+                  TPid
                 </Label>
-                <Input id="SharedGroupsId" name="SharedGroupsId" />
+                <Input
+                  id="TPid"
+                  name="TPid"
+                  value={updateSharedGroupController.values.TPid}
+                  onChange={updateSharedGroupController.handleChange}
+                  invalid={
+                    updateSharedGroupController.touched.TPid &&
+                    updateSharedGroupController.errors.TPid
+                  }
+                />
+                {updateSharedGroupController.touched.TPid &&
+                updateSharedGroupController.errors.TPid ? (
+                  <FormFeedback>
+                    {updateSharedGroupController.errors.TPid}
+                  </FormFeedback>
+                ) : null}
+              </Col>
+              {/* ID */}
+              <Col xs="12" sm="6" md="4" className="mb-1">
+                <Label className="form-label" for="ID">
+                  ID
+                </Label>
+                <Input
+                  id="ID"
+                  name="ID"
+                  value={updateSharedGroupController.values.ID}
+                  onChange={updateSharedGroupController.handleChange}
+                  invalid={
+                    updateSharedGroupController.touched.ID &&
+                    updateSharedGroupController.errors.ID
+                  }
+                />
+                {updateSharedGroupController.touched.ID &&
+                updateSharedGroupController.errors.ID ? (
+                  <FormFeedback>
+                    {updateSharedGroupController.errors.ID}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
-            {/* account params */}
+            {/* SharedGroups */}
             <Row>
               <Col xs="12">
-                <CardTitle>Account Params</CardTitle>
+                <CardTitle>Shared Groups</CardTitle>
               </Col>
               {/* Account */}
               <Col xs="12" sm="6" md="3" className="mb-1">
@@ -141,6 +192,7 @@ const SharedGroupsUpdate = () => {
                   }
                 />
               </Col>
+              {/* add button */}
               <Col
                 xs="12"
                 sm="6"
@@ -156,11 +208,12 @@ const SharedGroupsUpdate = () => {
                   Add
                 </CustomButton>
               </Col>
+              {/* datatable */}
               <Col xs="12">
                 <DataTable
                   noDataComponent={
                     <div style={{ margin: "24px 0" }}>
-                      No Account Param Added Yet.
+                      No Shared Group Added Yet.
                     </div>
                   }
                   noHeader
@@ -178,7 +231,7 @@ const SharedGroupsUpdate = () => {
           <CardFooter className="border-top d-flex justify-content-center">
             {/* submit button */}
             <CustomButton
-              // loading={loadings.submit}
+              loading={loadings.updateSharedGroup}
               type="submit"
               color="primary"
               style={{ minWidth: 150 }}
