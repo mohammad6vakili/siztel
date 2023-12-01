@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
   Card,
@@ -21,9 +21,19 @@ import { IoMdClose } from "react-icons/io";
 
 const DestinationsUpdate = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { updateDestinationController, loadings } = useDestinations();
 
   const [PrefixesValue, setPrefixesValue] = useState("");
+
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/destinations");
+    }
+  }, []);
 
   return (
     <Fragment>

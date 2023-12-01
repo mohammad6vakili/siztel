@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
@@ -21,9 +21,12 @@ import CustomButton from "../../../../components/button";
 import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlots } from "../../../../redux/rates_slice";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import useRates from "../../../../hooks/use_rates";
 
 const RatesUpdate = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { skin } = useSkin();
   const dispatch = useDispatch();
 
@@ -59,6 +62,14 @@ const RatesUpdate = () => {
       });
     }
   };
+  useEffect(() => {
+    let entity_id = searchParams.get("entity_id");
+    if (entity_id) {
+      toast.success(`You are in update mode for ${entity_id}`);
+    } else {
+      navigate("/rules/rates");
+    }
+  }, []);
 
   return (
     <Fragment>
