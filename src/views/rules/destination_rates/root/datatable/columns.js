@@ -1,32 +1,17 @@
+import TableActions from "../components/table_actions";
+
 export const columns = [
   {
-    name: "DestinationId",
+    name: "TPid",
     minWidth: "100px",
-    selector: (row) => row.DestinationId,
+    selector: (row) => row.TPid,
   },
   {
-    name: "RateId",
+    name: "Operations",
     minWidth: "100px",
-    selector: (row) => row.RateId,
-  },
-  {
-    name: "RoundingMethod",
-    minWidth: "100px",
-    selector: (row) => row.RoundingMethod,
-  },
-  {
-    name: "RoundingDecimals",
-    minWidth: "100px",
-    selector: (row) => row.RoundingDecimals,
-  },
-  {
-    name: "MaxCost",
-    minWidth: "100px",
-    selector: (row) => row.MaxCost,
-  },
-  {
-    name: "MaxCostStrategy",
-    minWidth: "100px",
-    selector: (row) => row.MaxCostStrategy,
+    selector: (row) => row.TPid,
+    cell: (row) => {
+      return <TableActions row={row} />;
+    },
   },
 ];
