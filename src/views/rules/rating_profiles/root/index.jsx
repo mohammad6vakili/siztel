@@ -6,11 +6,24 @@ import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
 import RatingProfilesData from "../../../../data/rating_profiles.json";
 import { useNavigate } from "react-router-dom";
-import RatingProfileCard from "./components/rating_profile_card";
+import { columns } from "./datatable/columns";
+import DataTable from "react-data-table-component";
+import { ChevronDown } from "react-feather";
+import { useSkin } from "@hooks/useSkin";
+import Confirm from "../../../../components/confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal } from "../../../../redux/rating_profiles_slice";
 
 const RatingProfilesRoot = () => {
+  const { skin } = useSkin();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loadings, paginates, setPaginates } = useRatingProfiles();
+
+  const deleteModal = useSelector((state) => state.ratingProfiles.deleteModal);
+  const selectedEntity = useSelector(
+    (state) => state.ratingProfiles.selectedEntity
+  );
 
   const handlePagination = (page) => {
     console.log(page);
@@ -57,17 +70,50 @@ const RatingProfilesRoot = () => {
         </Button>
       </Col>
       {/* datatable */}
-      {!loadings.getRatingProfiles &&
-        RatingProfilesData?.map((rate, index) => (
-          <Fragment key={index}>
-            <RatingProfileCard rate={rate} loadings={loadings} />
-          </Fragment>
-        ))}
+      {!loadings.getRatingProfiles ? (
+        <Fragment>
+          <DataTable
+            noDataComponent={
+              loadings.getActionPlans ? (
+                ""
+              ) : (
+                <div style={{ margin: "24px 0" }}>
+                  No Rating Profile Founded!
+                </div>
+              )
+            }
+            noHeader
+            pagination
+            columns={columns}
+            paginationPerPage={10}
+            className="react-dataTable"
+            style={{ background: "red" }}
+            sortIcon={<ChevronDown size={10} />}
+            paginationComponent={CustomPagination}
+            data={RatingProfilesData}
+            theme={skin === "dark" ? "darkTheme" : ""}
+          />
+        </Fragment>
+      ) : null}
       {loadings.getRatingProfiles ? (
         <div className="datatable_loading_cover">
           <ProgressLoading />
         </div>
       ) : null}
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this rating profile?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteRatingProfile}
+        yesAction={() => alert(selectedEntity?.TPid)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };

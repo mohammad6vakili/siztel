@@ -1,5 +1,3 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
 import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
@@ -14,9 +12,9 @@ export const slots_columns = [
     selector: (row) => row.RatingPlanId,
   },
   {
-    name: "FallbackSubjects",
+    name: "FallbackKeys",
     minWidth: "100px",
-    selector: (row) => row.FallbackSubjects,
+    selector: (row) => row.FallbackKeys,
   },
   {
     name: "Actions",
