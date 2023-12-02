@@ -8,8 +8,6 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 // ** Intl, CASL & ThemeColors Context
-import ability from "./configs/acl/ability";
-import { AbilityContext } from "./utility/context/Can";
 import { ThemeContext } from "./utility/context/ThemeColors";
 
 // ** ThemeConfig
@@ -55,15 +53,13 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <Suspense fallback={<Spinner />}>
-        <AbilityContext.Provider value={ability}>
-          <ThemeContext>
-            <LazyApp />
-            <Toaster
-              position={themeConfig.layout.toastPosition}
-              toastOptions={{ className: "react-hot-toast" }}
-            />
-          </ThemeContext>
-        </AbilityContext.Provider>
+        <ThemeContext>
+          <LazyApp />
+          <Toaster
+            position={themeConfig.layout.toastPosition}
+            toastOptions={{ className: "react-hot-toast" }}
+          />
+        </ThemeContext>
       </Suspense>
     </Provider>
   </BrowserRouter>,

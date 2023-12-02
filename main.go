@@ -9,7 +9,7 @@ import (
 
 func main() {
 // Define the target URL where the requests will be forwarded
-targetURL, err := url.Parse("http://charging.siz-tel.com:8880")
+targetURL, err := url.Parse("https://charging.siz-tel.com:443")
 if err != nil {
 fmt.Println("Error parsing target URL:", err)
 return

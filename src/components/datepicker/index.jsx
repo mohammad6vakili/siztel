@@ -1,6 +1,6 @@
 import "./datepicker.scss";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-import { AiOutlineCalendar } from "react-icons/all";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { useSkin } from "@hooks/useSkin";
 
 const CustomDatePicker = ({

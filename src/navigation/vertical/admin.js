@@ -1,6 +1,6 @@
 // ** Icons Import
 import { Circle } from "react-feather";
-import { AiOutlineUser } from "react-icons/all";
+import { AiOutlineUser } from "react-icons/ai";
 
 export default [
   {
