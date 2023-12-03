@@ -63,7 +63,7 @@ const useActionPlans = () => {
       setLoadings({ ...loadings, getEntityById: false });
       if (response?.data?.error === "NOT_FOUND") {
         toast.error(response?.data?.error);
-        navigate("/rules/action_triggers");
+        navigate("/rules/action_plans");
       } else {
         updateActionPlanController.setFieldValue(
           "ID",
