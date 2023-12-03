@@ -204,6 +204,7 @@ const ActionTriggersUpdate = () => {
                   <Input
                     id="ID"
                     name="ID"
+                    disabled
                     value={updateActionTriggerController.values.ID}
                     onChange={updateActionTriggerController.handleChange}
                     invalid={

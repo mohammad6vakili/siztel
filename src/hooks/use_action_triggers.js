@@ -114,6 +114,7 @@ const useActionTriggers = () => {
       if (response.status === 200) {
         toast.success("Successfully Created!");
         navigate("/rules/action_triggers");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, createActionTrigger: false });

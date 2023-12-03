@@ -183,6 +183,7 @@ const ActionsUpdate = () => {
                   <Input
                     id="ID"
                     name="ID"
+                    disabled
                     value={updateActionController.values.ID}
                     onChange={updateActionController.handleChange}
                     invalid={
