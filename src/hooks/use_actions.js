@@ -61,8 +61,13 @@ const useActions = () => {
         ],
       });
       setLoadings({ ...loadings, getActionById: false });
-      updateActionController.setFieldValue("ID", response?.data?.result?.ID);
-      dispatch(setSlots(response?.data?.result?.Actions));
+      if (response?.data?.error === "NOT_FOUND") {
+        toast.error(response?.data?.error);
+        navigate("/rules/actions");
+      } else {
+        updateActionController.setFieldValue("ID", response?.data?.result?.ID);
+        dispatch(setSlots(response?.data?.result?.Actions));
+      }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActionById: false });
     }

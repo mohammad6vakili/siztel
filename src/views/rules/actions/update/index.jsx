@@ -118,7 +118,6 @@ const ActionsUpdate = () => {
     if (entity_id) {
       if (selectedTpId) {
         getActionById(entity_id);
-        toast.success(`You are in update mode for ${entity_id}`);
       }
     } else {
       navigate("/rules/actions");
