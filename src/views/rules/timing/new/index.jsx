@@ -19,7 +19,6 @@ import CustomButton from "../../../../components/button";
 import useTiming from "../../../../hooks/use_timing";
 
 const TimingNew = () => {
-  const navigate = useNavigate();
   const { createTimingController, loadings } = useTiming();
 
   return (
@@ -50,6 +49,7 @@ const TimingNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createTimingController.values.TPid}
                   onChange={createTimingController.handleChange}
                   invalid={
