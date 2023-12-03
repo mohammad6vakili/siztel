@@ -71,7 +71,7 @@ export const slots_columns = [
     minWidth: "130px",
     selector: (row) => row.BalanceBlocker,
     cell: (row) => {
-      return JSON.stringify(row.BalanceBlocker);
+      return row.BalanceBlocker;
     },
   },
   {
@@ -79,7 +79,7 @@ export const slots_columns = [
     minWidth: "140px",
     selector: (row) => row.BalanceDisabled,
     cell: (row) => {
-      return JSON.stringify(row.BalanceDisabled);
+      return row.BalanceDisabled;
     },
   },
   {

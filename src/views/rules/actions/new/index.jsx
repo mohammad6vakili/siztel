@@ -47,8 +47,8 @@ const ActionsNew = () => {
     SharedGroups: "",
     BalanceWeight: "",
     ExtraParameters: "",
-    BalanceBlocker: false,
-    BalanceDisabled: false,
+    BalanceBlocker: "false",
+    BalanceDisabled: "false",
     Weight: 0,
   });
 
