@@ -86,6 +86,7 @@ const ActionPlansNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createActionPlanController.values.TPid}
                   onChange={createActionPlanController.handleChange}
                   invalid={
@@ -175,7 +176,7 @@ const ActionPlansNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Weight: e.target.value,
+                      Weight: parseFloat(e.target.value),
                     })
                   }
                 />

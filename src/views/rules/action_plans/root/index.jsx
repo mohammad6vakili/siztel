@@ -61,7 +61,7 @@ const ActionPlansRoot = () => {
         </div>
       ) : null}
       {/* datatable */}
-      {!loadings.getActionPlans ? (
+      {!getAllTpIdsLoading && !loadings.getActionPlans ? (
         <Fragment>
           <DataTable
             noDataComponent={
