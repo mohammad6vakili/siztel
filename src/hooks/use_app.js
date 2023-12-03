@@ -28,7 +28,7 @@ const useApp = () => {
     }
   };
 
-  const exports = {};
+  const exports = { getAllTpIds, loadings };
   return exports;
 };
 export default useApp;
