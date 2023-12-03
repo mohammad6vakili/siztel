@@ -4,26 +4,77 @@ import { useFormik } from "formik";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useHttp from "./use_http";
+import { useDispatch } from "react-redux";
+import { setDeleteModal } from "../redux/timing_slice";
 
 const useTiming = () => {
+  const dispatch = useDispatch();
   const { httpService } = useHttp();
   const navigate = useNavigate();
 
   const [loadings, setLoadings] = useState({
     getTimings: false,
+    getEntityById: false,
     createTiming: false,
     updateTiming: false,
-    deleteTiming: false,
+    deleteEntity: false,
   });
 
-  const [paginates, setPaginates] = useState({
-    current: 1,
-    total: 1,
-  });
+  const [listData, setListData] = useState([]);
+
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  const getTimings = async () => {
+    let array = [];
+    try {
+      setLoadings({ ...loadings, getTimings: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPTimingIds",
+        params: [
+          {
+            TPid: selectedTpId,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getTimings: false });
+      response?.data?.result?.map((item) => {
+        array.push({
+          ID: item,
+        });
+      });
+      setListData(array);
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getTimings: false });
+    }
+  };
+
+  const getEntityById = async (id) => {
+    try {
+      setLoadings({ ...loadings, getEntityById: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPTiming",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getEntityById: false });
+      if (response?.data?.error === "NOT_FOUND") {
+        toast.error(response?.data?.error);
+        navigate("/rules/timing");
+      } else {
+        updateTimingController.setFieldValue("ID", response?.data?.result?.ID);
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getEntityById: false });
+    }
+  };
 
   const createTimingController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       MonthDays: "",
       Months: "",
@@ -32,6 +83,7 @@ const useTiming = () => {
       Years: "",
     },
     validationSchema: createTimingSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       createTiming(values);
     },
@@ -44,7 +96,7 @@ const useTiming = () => {
         method: "APIerSv1.SetTPTiming",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             MonthDays: values.MonthDays,
             Months: values.Months,
@@ -66,7 +118,7 @@ const useTiming = () => {
 
   const updateTimingController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       MonthDays: "",
       Months: "",
@@ -75,6 +127,7 @@ const useTiming = () => {
       Years: "",
     },
     validationSchema: createTimingSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       updateTiming(values);
     },
@@ -87,7 +140,7 @@ const useTiming = () => {
         method: "APIerSv1.SetTPTiming",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             MonthDays: values.MonthDays,
             Months: values.Months,
@@ -107,12 +160,35 @@ const useTiming = () => {
     }
   };
 
+  const deleteEntity = async (id) => {
+    try {
+      setLoadings({ ...loadings, deleteEntity: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.RemoveTPTiming",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, deleteEntity: false });
+      dispatch(setDeleteModal(null));
+      toast.success("Successfully Deleted.");
+      getTimings();
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, deleteEntity: false });
+    }
+  };
+
   const exports = {
+    getTimings,
+    getEntityById,
     createTimingController,
     updateTimingController,
+    deleteEntity,
+    listData,
     loadings,
-    paginates,
-    setPaginates,
   };
   return exports;
 };
