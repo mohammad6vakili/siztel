@@ -5,11 +5,15 @@ export const actionsSlice = createSlice({
   name: "app",
   initialState: {
     AllTpIds: [],
+    getAllTpIdsLoading: false,
     selectedTpId: null,
   },
   reducers: {
     setAllTpIds: (state, action) => {
       state.AllTpIds = action.payload;
+    },
+    setGetAllTpIdsLoading: (state, action) => {
+      state.getAllTpIdsLoading = action.payload;
     },
     setSelectedTpId: (state, action) => {
       state.selectedTpId = action.payload;
@@ -17,6 +21,7 @@ export const actionsSlice = createSlice({
   },
 });
 
-export const { setAllTpIds, setSelectedTpId } = actionsSlice.actions;
+export const { setAllTpIds, setGetAllTpIdsLoading, setSelectedTpId } =
+  actionsSlice.actions;
 
 export default actionsSlice.reducer;

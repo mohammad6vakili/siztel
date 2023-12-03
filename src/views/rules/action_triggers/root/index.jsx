@@ -25,6 +25,7 @@ const ActionTriggersRoot = () => {
   const selectedEntity = useSelector(
     (state) => state.actionTriggers.selectedEntity
   );
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   const handlePagination = (page) => {
     console.log(page);
@@ -56,8 +57,10 @@ const ActionTriggersRoot = () => {
   );
 
   useEffect(() => {
-    getActionTriggers();
-  }, []);
+    if (selectedTpId) {
+      getActionTriggers();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>

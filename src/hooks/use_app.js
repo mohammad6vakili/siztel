@@ -1,16 +1,18 @@
-import { useState } from "react";
 import useHttp from "./use_http";
+import { useDispatch } from "react-redux";
+import {
+  setAllTpIds,
+  setGetAllTpIdsLoading,
+  setSelectedTpId,
+} from "../redux/app_slice";
 
 const useApp = () => {
   const { httpService } = useHttp();
-
-  const [loadings, setLoadings] = useState({
-    getAllTpIds: false,
-  });
+  const dispatch = useDispatch();
 
   const getAllTpIds = async () => {
     try {
-      setLoadings({ ...loadings, getAllTpIds: true });
+      dispatch(setGetAllTpIdsLoading(true));
       const response = await httpService.post("", {
         method: "APIerSv1.GetTPIds",
         params: [
@@ -21,14 +23,15 @@ const useApp = () => {
           },
         ],
       });
-      setLoadings({ ...loadings, getAllTpIds: false });
-      console.log(response.data);
+      dispatch(setGetAllTpIdsLoading(false));
+      dispatch(setAllTpIds(response.data.result));
+      dispatch(setSelectedTpId(response.data.result[0]));
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, getAllTpIds: false });
+      dispatch(setGetAllTpIdsLoading(false));
     }
   };
 
-  const exports = { getAllTpIds, loadings };
+  const exports = { getAllTpIds };
   return exports;
 };
 export default useApp;

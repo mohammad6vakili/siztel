@@ -16,28 +16,30 @@ const useActions = () => {
     deleteAction: false,
   });
 
-  const slots = useSelector((state) => state.actions.slots);
+  const [listData, setListData] = useState([]);
 
-  const [paginates, setPaginates] = useState({
-    current: 1,
-    total: 1,
-  });
+  const slots = useSelector((state) => state.actions.slots);
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   const getActions = async () => {
+    let array = [];
     try {
       setLoadings({ ...loadings, getActions: true });
       const response = await httpService.post("", {
         method: "APIerSv1.GetTPActionIds",
         params: [
           {
-            TPid: null,
-            Limit: null,
-            Offset: null,
+            TPid: selectedTpId,
           },
         ],
       });
       setLoadings({ ...loadings, getActions: false });
-      console.log(response.data);
+      response?.data?.result?.map((item) => {
+        array.push({
+          ID: item,
+        });
+      });
+      setListData(array);
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActions: false });
     }
@@ -45,11 +47,12 @@ const useActions = () => {
 
   const createActionController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       Actions: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one action.");
@@ -70,7 +73,7 @@ const useActions = () => {
         method: "APIerSv1.SetTPActions",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             Actions: newSlots,
           },
@@ -113,7 +116,7 @@ const useActions = () => {
         method: "APIerSv1.SetTPActions",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             Actions: newSlots,
           },
@@ -133,9 +136,8 @@ const useActions = () => {
     getActions,
     createActionController,
     updateActionController,
+    listData,
     loadings,
-    paginates,
-    setPaginates,
   };
   return exports;
 };

@@ -134,6 +134,7 @@ const ActionsNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createActionController.values.TPid}
                   onChange={createActionController.handleChange}
                   invalid={
@@ -425,11 +426,11 @@ const ActionsNew = () => {
                     id="BalanceBlocker"
                     name="BalanceBlocker"
                     type="checkbox"
-                    checked={slotFormData.BalanceBlocker}
+                    checked={JSON.parse(slotFormData.BalanceBlocker)}
                     onChange={(e) =>
                       setSlotFormData({
                         ...slotFormData,
-                        BalanceBlocker: e.target.checked,
+                        BalanceBlocker: JSON.stringify(e.target.checked),
                       })
                     }
                   />
@@ -444,12 +445,12 @@ const ActionsNew = () => {
                   <Input
                     id="BalanceDisabled"
                     name="BalanceDisabled"
-                    checked={slotFormData.BalanceDisabled}
+                    checked={JSON.parse(slotFormData.BalanceDisabled)}
                     type="checkbox"
                     onChange={(e) =>
                       setSlotFormData({
                         ...slotFormData,
-                        BalanceDisabled: e.target.checked,
+                        BalanceDisabled: JSON.stringify(e.target.checked),
                       })
                     }
                   />

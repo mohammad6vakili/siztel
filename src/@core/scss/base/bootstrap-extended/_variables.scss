@@ -83,12 +83,6 @@ $container-max-widths: (
 
 .datatable_loading_cover {
   width: 100%;
-  height: 100%;
-  background: rgba(211, 211, 211, 0.25);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 999;
 }
 .select__menu {
   z-index: 99999 !important;

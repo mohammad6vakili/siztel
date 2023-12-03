@@ -25,6 +25,7 @@ import chargers from "./chargers_slice";
 import timing from "./timing_slice";
 import accounts from "./accounts_slice";
 import destinations from "./destinations_slice";
+import app from "./app_slice";
 
 const rootReducer = {
   auth,
@@ -53,6 +54,7 @@ const rootReducer = {
   timing,
   accounts,
   destinations,
+  app,
 };
 
 export default rootReducer;

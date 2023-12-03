@@ -2,12 +2,9 @@ import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useActions from "../../../../hooks/use_actions";
 import ProgressLoading from "../../../../components/progress_loading/index";
-import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
 import { useSkin } from "@hooks/useSkin";
-import ActionsData from "../../../../data/actions.json";
 import DataTable from "react-data-table-component";
-import { ChevronDown } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { columns } from "./datatable/columns";
 import Confirm from "../../../../components/confirm/index";
@@ -18,43 +15,20 @@ const ActionsRoot = () => {
   const { skin } = useSkin();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { getActions, loadings, paginates, setPaginates } = useActions();
+  const { getActions, listData, loadings } = useActions();
 
   const selectedEntity = useSelector((state) => state.actions.selectedEntity);
   const deleteModal = useSelector((state) => state.actions.deleteModal);
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
+  const getAllTpIdsLoading = useSelector(
+    (state) => state.app.getAllTpIdsLoading
   );
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   useEffect(() => {
-    getActions();
-  }, []);
+    if (selectedTpId) {
+      getActions();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>
@@ -68,7 +42,21 @@ const ActionsRoot = () => {
           New Action
         </Button>
       </Col>
-      {!loadings.getActions ? (
+      {getAllTpIdsLoading ? (
+        <div
+          style={{ width: "100%", height: "50vh" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          Loading TPIds...
+        </div>
+      ) : null}
+      {/* table loading */}
+      {!getAllTpIdsLoading && loadings.getActions ? (
+        <div className="datatable_loading_cover">
+          <ProgressLoading />
+        </div>
+      ) : null}
+      {!getAllTpIdsLoading && !loadings.getActions ? (
         <Fragment>
           <DataTable
             noDataComponent={
@@ -79,22 +67,13 @@ const ActionsRoot = () => {
               )
             }
             noHeader
-            pagination
             columns={columns}
-            paginationPerPage={10}
             className="react-dataTable"
             style={{ background: "red" }}
-            sortIcon={<ChevronDown size={10} />}
-            paginationComponent={CustomPagination}
-            data={ActionsData}
+            data={listData}
             theme={skin === "dark" ? "darkTheme" : ""}
           />
         </Fragment>
-      ) : null}
-      {loadings.getActions ? (
-        <div className="datatable_loading_cover">
-          <ProgressLoading />
-        </div>
       ) : null}
       {/* delete modal */}
       <Confirm
