@@ -23,6 +23,26 @@ const useActionTriggers = () => {
 
   const slots = useSelector((state) => state.actionTriggers.slots);
 
+  const getActionTriggers = async () => {
+    try {
+      setLoadings({ ...loadings, getActionTriggers: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPActionTriggerIds",
+        params: [
+          {
+            TPid: null,
+            Limit: null,
+            Offset: null,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getActionTriggers: false });
+      console.log(response.data);
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getActionTriggers: false });
+    }
+  };
+
   const createActionTriggerController = useFormik({
     initialValues: {
       TPid: "",
@@ -110,6 +130,7 @@ const useActionTriggers = () => {
   };
 
   const exports = {
+    getActionTriggers,
     createActionTriggerController,
     updateActionTriggerController,
     loadings,

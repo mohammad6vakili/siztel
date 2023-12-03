@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useActionTriggers from "../../../../hooks/use_action_triggers";
 import ProgressLoading from "../../../../components/progress_loading/index";
@@ -18,7 +18,8 @@ const ActionTriggersRoot = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loadings, paginates, setPaginates } = useActionTriggers();
+  const { getActionTriggers, loadings, paginates, setPaginates } =
+    useActionTriggers();
 
   const deleteModal = useSelector((state) => state.actionTriggers.deleteModal);
   const selectedEntity = useSelector(
@@ -53,6 +54,10 @@ const ActionTriggersRoot = () => {
       containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
     />
   );
+
+  useEffect(() => {
+    getActionTriggers();
+  }, []);
 
   return (
     <Fragment>

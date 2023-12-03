@@ -23,6 +23,26 @@ const useActionPlans = () => {
 
   const slots = useSelector((state) => state.actionPlans.slots);
 
+  const getActionPlans = async () => {
+    try {
+      setLoadings({ ...loadings, getActionPlans: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPActionPlanIds",
+        params: [
+          {
+            TPid: null,
+            Limit: null,
+            Offset: null,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getActionPlans: false });
+      console.log(response.data);
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getActionPlans: false });
+    }
+  };
+
   const createActionPlanController = useFormik({
     initialValues: {
       TPid: "",
@@ -110,6 +130,7 @@ const useActionPlans = () => {
   };
 
   const exports = {
+    getActionPlans,
     createActionPlanController,
     updateActionPlanController,
     loadings,

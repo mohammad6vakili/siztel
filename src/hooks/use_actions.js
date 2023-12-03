@@ -26,8 +26,18 @@ const useActions = () => {
   const getActions = async () => {
     try {
       setLoadings({ ...loadings, getActions: true });
-      const response = await httpService.post("");
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPActionIds",
+        params: [
+          {
+            TPid: null,
+            Limit: null,
+            Offset: null,
+          },
+        ],
+      });
       setLoadings({ ...loadings, getActions: false });
+      console.log(response.data);
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActions: false });
     }
@@ -120,6 +130,7 @@ const useActions = () => {
   };
 
   const exports = {
+    getActions,
     createActionController,
     updateActionController,
     loadings,

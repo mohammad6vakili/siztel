@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useActions from "../../../../hooks/use_actions";
 import ProgressLoading from "../../../../components/progress_loading/index";
@@ -18,7 +18,7 @@ const ActionsRoot = () => {
   const { skin } = useSkin();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loadings, paginates, setPaginates } = useActions();
+  const { getActions, loadings, paginates, setPaginates } = useActions();
 
   const selectedEntity = useSelector((state) => state.actions.selectedEntity);
   const deleteModal = useSelector((state) => state.actions.deleteModal);
@@ -51,6 +51,10 @@ const ActionsRoot = () => {
       containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
     />
   );
+
+  useEffect(() => {
+    getActions();
+  }, []);
 
   return (
     <Fragment>
