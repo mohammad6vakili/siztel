@@ -1,11 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useTiming from "../../../../hooks/use_timing";
 import { useSkin } from "@hooks/useSkin";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import DataTable from "react-data-table-component";
-import ReactPaginate from "react-paginate";
-import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import TimingData from "../../../../data/timing.json";
@@ -18,39 +16,20 @@ const TimingRoot = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
-  const { loadings, paginates, setPaginates } = useTiming();
+  const { getTimings, deleteEntity, listData, loadings } = useTiming();
 
   const deleteModal = useSelector((state) => state.timing.deleteModal);
   const selectedEntity = useSelector((state) => state.timing.selectedEntity);
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
+  const getAllTpIdsLoading = useSelector(
+    (state) => state.app.getAllTpIdsLoading
   );
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  useEffect(() => {
+    if (selectedTpId) {
+      getTimings();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>
@@ -64,9 +43,24 @@ const TimingRoot = () => {
           New Timing
         </Button>
       </Col>
-      {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
-        {!loadings.getTimings ? (
+        {/* tpids loading */}
+        {getAllTpIdsLoading ? (
+          <div
+            style={{ width: "100%", height: "50vh" }}
+            className="d-flex justify-content-center align-items-center"
+          >
+            Loading TPIds...
+          </div>
+        ) : null}
+        {/* table loading */}
+        {!getAllTpIdsLoading && loadings.getTimings ? (
+          <div className="datatable_loading_cover">
+            <ProgressLoading />
+          </div>
+        ) : null}
+        {/* datatable */}
+        {!getAllTpIdsLoading && !loadings.getTimings ? (
           <Fragment>
             <DataTable
               noDataComponent={
@@ -77,22 +71,13 @@ const TimingRoot = () => {
                 )
               }
               noHeader
-              pagination
               columns={columns}
-              paginationPerPage={10}
               className="react-dataTable"
               style={{ background: "red" }}
-              sortIcon={<ChevronDown size={10} />}
-              paginationComponent={CustomPagination}
-              data={TimingData}
+              data={listData}
               theme={skin === "dark" ? "darkTheme" : ""}
             />
           </Fragment>
-        ) : null}
-        {loadings.getTimings ? (
-          <div className="datatable_loading_cover">
-            <ProgressLoading />
-          </div>
         ) : null}
         {/* delete modal */}
         <Confirm
@@ -102,8 +87,8 @@ const TimingRoot = () => {
           noAction={() => dispatch(setDeleteModal(false))}
           noColor={"secondary"}
           noTitle={"Cancel"}
-          yesLoading={loadings.deleteTiming}
-          yesAction={() => alert(selectedEntity?.TPid)}
+          yesLoading={loadings.deleteEntity}
+          yesAction={() => deleteEntity(selectedEntity)}
           yesColor={"danger"}
           yesTitle={"Delete"}
           type={"global"}
