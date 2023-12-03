@@ -128,6 +128,10 @@ const ActionTriggersNew = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
+
   return (
     <Fragment>
       <Breadcrumbs

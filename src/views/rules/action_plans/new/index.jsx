@@ -55,6 +55,10 @@ const ActionPlansNew = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
+
   return (
     <Fragment>
       <Breadcrumbs
