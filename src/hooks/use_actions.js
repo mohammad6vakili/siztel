@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { createActionSchema } from "../utility/schemas/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteModal, setSlots } from "../redux/actions_slice";
 
 const useActions = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { httpService } = useHttp();
   const [loadings, setLoadings] = useState({
@@ -83,6 +85,7 @@ const useActions = () => {
       if (response.status === 200) {
         toast.success("Successfully Created!");
         navigate("/rules/actions");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, createAction: false });
@@ -126,9 +129,30 @@ const useActions = () => {
       if (response.status === 200) {
         toast.success("Successfully Updated!");
         navigate("/rules/actions");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, updateAction: false });
+    }
+  };
+
+  const deleteAction = async (id) => {
+    try {
+      setLoadings({ ...loadings, deleteAction: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.SetTPActions",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, deleteAction: false });
+      dispatch(setDeleteModal(null));
+      toast.success("Successfully Deleted.");
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, deleteAction: false });
     }
   };
 
