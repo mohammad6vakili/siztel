@@ -56,6 +56,7 @@ const DestinationsNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createDestinationController.values.TPid}
                   onChange={createDestinationController.handleChange}
                   invalid={
