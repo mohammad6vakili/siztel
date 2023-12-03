@@ -140,7 +140,7 @@ const useActions = () => {
     try {
       setLoadings({ ...loadings, deleteAction: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.SetTPActions",
+        method: "APIerSv1.RemoveTPActions",
         params: [
           {
             TPid: selectedTpId,
@@ -151,6 +151,7 @@ const useActions = () => {
       setLoadings({ ...loadings, deleteAction: false });
       dispatch(setDeleteModal(null));
       toast.success("Successfully Deleted.");
+      getActions();
     } catch ({ err, response }) {
       setLoadings({ ...loadings, deleteAction: false });
     }
@@ -160,6 +161,7 @@ const useActions = () => {
     getActions,
     createActionController,
     updateActionController,
+    deleteAction,
     listData,
     loadings,
   };

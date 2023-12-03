@@ -15,7 +15,7 @@ const ActionsRoot = () => {
   const { skin } = useSkin();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { getActions, listData, loadings } = useActions();
+  const { getActions, deleteAction, listData, loadings } = useActions();
 
   const selectedEntity = useSelector((state) => state.actions.selectedEntity);
   const deleteModal = useSelector((state) => state.actions.deleteModal);
@@ -84,7 +84,7 @@ const ActionsRoot = () => {
         noColor={"secondary"}
         noTitle={"Cancel"}
         yesLoading={loadings.deleteAction}
-        yesAction={() => alert(selectedEntity)}
+        yesAction={() => deleteAction(selectedEntity)}
         yesColor={"danger"}
         yesTitle={"Delete"}
         type={"global"}
