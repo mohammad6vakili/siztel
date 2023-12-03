@@ -87,8 +87,8 @@ const ChargersRoot = () => {
           noAction={() => dispatch(setDeleteModal(false))}
           noColor={"secondary"}
           noTitle={"Cancel"}
-          yesLoading={loadings.deleteCharger}
-          yesAction={() => alert(selectedEntity?.TPid)}
+          yesLoading={loadings.deleteEntity}
+          yesAction={() => deleteEntity(selectedEntity)}
           yesColor={"danger"}
           yesTitle={"Delete"}
           type={"global"}
