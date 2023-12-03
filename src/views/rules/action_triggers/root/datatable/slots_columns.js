@@ -3,9 +3,9 @@ import SlotAction from "../components/slot_action";
 
 export const slots_columns = [
   {
-    name: "ID",
+    name: "Id",
     minWidth: "80px",
-    selector: (row) => row.ID,
+    selector: (row) => row.Id,
   },
   {
     name: "UniqueID",
@@ -110,11 +110,6 @@ export const slots_columns = [
     name: "ActionsId",
     minWidth: "140px",
     selector: (row) => row.ActionsId,
-  },
-  {
-    name: "MinQueuedItems",
-    minWidth: "150px",
-    selector: (row) => row.MinQueuedItems,
   },
   {
     name: "Recurrent",

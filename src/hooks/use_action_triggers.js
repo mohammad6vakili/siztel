@@ -52,7 +52,7 @@ const useActionTriggers = () => {
     try {
       setLoadings({ ...loadings, getEntityById: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.GetTPActions",
+        method: "APIerSv1.GetTPActionTriggers",
         params: [
           {
             TPid: selectedTpId,
@@ -69,7 +69,7 @@ const useActionTriggers = () => {
           "ID",
           response?.data?.result?.ID
         );
-        dispatch(setSlots(response?.data?.result?.Actions));
+        dispatch(setSlots(response?.data?.result?.ActionTriggers));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getEntityById: false });
@@ -122,11 +122,12 @@ const useActionTriggers = () => {
 
   const updateActionTriggerController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       Actions: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one action trigger.");
@@ -142,24 +143,25 @@ const useActionTriggers = () => {
       return rest;
     });
     try {
-      setLoadings({ ...loadings, createActionTrigger: true });
+      setLoadings({ ...loadings, updateActionTrigger: true });
       const response = await httpService.post("", {
         method: "APIerSv1.SetTPActionTriggers",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             ActionTriggers: newSlots,
           },
         ],
       });
-      setLoadings({ ...loadings, createActionTrigger: false });
+      setLoadings({ ...loadings, updateActionTrigger: false });
       if (response.status === 200) {
         toast.success("Successfully Updated!");
         navigate("/rules/action_triggers");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
-      setLoadings({ ...loadings, createActionTrigger: false });
+      setLoadings({ ...loadings, updateActionTrigger: false });
     }
   };
 

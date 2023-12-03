@@ -50,7 +50,6 @@ const ActionTriggersNew = () => {
     BalanceDisabled: "",
     Weight: 0,
     ActionsId: "",
-    MinQueuedItems: "",
     Recurrent: false,
   });
   const [ExpirationDate, setExpirationDate] = useState(null);
@@ -97,8 +96,6 @@ const ActionTriggersNew = () => {
       toast.error("Please enter BalanceDisabled.");
     } else if (slotFormData.ActionsId.length === 0) {
       toast.error("Please enter ActionsId.");
-    } else if (slotFormData.MinQueuedItems.length === 0) {
-      toast.error("Please enter MinQueuedItems.");
     } else {
       array.push({ ...slotFormData, id: Math.random() * 326782382 });
       dispatch(setSlots(array));
@@ -123,7 +120,6 @@ const ActionTriggersNew = () => {
         BalanceDisabled: "",
         Weight: 0,
         ActionsId: "",
-        MinQueuedItems: "",
         Recurrent: false,
       });
       setExpirationDate(null);
@@ -546,23 +542,6 @@ const ActionTriggersNew = () => {
                   }
                   id="ActionsId"
                   name="ActionsId"
-                />
-              </Col>
-              {/* MinQueuedItems */}
-              <Col xs="12" sm="6" md="3" className="mb-1">
-                <Label className="form-label" for="MinQueuedItems">
-                  MinQueuedItems
-                </Label>
-                <Input
-                  value={slotFormData.MinQueuedItems}
-                  onChange={(e) =>
-                    setSlotFormData({
-                      ...slotFormData,
-                      MinQueuedItems: e.target.value,
-                    })
-                  }
-                  id="MinQueuedItems"
-                  name="MinQueuedItems"
                 />
               </Col>
               {/* Recurrent */}
