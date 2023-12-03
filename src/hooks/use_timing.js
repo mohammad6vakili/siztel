@@ -66,6 +66,26 @@ const useTiming = () => {
         navigate("/rules/timing");
       } else {
         updateTimingController.setFieldValue("ID", response?.data?.result?.ID);
+        updateTimingController.setFieldValue(
+          "MonthDays",
+          response?.data?.result?.MonthDays
+        );
+        updateTimingController.setFieldValue(
+          "Months",
+          response?.data?.result?.Months
+        );
+        updateTimingController.setFieldValue(
+          "Time",
+          response?.data?.result?.Time
+        );
+        updateTimingController.setFieldValue(
+          "WeekDays",
+          response?.data?.result?.WeekDays
+        );
+        updateTimingController.setFieldValue(
+          "Years",
+          response?.data?.result?.Years
+        );
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getEntityById: false });
