@@ -32,9 +32,7 @@ const useActionTriggers = () => {
         method: "APIerSv1.GetTPActionTriggerIds",
         params: [
           {
-            TPid: null,
-            Limit: null,
-            Offset: null,
+            TPid: selectedTpId,
           },
         ],
       });
@@ -169,7 +167,7 @@ const useActionTriggers = () => {
     try {
       setLoadings({ ...loadings, deleteEntity: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.RemoveTPActions",
+        method: "APIerSv1.RemoveTPActionTriggers",
         params: [
           {
             TPid: selectedTpId,

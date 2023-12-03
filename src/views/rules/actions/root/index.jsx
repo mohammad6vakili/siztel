@@ -57,6 +57,7 @@ const ActionsRoot = () => {
           <ProgressLoading />
         </div>
       ) : null}
+      {/* datatable */}
       {!getAllTpIdsLoading && !loadings.getActions ? (
         <Fragment>
           <DataTable

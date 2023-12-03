@@ -25,6 +25,9 @@ const ActionTriggersRoot = () => {
   const selectedEntity = useSelector(
     (state) => state.actionTriggers.selectedEntity
   );
+  const getAllTpIdsLoading = useSelector(
+    (state) => state.app.getAllTpIdsLoading
+  );
   const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   useEffect(() => {
@@ -48,7 +51,23 @@ const ActionTriggersRoot = () => {
           New Action Trigger
         </Button>
       </Col>
-      {!loadings.getActionTriggers ? (
+      {/* tpids loading */}
+      {getAllTpIdsLoading ? (
+        <div
+          style={{ width: "100%", height: "50vh" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          Loading TPIds...
+        </div>
+      ) : null}
+      {/* table loading */}
+      {!getAllTpIdsLoading && loadings.getActionTriggers ? (
+        <div className="datatable_loading_cover">
+          <ProgressLoading />
+        </div>
+      ) : null}
+      {/* datatable */}
+      {!getAllTpIdsLoading && !loadings.getActionTriggers ? (
         <Fragment>
           <DataTable
             noDataComponent={
@@ -69,11 +88,7 @@ const ActionTriggersRoot = () => {
           />
         </Fragment>
       ) : null}
-      {loadings.getActionTriggers ? (
-        <div className="datatable_loading_cover">
-          <ProgressLoading />
-        </div>
-      ) : null}
+
       {/* delete modal */}
       <Confirm
         visible={deleteModal}
