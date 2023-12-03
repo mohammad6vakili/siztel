@@ -61,7 +61,8 @@ const useActions = () => {
         ],
       });
       setLoadings({ ...loadings, getActionById: false });
-      console.log(response.data);
+      updateActionController.setFieldValue("ID", response?.data?.result?.ID);
+      dispatch(setSlots(response?.data?.result?.Actions));
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActionById: false });
     }
@@ -114,11 +115,12 @@ const useActions = () => {
 
   const updateActionController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       Actions: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one action.");
@@ -179,6 +181,7 @@ const useActions = () => {
 
   const exports = {
     getActions,
+    getActionById,
     createActionController,
     updateActionController,
     deleteAction,

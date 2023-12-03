@@ -27,9 +27,9 @@ export const slots_columns = [
     selector: (row) => row.ExpiryTime,
   },
   {
-    name: "Filter",
+    name: "Filters",
     minWidth: "100px",
-    selector: (row) => row.Filter,
+    selector: (row) => row.Filters,
   },
   {
     name: "TimingTags",

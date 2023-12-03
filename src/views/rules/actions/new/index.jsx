@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
@@ -39,7 +39,7 @@ const ActionsNew = () => {
     BalanceType: "",
     Units: "",
     ExpiryTime: "",
-    Filter: "",
+    Filters: "",
     TimingTags: "",
     DestinationIds: "",
     RatingSubject: "",
@@ -66,8 +66,8 @@ const ActionsNew = () => {
       toast.error("Please enter Units.");
     } else if (slotFormData.ExpiryTime.length === 0) {
       toast.error("Please enter ExpiryTime.");
-    } else if (slotFormData.Filter.length === 0) {
-      toast.error("Please enter Filter.");
+    } else if (slotFormData.Filters.length === 0) {
+      toast.error("Please enter Filters.");
     } else if (slotFormData.TimingTags.length === 0) {
       toast.error("Please enter TimingTags.");
     } else if (slotFormData.DestinationIds.length === 0) {
@@ -91,7 +91,7 @@ const ActionsNew = () => {
         BalanceType: "",
         Units: "",
         ExpiryTime: "",
-        Filter: "",
+        Filters: "",
         TimingTags: "",
         DestinationIds: "",
         RatingSubject: "",
@@ -105,6 +105,10 @@ const ActionsNew = () => {
       });
     }
   };
+
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
 
   return (
     <Fragment>
@@ -262,19 +266,19 @@ const ActionsNew = () => {
                   }}
                 />
               </Col>
-              {/* Filter */}
+              {/* Filters */}
               <Col xs="12" sm="6" md="3" className="mb-1">
-                <Label className="form-label" for="Filter">
-                  Filter
+                <Label className="form-label" for="Filters">
+                  Filters
                 </Label>
                 <Input
-                  id="Filter"
-                  name="Filter"
-                  value={slotFormData.Filter}
+                  id="Filters"
+                  name="Filters"
+                  value={slotFormData.Filters}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Filter: e.target.value,
+                      Filters: e.target.value,
                     })
                   }
                 />
@@ -411,7 +415,7 @@ const ActionsNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Weight: e.target.value,
+                      Weight: parseFloat(e.target.value),
                     })
                   }
                 />

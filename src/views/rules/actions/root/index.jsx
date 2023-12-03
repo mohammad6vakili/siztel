@@ -42,6 +42,7 @@ const ActionsRoot = () => {
           New Action
         </Button>
       </Col>
+      {/* tpids loading */}
       {getAllTpIdsLoading ? (
         <div
           style={{ width: "100%", height: "50vh" }}
