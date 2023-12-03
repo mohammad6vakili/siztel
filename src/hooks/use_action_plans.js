@@ -65,8 +65,11 @@ const useActionPlans = () => {
         toast.error(response?.data?.error);
         navigate("/rules/action_triggers");
       } else {
-        updateActionPlan.setFieldValue("ID", response?.data?.result?.ID);
-        dispatch(setSlots(response?.data?.result?.ActionTriggers));
+        updateActionPlanController.setFieldValue(
+          "ID",
+          response?.data?.result?.ID
+        );
+        dispatch(setSlots(response?.data?.result?.ActionPlan));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getEntityById: false });
