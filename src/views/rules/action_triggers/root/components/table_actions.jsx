@@ -14,7 +14,7 @@ const TableActions = ({ row }) => {
     <div className="d-flex align-items-center">
       <Button
         onClick={() => {
-          dispatch(setSelectedEntity(row));
+          dispatch(setSelectedEntity(row?.ID));
           dispatch(setDeleteModal(1));
         }}
         style={{ marginRight: 8 }}
@@ -25,7 +25,7 @@ const TableActions = ({ row }) => {
       </Button>
       <Button
         onClick={() => {
-          navigate(`/rules/action_triggers/update?entity_id=${row.TPid}`);
+          navigate(`/rules/action_triggers/update?entity_id=${row.ID}`);
         }}
         style={{ marginRight: 8 }}
         color="primary"

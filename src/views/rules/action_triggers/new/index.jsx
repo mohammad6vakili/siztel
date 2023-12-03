@@ -163,6 +163,7 @@ const ActionTriggersNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createActionTriggerController.values.TPid}
                   onChange={createActionTriggerController.handleChange}
                   invalid={
@@ -266,7 +267,7 @@ const ActionTriggersNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      ThresholdValue: e.target.value,
+                      ThresholdValue: parseFloat(e.target.value),
                     })
                   }
                   id="ThresholdValue"
@@ -522,7 +523,7 @@ const ActionTriggersNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Weight: e.target.value,
+                      Weight: parseFloat(e.target.value),
                     })
                   }
                   id="Weight"

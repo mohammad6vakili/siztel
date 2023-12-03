@@ -18,7 +18,7 @@ const ActionTriggersRoot = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { getActionTriggers, loadings, paginates, setPaginates } =
+  const { getActionTriggers, deleteEntity, listData, loadings } =
     useActionTriggers();
 
   const deleteModal = useSelector((state) => state.actionTriggers.deleteModal);
@@ -26,35 +26,6 @@ const ActionTriggersRoot = () => {
     (state) => state.actionTriggers.selectedEntity
   );
   const selectedTpId = useSelector((state) => state.app.selectedTpId);
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
-  );
 
   useEffect(() => {
     if (selectedTpId) {
@@ -84,18 +55,16 @@ const ActionTriggersRoot = () => {
               loadings.getActionTriggers ? (
                 ""
               ) : (
-                <div style={{ margin: "24px 0" }}>No Charger Founded!</div>
+                <div style={{ margin: "24px 0" }}>
+                  No Action Trigger Founded!
+                </div>
               )
             }
             noHeader
-            pagination
             columns={columns}
-            paginationPerPage={10}
             className="react-dataTable"
             style={{ background: "red" }}
-            sortIcon={<ChevronDown size={10} />}
-            paginationComponent={CustomPagination}
-            data={ActionTriggersData}
+            data={listData}
             theme={skin === "dark" ? "darkTheme" : ""}
           />
         </Fragment>
@@ -113,8 +82,8 @@ const ActionTriggersRoot = () => {
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}
-        yesLoading={loadings.deleteActionTrigger}
-        yesAction={() => alert(selectedEntity?.TPid)}
+        yesLoading={loadings.deleteEntity}
+        yesAction={() => deleteEntity(selectedEntity)}
         yesColor={"danger"}
         yesTitle={"Delete"}
         type={"global"}

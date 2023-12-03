@@ -1,29 +1,31 @@
 import { useState } from "react";
 import { createActionSchema } from "../utility/schemas/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import useHttp from "./use_http";
 import { useNavigate } from "react-router-dom";
+import { setDeleteModal, setSlots } from "../redux/action_triggers_slice";
 
 const useActionTriggers = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { httpService } = useHttp();
   const [loadings, setLoadings] = useState({
     getActionTriggers: false,
+    getEntityById: false,
     createActionTrigger: false,
     updateActionTrigger: false,
-    deleteActionTrigger: false,
+    deleteEntity: false,
   });
 
-  const [paginates, setPaginates] = useState({
-    current: 1,
-    total: 1,
-  });
+  const [listData, setListData] = useState([]);
 
   const slots = useSelector((state) => state.actionTriggers.slots);
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   const getActionTriggers = async () => {
+    let array = [];
     try {
       setLoadings({ ...loadings, getActionTriggers: true });
       const response = await httpService.post("", {
@@ -37,19 +39,53 @@ const useActionTriggers = () => {
         ],
       });
       setLoadings({ ...loadings, getActionTriggers: false });
-      console.log(response.data);
+      response?.data?.result?.map((item) => {
+        array.push({
+          ID: item,
+        });
+      });
+      setListData(array);
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActionTriggers: false });
     }
   };
 
+  const getEntityById = async (id) => {
+    try {
+      setLoadings({ ...loadings, getEntityById: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPActions",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getEntityById: false });
+      if (response?.data?.error === "NOT_FOUND") {
+        toast.error(response?.data?.error);
+        navigate("/rules/action_triggers");
+      } else {
+        updateActionTriggerController.setFieldValue(
+          "ID",
+          response?.data?.result?.ID
+        );
+        dispatch(setSlots(response?.data?.result?.Actions));
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getEntityById: false });
+    }
+  };
+
   const createActionTriggerController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       Actions: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one action trigger.");
@@ -70,7 +106,7 @@ const useActionTriggers = () => {
         method: "APIerSv1.SetTPActionTriggers",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             ActionTriggers: newSlots,
           },
@@ -129,13 +165,35 @@ const useActionTriggers = () => {
     }
   };
 
+  const deleteEntity = async (id) => {
+    try {
+      setLoadings({ ...loadings, deleteEntity: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.RemoveTPActions",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, deleteEntity: false });
+      dispatch(setDeleteModal(null));
+      toast.success("Successfully Deleted.");
+      getActionTriggers();
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, deleteEntity: false });
+    }
+  };
+
   const exports = {
     getActionTriggers,
+    getEntityById,
     createActionTriggerController,
     updateActionTriggerController,
+    deleteEntity,
+    listData,
     loadings,
-    paginates,
-    setPaginates,
   };
   return exports;
 };
