@@ -3,7 +3,6 @@ import Breadcrumbs from "@components/breadcrumbs";
 import useActionPlans from "../../../../hooks/use_action_plans";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import { Col, Button } from "reactstrap";
-import ActionPlansData from "../../../../data/action_plans.json";
 import { useNavigate } from "react-router-dom";
 import { columns } from "./datatable/columns";
 import DataTable from "react-data-table-component";

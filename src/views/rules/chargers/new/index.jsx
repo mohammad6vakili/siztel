@@ -56,6 +56,7 @@ const ChargersNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createChargerController.values.TPid}
                   onChange={createChargerController.handleChange}
                   invalid={
@@ -204,7 +205,12 @@ const ChargersNew = () => {
                   id="Weight"
                   name="Weight"
                   value={createChargerController.values.Weight}
-                  onChange={createChargerController.handleChange}
+                  onChange={(e) =>
+                    createChargerController.setFieldValue(
+                      "Weight",
+                      parseFloat(e.target.value)
+                    )
+                  }
                 />
               </Col>
               {/* FilterIDs */}

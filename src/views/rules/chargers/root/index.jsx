@@ -1,11 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useChargers from "../../../../hooks/use_chargers";
 import { useSkin } from "@hooks/useSkin";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import DataTable from "react-data-table-component";
-import ReactPaginate from "react-paginate";
-import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import ChargersData from "../../../../data/chargers.json";
@@ -18,39 +16,20 @@ const ChargersRoot = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
-  const { loadings, paginates, setPaginates } = useChargers();
+  const { getChargers, deleteEntity, listData, loadings } = useChargers();
 
   const deleteModal = useSelector((state) => state.chargers.deleteModal);
   const selectedEntity = useSelector((state) => state.chargers.selectedEntity);
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
+  const getAllTpIdsLoading = useSelector(
+    (state) => state.app.getAllTpIdsLoading
   );
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  useEffect(() => {
+    if (selectedTpId) {
+      getChargers();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>
@@ -66,7 +45,22 @@ const ChargersRoot = () => {
       </Col>
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
-        {!loadings.getChargers ? (
+        {/* tpids loading */}
+        {getAllTpIdsLoading ? (
+          <div
+            style={{ width: "100%", height: "50vh" }}
+            className="d-flex justify-content-center align-items-center"
+          >
+            Loading TPIds...
+          </div>
+        ) : null}
+        {/* table loading */}
+        {!getAllTpIdsLoading && loadings.getChargers ? (
+          <div className="datatable_loading_cover">
+            <ProgressLoading />
+          </div>
+        ) : null}
+        {!getAllTpIdsLoading && !loadings.getChargers ? (
           <Fragment>
             <DataTable
               noDataComponent={
@@ -77,22 +71,13 @@ const ChargersRoot = () => {
                 )
               }
               noHeader
-              pagination
               columns={columns}
-              paginationPerPage={10}
               className="react-dataTable"
               style={{ background: "red" }}
-              sortIcon={<ChevronDown size={10} />}
-              paginationComponent={CustomPagination}
-              data={ChargersData}
+              data={listData}
               theme={skin === "dark" ? "darkTheme" : ""}
             />
           </Fragment>
-        ) : null}
-        {loadings.getChargers ? (
-          <div className="datatable_loading_cover">
-            <ProgressLoading />
-          </div>
         ) : null}
         {/* delete modal */}
         <Confirm
