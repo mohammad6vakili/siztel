@@ -13,6 +13,7 @@ const useActions = () => {
   const { httpService } = useHttp();
   const [loadings, setLoadings] = useState({
     getActions: false,
+    getActionById: false,
     createAction: false,
     updateAction: false,
     deleteAction: false,
@@ -44,6 +45,25 @@ const useActions = () => {
       setListData(array);
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getActions: false });
+    }
+  };
+
+  const getActionById = async (id) => {
+    try {
+      setLoadings({ ...loadings, getActionById: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPActions",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getActionById: false });
+      console.log(response.data);
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getActionById: false });
     }
   };
 
