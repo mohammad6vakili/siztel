@@ -190,6 +190,7 @@ const useActionPlans = () => {
     createActionPlanController,
     updateActionPlanController,
     deleteEntity,
+    listData,
     loadings,
   };
   return exports;
