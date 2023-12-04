@@ -68,6 +68,10 @@ const useDestinations = () => {
           "ID",
           response?.data?.result?.ID
         );
+        updateDestinationController.setFieldValue(
+          "Prefixes",
+          response?.data?.result?.Prefixes
+        );
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, getEntityById: false });
