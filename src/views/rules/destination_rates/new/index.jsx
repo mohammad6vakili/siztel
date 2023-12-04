@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
@@ -63,6 +63,10 @@ const DestinationRatesNew = () => {
       });
     }
   };
+
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
 
   return (
     <Fragment>

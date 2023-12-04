@@ -1,6 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -27,7 +26,6 @@ import useRatingPlans from "../../../../hooks/use_rating_plans";
 const RatingPlansNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { createRatingPlanController, loadings } = useRatingPlans();
 
@@ -55,6 +53,10 @@ const RatingPlansNew = () => {
       });
     }
   };
+
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
 
   return (
     <Fragment>
@@ -87,6 +89,7 @@ const RatingPlansNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createRatingPlanController.values.TPid}
                   onChange={createRatingPlanController.handleChange}
                   invalid={
@@ -171,11 +174,12 @@ const RatingPlansNew = () => {
                 <Input
                   id="Weight"
                   name="Weight"
+                  type="number"
                   value={slotFormData.Weight}
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Weight: e.target.value,
+                      Weight: parseFloat(e.target.value),
                     })
                   }
                 />
