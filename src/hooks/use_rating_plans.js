@@ -53,7 +53,7 @@ const useRatingPlans = () => {
     try {
       setLoadings({ ...loadings, getEntityById: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.GetTPDestinationRate",
+        method: "APIerSv1.GetTPRatingPlan",
         params: [
           {
             TPid: selectedTpId,
