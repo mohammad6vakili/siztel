@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
@@ -61,6 +61,10 @@ const RatingProfilesNew = () => {
       setActivationTime(null);
     }
   };
+
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
 
   return (
     <Fragment>

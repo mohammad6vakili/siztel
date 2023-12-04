@@ -70,6 +70,22 @@ const useRatingProfiles = () => {
           "ID",
           response?.data?.result?.ID
         );
+        updateRatingProfileController.setFieldValue(
+          "LoadId",
+          response?.data?.result?.LoadId
+        );
+        updateRatingProfileController.setFieldValue(
+          "Tenant",
+          response?.data?.result?.Tenant
+        );
+        updateRatingProfileController.setFieldValue(
+          "Category",
+          response?.data?.result?.Category
+        );
+        updateRatingProfileController.setFieldValue(
+          "Subject",
+          response?.data?.result?.Subject
+        );
         dispatch(setSlots(response?.data?.result?.RatingPlanActivations));
       }
     } catch ({ err, response }) {
