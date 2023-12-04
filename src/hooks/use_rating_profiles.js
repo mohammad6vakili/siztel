@@ -195,7 +195,7 @@ const useRatingProfiles = () => {
         params: [
           {
             TPid: selectedTpId,
-            ID: id,
+            RatingProfileID: id,
           },
         ],
       });

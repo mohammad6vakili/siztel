@@ -1,14 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useRatingProfiles from "../../../../hooks/use_rating_profiles";
 import ProgressLoading from "../../../../components/progress_loading/index";
-import ReactPaginate from "react-paginate";
 import { Col, Button } from "reactstrap";
-import RatingProfilesData from "../../../../data/rating_profiles.json";
 import { useNavigate } from "react-router-dom";
 import { columns } from "./datatable/columns";
 import DataTable from "react-data-table-component";
-import { ChevronDown } from "react-feather";
 import { useSkin } from "@hooks/useSkin";
 import Confirm from "../../../../components/confirm";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,41 +15,23 @@ const RatingProfilesRoot = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loadings, paginates, setPaginates } = useRatingProfiles();
+  const { getRatingProfiles, deleteEntity, listData, loadings } =
+    useRatingProfiles();
 
   const deleteModal = useSelector((state) => state.ratingProfiles.deleteModal);
   const selectedEntity = useSelector(
     (state) => state.ratingProfiles.selectedEntity
   );
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
+  const getAllTpIdsLoading = useSelector(
+    (state) => state.app.getAllTpIdsLoading
   );
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  useEffect(() => {
+    if (selectedTpId) {
+      getRatingProfiles();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>
@@ -69,8 +48,23 @@ const RatingProfilesRoot = () => {
           New Rating Profile
         </Button>
       </Col>
+      {/* tpids loading */}
+      {getAllTpIdsLoading ? (
+        <div
+          style={{ width: "100%", height: "50vh" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          Loading TPIds...
+        </div>
+      ) : null}
+      {/* table loading */}
+      {!getAllTpIdsLoading && loadings.getRatingProfiles ? (
+        <div className="datatable_loading_cover">
+          <ProgressLoading />
+        </div>
+      ) : null}
       {/* datatable */}
-      {!loadings.getRatingProfiles ? (
+      {!getAllTpIdsLoading && !loadings.getRatingProfiles ? (
         <Fragment>
           <DataTable
             noDataComponent={
@@ -83,22 +77,13 @@ const RatingProfilesRoot = () => {
               )
             }
             noHeader
-            pagination
             columns={columns}
-            paginationPerPage={10}
             className="react-dataTable"
             style={{ background: "red" }}
-            sortIcon={<ChevronDown size={10} />}
-            paginationComponent={CustomPagination}
-            data={RatingProfilesData}
+            data={listData}
             theme={skin === "dark" ? "darkTheme" : ""}
           />
         </Fragment>
-      ) : null}
-      {loadings.getRatingProfiles ? (
-        <div className="datatable_loading_cover">
-          <ProgressLoading />
-        </div>
       ) : null}
       {/* delete modal */}
       <Confirm
@@ -108,8 +93,8 @@ const RatingProfilesRoot = () => {
         noAction={() => dispatch(setDeleteModal(false))}
         noColor={"secondary"}
         noTitle={"Cancel"}
-        yesLoading={loadings.deleteRatingProfile}
-        yesAction={() => alert(selectedEntity?.TPid)}
+        yesLoading={loadings.deleteEntity}
+        yesAction={() => deleteEntity(selectedEntity)}
         yesColor={"danger"}
         yesTitle={"Delete"}
         type={"global"}

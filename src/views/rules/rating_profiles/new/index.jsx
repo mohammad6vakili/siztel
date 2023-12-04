@@ -93,6 +93,7 @@ const RatingProfilesNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createRatingProfileController.values.TPid}
                   onChange={createRatingProfileController.handleChange}
                   invalid={

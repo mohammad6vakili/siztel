@@ -26,12 +26,12 @@ export default [
         icon: <Circle size={12} />,
         navLink: "/rules/action_plans",
       },
-      {
-        id: "chargers",
-        title: "Chargers",
-        icon: <Circle size={12} />,
-        navLink: "/rules/chargers",
-      },
+      // {
+      //   id: "chargers",
+      //   title: "Chargers",
+      //   icon: <Circle size={12} />,
+      //   navLink: "/rules/chargers",
+      // },
       {
         id: "timing",
         title: "Timing",
