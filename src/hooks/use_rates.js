@@ -1,35 +1,86 @@
 import { useState } from "react";
 import { useFormik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useHttp from "./use_http";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { createActionSchema } from "../utility/schemas/index";
+import { setDeleteModal, setSlots } from "../redux/rates_slice";
 
 const useRates = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { httpService } = useHttp();
   const [loadings, setLoadings] = useState({
     getRates: false,
+    getEntityById: false,
     createRate: false,
     updateRate: false,
-    deleteRatae: false,
+    deleteEntity: false,
   });
 
-  const [paginates, setPaginates] = useState({
-    current: 1,
-    total: 1,
-  });
+  const [listData, setListData] = useState([]);
 
   const slots = useSelector((state) => state.rates.slots);
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  const getRates = async () => {
+    let array = [];
+    try {
+      setLoadings({ ...loadings, getRates: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPRateIds",
+        params: [
+          {
+            TPid: selectedTpId,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getRates: false });
+      response?.data?.result?.map((item) => {
+        array.push({
+          ID: item,
+        });
+      });
+      setListData(array);
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getRates: false });
+    }
+  };
+
+  const getEntityById = async (id) => {
+    try {
+      setLoadings({ ...loadings, getEntityById: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.GetTPRate",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getEntityById: false });
+      if (response?.data?.error === "NOT_FOUND") {
+        toast.error(response?.data?.error);
+        navigate("/rules/rates");
+      } else {
+        updateRateController.setFieldValue("ID", response?.data?.result?.ID);
+        dispatch(setSlots(response?.data?.result?.RateSlots));
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getEntityById: false });
+    }
+  };
 
   const createRateController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       RateSlots: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rate slot.");
@@ -50,7 +101,7 @@ const useRates = () => {
         method: "APIerSv1.SetTPRate",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             RateSlots: newSlots,
           },
@@ -60,6 +111,7 @@ const useRates = () => {
       if (response.status === 200) {
         toast.success("Successfully Created!");
         navigate("/rules/rates");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, createRate: false });
@@ -68,11 +120,12 @@ const useRates = () => {
 
   const updateRateController = useFormik({
     initialValues: {
-      TPid: "",
+      TPid: selectedTpId,
       ID: "",
       RateSlots: [],
     },
     validationSchema: createActionSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
       if (slots.length === 0) {
         toast.error("You must add at least one rate slot.");
@@ -93,7 +146,7 @@ const useRates = () => {
         method: "APIerSv1.SetTPRate",
         params: [
           {
-            TPid: values.TPid,
+            TPid: selectedTpId,
             ID: values.ID,
             RateSlots: newSlots,
           },
@@ -103,18 +156,42 @@ const useRates = () => {
       if (response.status === 200) {
         toast.success("Successfully Updated!");
         navigate("/rules/rates");
+        dispatch(setSlots([]));
       }
     } catch ({ err, response }) {
       setLoadings({ ...loadings, updateRate: false });
     }
   };
 
+  const deleteEntity = async (id) => {
+    try {
+      setLoadings({ ...loadings, deleteEntity: true });
+      const response = await httpService.post("", {
+        method: "APIerSv1.RemoveTPRate",
+        params: [
+          {
+            TPid: selectedTpId,
+            ID: id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, deleteEntity: false });
+      dispatch(setDeleteModal(null));
+      toast.success("Successfully Deleted.");
+      getRates();
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, deleteEntity: false });
+    }
+  };
+
   const exports = {
+    getRates,
+    getEntityById,
     createRateController,
     updateRateController,
+    deleteEntity,
+    listData,
     loadings,
-    paginates,
-    setPaginates,
   };
   return exports;
 };
