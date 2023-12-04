@@ -56,7 +56,7 @@ const useRates = () => {
         params: [
           {
             TPid: selectedTpId,
-            ID: id,
+            ID: "RATE_DATA_BASIC",
           },
         ],
       });
