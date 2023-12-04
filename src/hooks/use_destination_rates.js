@@ -170,7 +170,7 @@ const useDestinationRates = () => {
     try {
       setLoadings({ ...loadings, deleteEntity: true });
       const response = await httpService.post("", {
-        method: "APIerSv1.RemoveTPRate",
+        method: "APIerSv1.RemoveTPDestinationRate",
         params: [
           {
             TPid: selectedTpId,
