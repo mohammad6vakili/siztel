@@ -95,6 +95,7 @@ const DestinationRatesNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createDestinationRateController.values.TPid}
                   onChange={createDestinationRateController.handleChange}
                   invalid={
@@ -200,7 +201,7 @@ const DestinationRatesNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      RoundingDecimals: e.target.value,
+                      RoundingDecimals: parseFloat(e.target.value),
                     })
                   }
                   type="number"
@@ -219,7 +220,7 @@ const DestinationRatesNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      MaxCost: e.target.value,
+                      MaxCost: parseFloat(e.target.value),
                     })
                   }
                 />
