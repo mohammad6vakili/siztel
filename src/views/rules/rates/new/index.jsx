@@ -88,6 +88,7 @@ const RatesNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createRateController.values.TPid}
                   onChange={createRateController.handleChange}
                   invalid={
@@ -138,7 +139,7 @@ const RatesNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      ConnectFee: e.target.value,
+                      ConnectFee: parseFloat(e.target.value),
                     })
                   }
                   type="number"
@@ -210,7 +211,7 @@ const RatesNew = () => {
                   onChange={(e) =>
                     setSlotFormData({
                       ...slotFormData,
-                      Rate: e.target.value,
+                      Rate: parseFloat(e.target.value),
                     })
                   }
                 />
