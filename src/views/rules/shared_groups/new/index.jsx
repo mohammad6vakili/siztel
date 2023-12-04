@@ -1,6 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
-import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { slots_columns } from "../root/datatable/slots_columns";
@@ -27,7 +26,6 @@ import useSharedGroups from "../../../../hooks/use_shared_groups";
 const SharedGroupsNew = () => {
   const { skin } = useSkin();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { createSharedGroupController, loadings } = useSharedGroups();
 
@@ -57,6 +55,10 @@ const SharedGroupsNew = () => {
       });
     }
   };
+
+  useEffect(() => {
+    dispatch(setSlots([]));
+  }, []);
 
   return (
     <Fragment>
@@ -89,6 +91,7 @@ const SharedGroupsNew = () => {
                 <Input
                   id="TPid"
                   name="TPid"
+                  disabled
                   value={createSharedGroupController.values.TPid}
                   onChange={createSharedGroupController.handleChange}
                   invalid={
