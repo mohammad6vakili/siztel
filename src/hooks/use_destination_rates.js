@@ -11,6 +11,7 @@ const useDestinationRates = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { httpService } = useHttp();
+
   const [loadings, setLoadings] = useState({
     getDestinationRates: false,
     getEntityById: false,
