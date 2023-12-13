@@ -15,6 +15,7 @@ const useAccounts = () => {
     createAccount: false,
     updateAccount: false,
     createBalance: false,
+    deleteAccount: false,
   });
 
   const [getActionPlansLoading, setGetActionPlansLoading] = useState(false);

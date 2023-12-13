@@ -8,15 +8,21 @@ import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Filterbar from "./components/filterbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Confirm from "../../../../components/confirm";
+import { setDeleteModal } from "../../../../redux/accounts_slice";
 
 const AccountsRoot = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { skin } = useSkin();
   const { getAccounts, listData, loadings, filters, setFilters } =
     useAccounts();
 
   const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  const selectedEntity = useSelector((state) => state.accounts.selectedEntity);
+  const deleteModal = useSelector((state) => state.accounts.deleteModal);
 
   useEffect(() => {
     if (selectedTpId) {
@@ -68,6 +74,20 @@ const AccountsRoot = () => {
           </div>
         ) : null}
       </div>
+      {/* delete modal */}
+      <Confirm
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        title={"Are you sure you want to delete this account?"}
+        noAction={() => dispatch(setDeleteModal(false))}
+        noColor={"secondary"}
+        noTitle={"Cancel"}
+        yesLoading={loadings.deleteAccount}
+        yesAction={() => alert(selectedEntity)}
+        yesColor={"danger"}
+        yesTitle={"Delete"}
+        type={"global"}
+      />
     </Fragment>
   );
 };
