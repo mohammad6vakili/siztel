@@ -15,36 +15,7 @@ import Filterbar from "./components/filterbar";
 const AccountsRoot = () => {
   const navigate = useNavigate();
   const { skin } = useSkin();
-  const { loadings, paginates, setPaginates } = useAccounts();
-
-  const handlePagination = (page) => {
-    console.log(page);
-    // dispatch(setGetSshKeysCurrent(page.selected));
-    // getUserSshKeys(page.selected + 1);
-  };
-
-  const CustomPagination = () => (
-    <ReactPaginate
-      previousLabel=""
-      nextLabel=""
-      forcePage={paginates.current}
-      onPageChange={(page) => handlePagination(page)}
-      pageCount={paginates.total}
-      breakLabel="..."
-      pageRangeDisplayed={2}
-      marginPagesDisplayed={2}
-      activeClassName="active"
-      pageClassName="page-item"
-      breakClassName="page-item"
-      nextLinkClassName="page-link"
-      pageLinkClassName="page-link"
-      breakLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      nextClassName="page-item next-item"
-      previousClassName="page-item prev-item"
-      containerClassName="pagination react-paginate separated-pagination pagination-sm justify-content-end pe-1 mt-1"
-    />
-  );
+  const { loadings, setPaginates } = useAccounts();
 
   return (
     <Fragment>
@@ -72,13 +43,9 @@ const AccountsRoot = () => {
                 )
               }
               noHeader
-              pagination
               columns={columns}
-              paginationPerPage={10}
               className="react-dataTable"
               style={{ background: "red" }}
-              sortIcon={<ChevronDown size={10} />}
-              paginationComponent={CustomPagination}
               data={AccountsData}
               theme={skin === "dark" ? "darkTheme" : ""}
             />

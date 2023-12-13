@@ -56,4 +56,8 @@ export const createAccountSchema = yup.object({
     .object()
     .nullable(false)
     .required("The ActionTriggerIDs field is required."),
+  Balances: yup
+    .object()
+    .nullable(false)
+    .required("The Balances field is required."),
 });
