@@ -16,12 +16,19 @@ const useAccounts = () => {
     updateAccount: false,
     createBalance: false,
   });
+
   const [getActionPlansLoading, setGetActionPlansLoading] = useState(false);
   const [getActionTriggersLoading, setGetActionTriggersLoading] =
     useState(false);
 
   const [actionPlans, setGetActionPlans] = useState([]);
   const [actionTriggers, setGetActionTriggers] = useState([]);
+
+  const [filters, setFilters] = useState({
+    Tenant: "cgrates.org",
+  });
+
+  const [listData, setListData] = useState([]);
 
   const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
@@ -143,15 +150,43 @@ const useAccounts = () => {
     }
   };
 
+  const getAccounts = async (without_filter) => {
+    let postData = {
+      Tenant: "",
+    };
+    if (filters.Tenant.length > 0 && !without_filter) {
+      postData.Tenant = filters.Tenant;
+    }
+    try {
+      setLoadings({ ...loadings, getAccounts: true });
+      const response = await httpService.post("", {
+        method: "APIerSv2.GetAccounts",
+        params: [postData],
+      });
+      setLoadings({ ...loadings, getAccounts: false });
+      if (response.data.result) {
+        setListData(response.data.result);
+      } else {
+        setListData([]);
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getAccounts: false });
+    }
+  };
+
   const exports = {
+    getAccounts,
     getActionPlans,
     getActionTriggers,
     createAccountController,
+    listData,
     loadings,
     actionPlans,
     actionTriggers,
     getActionPlansLoading,
     getActionTriggersLoading,
+    filters,
+    setFilters,
   };
   return exports;
 };

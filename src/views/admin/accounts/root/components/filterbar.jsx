@@ -14,7 +14,7 @@ import CustomDatePicker from "../../../../../components/datepicker";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-const Filterbar = () => {
+const Filterbar = ({ filters, setFilters, getAccounts }) => {
   const [open, setOpen] = useState(false);
   return (
     <Card>
@@ -39,55 +39,38 @@ const Filterbar = () => {
       <Collapse isOpen={open}>
         <CardBody>
           <Row>
-            {/* title 1 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
+            {/* Tenant */}
+            <Col className="mt-1" xs="12" sm="6" md="3">
               <Label for="user" className="form-label">
-                Search by Title 1
+                Tenant
               </Label>
-              <Input />
-            </Col>
-            {/* title 2 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
-              <Label for="user" className="form-label">
-                Search by Title 2
-              </Label>
-              <Input />
-            </Col>
-            {/* title 3 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
-              <Label for="user" className="form-label">
-                Search by Title 3
-              </Label>
-              <Input />
-            </Col>
-            {/* title 4 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
-              <Label for="user" className="form-label">
-                Search by Title 4
-              </Label>
-              <Input />
-            </Col>
-            {/* title 5 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
-              <Label for="user" className="form-label">
-                Search by Title 5
-              </Label>
-              <CustomDatePicker inputPlaceholder="Click to open calendar" />
-            </Col>
-            {/* title 6 */}
-            <Col className="mt-1" xs="12" sm="6" md="4">
-              <Label for="user" className="form-label">
-                Search by Title 6
-              </Label>
-              <CustomDatePicker inputPlaceholder="Click to open calendar" />
+              <Input
+                name="Tenant"
+                id="Tenant"
+                value={filters.Tenant}
+                onChange={(e) =>
+                  setFilters({ ...filters, Tenant: e.target.value })
+                }
+              />
             </Col>
           </Row>
           {/* actions */}
           <Col sm="12" className="mt-2 d-flex justify-content-end">
-            <CustomButton style={{ marginRight: 8 }} color="danger">
+            <CustomButton
+              onClick={() => {
+                setFilters({
+                  Tenant: "",
+                });
+                getAccounts("without_filter");
+              }}
+              style={{ marginRight: 8 }}
+              color="danger"
+            >
               Clear Filters
             </CustomButton>
-            <CustomButton color="primary">Search and Filter</CustomButton>
+            <CustomButton onClick={getAccounts} color="primary">
+              Search and Filter
+            </CustomButton>
           </Col>
         </CardBody>
       </Collapse>

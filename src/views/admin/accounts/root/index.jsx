@@ -1,21 +1,28 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Breadcrumbs from "@components/breadcrumbs";
 import useAccounts from "../../../../hooks/use_accounts";
 import { useSkin } from "@hooks/useSkin";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import DataTable from "react-data-table-component";
-import ReactPaginate from "react-paginate";
-import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
 import { Col, Button } from "reactstrap";
-import AccountsData from "../../../../data/accounts.json";
 import { useNavigate } from "react-router-dom";
 import Filterbar from "./components/filterbar";
+import { useSelector } from "react-redux";
 
 const AccountsRoot = () => {
   const navigate = useNavigate();
   const { skin } = useSkin();
-  const { loadings, setPaginates } = useAccounts();
+  const { getAccounts, listData, loadings, filters, setFilters } =
+    useAccounts();
+
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
+
+  useEffect(() => {
+    if (selectedTpId) {
+      getAccounts();
+    }
+  }, [selectedTpId]);
 
   return (
     <Fragment>
@@ -29,7 +36,11 @@ const AccountsRoot = () => {
           New Account
         </Button>
       </Col>
-      <Filterbar />
+      <Filterbar
+        filters={filters}
+        setFilters={setFilters}
+        getAccounts={getAccounts}
+      />
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getAccounts ? (
@@ -46,7 +57,7 @@ const AccountsRoot = () => {
               columns={columns}
               className="react-dataTable"
               style={{ background: "red" }}
-              data={AccountsData}
+              data={listData}
               theme={skin === "dark" ? "darkTheme" : ""}
             />
           </Fragment>
