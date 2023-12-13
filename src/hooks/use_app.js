@@ -1,5 +1,6 @@
+import { useState } from "react";
 import useHttp from "./use_http";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setAllTpIds,
   setGetAllTpIdsLoading,
@@ -9,6 +10,12 @@ import {
 const useApp = () => {
   const { httpService } = useHttp();
   const dispatch = useDispatch();
+
+  const [loadings, setLoadings] = useState({
+    syncRules: false,
+  });
+
+  const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   const getAllTpIds = async () => {
     try {
@@ -28,6 +35,24 @@ const useApp = () => {
       dispatch(setSelectedTpId(response.data.result[0]));
     } catch ({ err, response }) {
       dispatch(setGetAllTpIdsLoading(false));
+    }
+  };
+
+  const syncRules = async () => {
+    try {
+      setLoadings({ ...loadings, syncRules: true });
+      const response = await httpService.post("", {
+        id: 6,
+        method: "APIerSv1.LoadTariffPlanFromStorDb",
+        params: [
+          {
+            TPid: selectedTpId,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, syncRules: false });
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, syncRules: false });
     }
   };
 

@@ -12,6 +12,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Button,
 } from "reactstrap";
 import useApp from "../../../../hooks/use_app";
 import { useEffect } from "react";
@@ -49,6 +50,9 @@ const NavbarUser = (props) => {
           <ThemeToggler />
         </NavLink>
       </NavItem>
+      <Button style={{ marginLeft: 8 }} color="primary">
+        Sync Rules
+      </Button>
       <UncontrolledDropdown style={{ marginLeft: 8 }}>
         {getAllTpIdsLoading ? (
           <Skeleton
