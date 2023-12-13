@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 const CdrRoot = () => {
   const navigate = useNavigate();
   const { skin } = useSkin();
-  const { getCdr, filters, setFilters, loadings } = useCdr();
+  const { getCdr, listData, filters, setFilters, loadings } = useCdr();
 
   const getAllTpIdsLoading = useSelector(
     (state) => state.app.getAllTpIdsLoading
@@ -63,7 +63,7 @@ const CdrRoot = () => {
                 columns={columns}
                 className="react-dataTable"
                 style={{ background: "red" }}
-                data={CdrData}
+                data={listData}
                 theme={skin === "dark" ? "darkTheme" : ""}
               />
             </Fragment>

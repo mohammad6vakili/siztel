@@ -1,25 +1,39 @@
-import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import moment from "moment";
 
 export const columns = [
   {
     name: "CGRID",
-    minWidth: "100px",
+    minWidth: "350px",
     selector: (row) => row.CGRID,
   },
   {
     name: "RunID",
-    minWidth: "100px",
+    minWidth: "120px",
     selector: (row) => row.RunID,
   },
   {
-    name: "RunID",
-    minWidth: "100px",
-    selector: (row) => row.RunID,
+    name: "OrderID",
+    minWidth: "80px",
+    selector: (row) => row.OrderID,
+  },
+  {
+    name: "OriginHost",
+    minWidth: "120px",
+    selector: (row) => row.OriginHost,
+  },
+  {
+    name: "Source",
+    minWidth: "80px",
+    selector: (row) => row.Source,
+  },
+  {
+    name: "OriginID",
+    minWidth: "320px",
+    selector: (row) => row.OriginID,
   },
   {
     name: "ToR",
-    minWidth: "100px",
+    minWidth: "120px",
     selector: (row) => row.ToR,
   },
   {
@@ -29,7 +43,7 @@ export const columns = [
   },
   {
     name: "Tenant",
-    minWidth: "100px",
+    minWidth: "120px",
     selector: (row) => row.Tenant,
   },
   {
@@ -38,19 +52,35 @@ export const columns = [
     selector: (row) => row.Category,
   },
   {
+    name: "Account",
+    minWidth: "170px",
+    selector: (row) => row.Account,
+  },
+  {
     name: "Subject",
-    minWidth: "100px",
+    minWidth: "170px",
     selector: (row) => row.Subject,
   },
   {
-    name: "SetupTime",
+    name: "Destination",
     minWidth: "120px",
+    selector: (row) => row.Destination,
+  },
+  {
+    name: "SetupTime",
+    minWidth: "160px",
     selector: (row) => row.SetupTime,
+    cell: (row) => {
+      return moment(row.SetupTime).format("YYYY/MM/DD HH:mm:ss");
+    },
   },
   {
     name: "AnswerTime",
-    minWidth: "120px",
+    minWidth: "160px",
     selector: (row) => row.AnswerTime,
+    cell: (row) => {
+      return moment(row.AnswerTime).format("YYYY/MM/DD HH:mm:ss");
+    },
   },
   {
     name: "Usage",
@@ -58,18 +88,18 @@ export const columns = [
     selector: (row) => row.Usage,
   },
   {
+    name: "CostSource",
+    minWidth: "120px",
+    selector: (row) => row.CostSource,
+  },
+  {
     name: "Cost",
-    minWidth: "100px",
+    minWidth: "130px",
     selector: (row) => row.Cost,
   },
   {
-    name: "AuthApplicationId",
-    minWidth: "150px",
-    selector: (row) => row.AuthApplicationId,
-  },
-  {
-    name: "IMEI",
-    minWidth: "160px",
-    selector: (row) => row.IMEI,
+    name: "ExtraInfo",
+    minWidth: "100px",
+    selector: (row) => row.ExtraInfo,
   },
 ];
