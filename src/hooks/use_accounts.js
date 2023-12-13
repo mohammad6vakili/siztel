@@ -1,8 +1,12 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useHttp from "./use_http";
+import { createAccountSchema } from "../utility/schemas/index";
 
 const useAccounts = () => {
+  const { httpService } = useHttp();
+
   const [loadings, setLoadings] = useState({
     getAccounts: false,
     createAccount: false,
@@ -16,22 +20,38 @@ const useAccounts = () => {
 
   const createAccountController = useFormik({
     initialValues: {
-      Tenant: "cgrates.org",
-      Account: "418200000069759",
-      ActionPlanIDs: [],
+      Tenant: "",
+      Account: "",
+      ActionPlanIDs: null,
       ActionPlansOverwrite: false,
-      ActionTriggerIDs: [],
+      ActionTriggerIDs: null,
       ActionTriggerOverwrite: false,
       ExtraOptions: {},
       ReloadScheduler: false,
     },
-    validationSchema: null,
+    validationSchema: createAccountSchema,
     onSubmit: (values) => {
       toast.success("Success");
     },
   });
 
-  const exports = { loadings, paginates, setPaginates };
+  const createAccount = async (values) => {
+    let postData = { ...values };
+    try {
+      setLoadings({ ...loadings, createAccount: true });
+      const response = await httpService.post("", postData);
+      setLoadings({ ...loadings, createAccount: false });
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, createAccount: false });
+    }
+  };
+
+  const exports = {
+    createAccountController,
+    loadings,
+    paginates,
+    setPaginates,
+  };
   return exports;
 };
 export default useAccounts;

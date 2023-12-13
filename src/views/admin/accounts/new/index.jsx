@@ -13,11 +13,14 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
+  FormFeedback,
 } from "reactstrap";
 import CustomButton from "../../../../components/button";
+import useAccounts from "../../../../hooks/use_accounts";
 
 const AccountsNew = () => {
   const navigate = useNavigate();
+  const { createAccountController, loadings } = useAccounts();
 
   return (
     <Fragment>
@@ -25,8 +28,8 @@ const AccountsNew = () => {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          navigate("/admin/accounts");
-          toast.success("Successfully Created!");
+          window.scroll({ top: 0, behavior: "smooth" });
+          createAccountController.handleSubmit();
         }}
         className="d-flex flex-column align-items-center"
       >
@@ -44,38 +47,44 @@ const AccountsNew = () => {
                 <Label className="form-label" for="mobile">
                   Account
                 </Label>
-                <Input id="Account" name="Account" />
+                <Input
+                  id="Account"
+                  name="Account"
+                  value={createAccountController.values.Account}
+                  onChange={createAccountController.handleChange}
+                  invalid={
+                    createAccountController.touched.Account &&
+                    createAccountController.errors.Account
+                  }
+                />
+                {createAccountController.touched.Account &&
+                createAccountController.errors.Account ? (
+                  <FormFeedback>
+                    {createAccountController.errors.Account}
+                  </FormFeedback>
+                ) : null}
               </Col>
               {/* Tenant */}
               <Col xs="12" sm="6" md="4" className="mb-1">
                 <Label className="form-label" for="mobile">
                   Tenant
                 </Label>
-                <Input id="Tenant" name="Tenant" />
-              </Col>
-              {/* ActionPlansOverwrite */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="ActionPlansOverwrite">
-                  ActionPlansOverwrite
-                </Label>
-                <Input id="ActionPlansOverwrite" name="ActionPlansOverwrite" />
-              </Col>
-              {/* ActionTriggerOverwrite */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="ActionTriggerOverwrite">
-                  ActionTriggerOverwrite
-                </Label>
                 <Input
-                  id="ActionTriggerOverwrite"
-                  name="ActionTriggerOverwrite"
+                  id="Tenant"
+                  name="Tenant"
+                  value={createAccountController.values.Tenant}
+                  onChange={createAccountController.handleChange}
+                  invalid={
+                    createAccountController.touched.Tenant &&
+                    createAccountController.errors.Tenant
+                  }
                 />
-              </Col>
-              {/* ReloadScheduler */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="ReloadScheduler">
-                  ReloadScheduler
-                </Label>
-                <Input id="ReloadScheduler" name="ReloadScheduler" />
+                {createAccountController.touched.Tenant &&
+                createAccountController.errors.Tenant ? (
+                  <FormFeedback>
+                    {createAccountController.errors.Tenant}
+                  </FormFeedback>
+                ) : null}
               </Col>
             </Row>
           </CardBody>

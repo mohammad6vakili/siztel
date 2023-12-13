@@ -45,16 +45,15 @@ export const createRatingProfileSchema = yup.object({
   Subject: yup.string().required("The Subject field is required."),
 });
 
-// export const registerSchema = yup.object({
-//   first_name: yup.string().required("The first name field is required."),
-//   last_name: yup.string().required("The last name field is required."),
-//   email: yup
-//     .string()
-//     .required("The email field is required.")
-//     .email("The entered email structure is incorrect."),
-//   password: yup.string().required("The password field is required."),
-//   password_confirmation: yup
-//     .string()
-//     .required("The repeat password field is required."),
-//   privacy: yup.bool().required(""),
-// });
+export const createAccountSchema = yup.object({
+  Account: yup.string().required("The Account field is required."),
+  Tenant: yup.string().required("The Tenant field is required."),
+  ActionPlanIDs: yup
+    .object()
+    .nullable(false)
+    .required("The ActionPlanIDs field is required."),
+  ActionTriggerIDs: yup
+    .object()
+    .nullable(false)
+    .required("The ActionTriggerIDs field is required."),
+});
