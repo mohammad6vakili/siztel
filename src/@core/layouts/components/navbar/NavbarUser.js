@@ -16,11 +16,12 @@ import {
 } from "reactstrap";
 import useApp from "../../../../hooks/use_app";
 import { useEffect } from "react";
+import CustomButton from "../../../../components/button";
 
 const NavbarUser = (props) => {
   const dispatch = useDispatch();
   const { skin, setSkin } = props;
-  const { getAllTpIds } = useApp();
+  const { getAllTpIds, syncRules, loadings } = useApp();
 
   const AllTpIds = useSelector((state) => state.app.AllTpIds);
   const getAllTpIdsLoading = useSelector(
@@ -50,9 +51,14 @@ const NavbarUser = (props) => {
           <ThemeToggler />
         </NavLink>
       </NavItem>
-      <Button style={{ marginLeft: 8 }} color="primary">
+      <CustomButton
+        onClick={syncRules}
+        style={{ marginLeft: 8 }}
+        color="primary"
+        loading={loadings.syncRules}
+      >
         Sync Rules
-      </Button>
+      </CustomButton>
       <UncontrolledDropdown style={{ marginLeft: 8 }}>
         {getAllTpIdsLoading ? (
           <Skeleton

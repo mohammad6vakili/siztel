@@ -56,7 +56,7 @@ const useApp = () => {
     }
   };
 
-  const exports = { getAllTpIds };
+  const exports = { getAllTpIds, syncRules, loadings };
   return exports;
 };
 export default useApp;
