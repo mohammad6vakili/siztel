@@ -4,15 +4,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const accountsSlice = createSlice({
   name: "accounts",
   initialState: {
-    slots: [],
+    selectedEntity: null,
+    deleteModal: null,
   },
   reducers: {
-    setSlots: (state, action) => {
-      state.slots = action.payload;
+    setSelectedEntity: (state, action) => {
+      state.selectedEntity = action.payload;
+    },
+    setDeleteModal: (state, action) => {
+      state.deleteModal = action.payload;
     },
   },
 });
 
-export const { setSlots } = accountsSlice.actions;
+export const { setSelectedEntity, setDeleteModal } = accountsSlice.actions;
 
 export default accountsSlice.reducer;

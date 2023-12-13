@@ -1,45 +1,48 @@
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import ActionButton from "../components/action_button";
 
 export const columns = [
   {
-    name: "Account",
+    name: "ID",
+    minWidth: "300px",
+    selector: (row) => row.ID,
+    cell: (row) => {
+      return <span>{row.ID}</span>;
+    },
+  },
+  {
+    name: "AllowNegative",
     minWidth: "100px",
-    selector: (row) => row.Account,
+    selector: (row) => row.AllowNegative,
+    cell: (row) => {
+      return <span>{JSON.stringify(row.AllowNegative)}</span>;
+    },
   },
   {
-    name: "Tenant",
-    minWidth: "100px",
-    selector: (row) => row.Tenant,
-  },
-  {
-    name: "ActionPlansOverwrite",
+    name: "Disabled",
     minWidth: "200px",
-    selector: (row) => row.ActionPlansOverwrite,
+    selector: (row) => row.Disabled,
+    cell: (row) => {
+      return <span>{JSON.stringify(row.Disabled)}</span>;
+    },
   },
   {
-    name: "ActionTriggerOverwrite",
+    name: "UpdateTime",
     minWidth: "200px",
-    selector: (row) => row.ActionTriggerOverwrite,
-  },
-  {
-    name: "ReloadScheduler",
-    minWidth: "200px",
-    selector: (row) => row.ReloadScheduler,
+    selector: (row) => row.UpdateTime,
+    cell: (row) => {
+      return moment(row.UpdateTime).format("YYYY/MM/DD HH:mm:ss");
+    },
   },
   {
     name: "Actions",
-    minWidth: "120px",
-    maxWidth: "120px",
+    minWidth: "200px",
+    maxWidth: "200px",
     selector: (row) => row.uuid,
     cell: (row) => {
-      return (
-        <Link to={"/admin/accounts/update"}>
-          <Button style={{ padding: 6 }} size="sm" color="primary">
-            Update
-          </Button>
-        </Link>
-      );
+      return <ActionButton row={row} />;
     },
   },
 ];
