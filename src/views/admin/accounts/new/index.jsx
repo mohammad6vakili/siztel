@@ -179,6 +179,7 @@ const AccountsNew = () => {
                   placeholder="Select Balances"
                   isClearable={false}
                   options={BALANCE_DATA}
+                  isMulti={true}
                   className={`react-select ${
                     createAccountController.touched.Balances &&
                     createAccountController.errors.Balances

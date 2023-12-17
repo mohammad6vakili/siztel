@@ -133,19 +133,24 @@ const useAccounts = () => {
   };
 
   const createBalance = async (values) => {
+    let balanceArray = [];
+    values.Balances.map((item) => {
+      balanceArray.push(item.value);
+    });
+    let postData = {
+      method: "APIerSv1.SetBalances",
+      params: [
+        {
+          Tenant: values.Tenant,
+          Account: values.Account,
+          Balances: balanceArray,
+        },
+      ],
+      id: 6,
+    };
     try {
       setLoadings({ ...loadings, createBalance: true });
-      const response = await httpService.post("", {
-        method: "APIerSv1.SetBalances",
-        params: [
-          {
-            Tenant: values.Tenant,
-            Account: values.Account,
-            Balances: [values.Balances.value],
-          },
-        ],
-        id: 6,
-      });
+      const response = await httpService.post("", postData);
       setLoadings({ ...loadings, createBalance: false });
       if (response.status === 200) {
         toast.success("Successfully Created!");

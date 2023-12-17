@@ -217,9 +217,11 @@ const AccountsRoot = () => {
                                     ExpireDate :
                                   </Label>{" "}
                                   <span
-                                    style={{ fontWeight: 900, fontSize: 12 }}
+                                    style={{ fontWeight: 900, fontSize: 13 }}
                                   >
-                                    {itemInside.ExpirationDate}
+                                    {moment(itemInside.ExpirationDate).format(
+                                      "YYYY/MM/DD HH:mm:ss"
+                                    )}
                                   </span>
                                 </Col>
                               </div>
