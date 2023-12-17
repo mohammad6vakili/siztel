@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
 import {
-  setDeleteModal,
+  setDetailsModal,
   setSelectedEntity,
 } from "../../../../../redux/accounts_slice";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const ActionButton = ({ row }) => {
         color="primary"
         onClick={() => {
           dispatch(setSelectedEntity(row.ID));
-          dispatch(setDeleteModal(1));
+          dispatch(setDetailsModal(1));
         }}
       >
         Details

@@ -51,7 +51,8 @@ const CustomModal = ({
             }
           }}
           style={{ width: 160 }}
-          color={"secondary"}
+          outline
+          color={"primary"}
         >
           Close
         </CustomButton>

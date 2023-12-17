@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import Filterbar from "./components/filterbar";
 import { useDispatch, useSelector } from "react-redux";
 import Confirm from "../../../../components/confirm";
-import { setDeleteModal } from "../../../../redux/accounts_slice";
+import { setDetailsModal } from "../../../../redux/accounts_slice";
+import CustomModal from "../../../../components/modal";
 
 const AccountsRoot = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const AccountsRoot = () => {
   const selectedTpId = useSelector((state) => state.app.selectedTpId);
 
   const selectedEntity = useSelector((state) => state.accounts.selectedEntity);
-  const deleteModal = useSelector((state) => state.accounts.deleteModal);
+  const detailsModal = useSelector((state) => state.accounts.detailsModal);
 
   useEffect(() => {
     if (selectedTpId) {
@@ -74,20 +75,15 @@ const AccountsRoot = () => {
           </div>
         ) : null}
       </div>
-      {/* delete modal */}
-      <Confirm
-        visible={deleteModal}
-        setVisible={setDeleteModal}
-        title={"Are you sure you want to delete this account?"}
-        noAction={() => dispatch(setDeleteModal(false))}
-        noColor={"secondary"}
-        noTitle={"Cancel"}
-        yesLoading={loadings.deleteAccount}
-        yesAction={() => alert(selectedEntity)}
-        yesColor={"danger"}
-        yesTitle={"Delete"}
+      {/* details modal */}
+      <CustomModal
+        visible={detailsModal}
+        setVisible={setDetailsModal}
+        title={"Account Details"}
         type={"global"}
-      />
+      >
+        <div>Hello</div>
+      </CustomModal>
     </Fragment>
   );
 };

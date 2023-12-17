@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import useHttp from "./use_http";
 import { useNavigate } from "react-router-dom";
 import { createAccountSchema } from "../utility/schemas/index";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setViewAccountDetailLoading } from "../redux/accounts_slice";
 
 const useAccounts = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { httpService } = useHttp();
 
@@ -175,10 +177,32 @@ const useAccounts = () => {
     }
   };
 
+  const getAccount = async (tenant_id, account_id) => {
+    try {
+      dispatch(setViewAccountDetailLoading(true));
+      const response = await httpService.post("", {
+        method: "APIerSv2.GetAccount",
+        params: [
+          {
+            Tenant: tenant_id,
+            Account: account_id,
+          },
+        ],
+      });
+      dispatch(setViewAccountDetailLoading(false));
+      if (response.data.result) {
+        console.log(response.data);
+      }
+    } catch ({ err, response }) {
+      dispatch(setViewAccountDetailLoading(false));
+    }
+  };
+
   const exports = {
     getAccounts,
     getActionPlans,
     getActionTriggers,
+    getAccount,
     createAccountController,
     listData,
     loadings,
