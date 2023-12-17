@@ -21,6 +21,7 @@ const useAccounts = () => {
     updateAccount: false,
     createBalance: false,
     deleteAccount: false,
+    getAccountById: false,
   });
 
   const [getActionPlansLoading, setGetActionPlansLoading] = useState(false);
@@ -206,12 +207,92 @@ const useAccounts = () => {
     }
   };
 
+  const getAccountById = async (account_id, tenant_id) => {
+    let balanceArray = [];
+    try {
+      setLoadings({ ...loadings, getAccountById: true });
+      const response = await httpService.post("", {
+        method: "APIerSv2.GetAccount",
+        params: [
+          {
+            Tenant: tenant_id,
+            Account: account_id,
+          },
+        ],
+      });
+      setLoadings({ ...loadings, getAccountById: false });
+      if (response.data.result) {
+        console.log(response.data.result);
+        updateAccountController.setFieldValue(
+          "Tenant",
+          response.data.result.ID.split(":")[0]
+        );
+        updateAccountController.setFieldValue(
+          "Account",
+          response.data.result.ID.split(":")[1]
+        );
+        updateAccountController.setFieldValue("ActionTriggerIDs", {
+          label: response.data.result.ActionTriggers[0].ID,
+          value: response.data.result.ActionTriggers[0].ID,
+        });
+        if (response.data.result.BalanceMap) {
+          Object.keys(response.data.result.BalanceMap).map((item) => {
+            if (item === "*data") {
+              balanceArray.push({
+                id: Math.random() * 9430430,
+                label: "1Gigabyte Data Monthly",
+                value: response.data.result.BalanceMap[item][0],
+              });
+            } else if (item === "*monetary") {
+              balanceArray.push({
+                id: Math.random() * 9430430,
+                label: "100000 Unit Monetary",
+                value: response.data.result.BalanceMap[item][0],
+              });
+            } else if (item === "*voice") {
+              balanceArray.push({
+                id: Math.random() * 9430430,
+                label: "10 Hour Voice Monthly",
+                value: response.data.result.BalanceMap[item][0],
+              });
+            }
+          });
+          updateAccountController.setFieldValue("Balances", balanceArray);
+        }
+      } else {
+        navigate("/admin/accounts");
+      }
+    } catch ({ err, response }) {
+      setLoadings({ ...loadings, getAccountById: false });
+    }
+  };
+
+  const updateAccountController = useFormik({
+    initialValues: {
+      Tenant: "",
+      Account: "",
+      ActionPlanIDs: null,
+      ActionPlansOverwrite: false,
+      ActionTriggerIDs: null,
+      ActionTriggerOverwrite: false,
+      ExtraOptions: {},
+      ReloadScheduler: false,
+      Balances: null,
+    },
+    validationSchema: createAccountSchema,
+    onSubmit: (values) => {
+      createAccount(values);
+    },
+  });
+
   const exports = {
     getAccounts,
     getActionPlans,
     getActionTriggers,
     getAccount,
+    getAccountById,
     createAccountController,
+    updateAccountController,
     listData,
     loadings,
     actionPlans,

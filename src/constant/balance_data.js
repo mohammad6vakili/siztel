@@ -2,7 +2,7 @@ import moment from "moment/moment";
 
 export const BALANCE_DATA = [
   {
-    id: 1,
+    id: Math.random() * 9430430,
     label: "1Gigabyte Data Monthly",
     value: {
       BalanceType: "*data",
@@ -25,7 +25,7 @@ export const BALANCE_DATA = [
     },
   },
   {
-    id: 2,
+    id: Math.random() * 9430430,
     label: "10 Hour Voice Monthly",
     value: {
       BalanceType: "*voice",
@@ -48,7 +48,7 @@ export const BALANCE_DATA = [
     },
   },
   {
-    id: 3,
+    id: Math.random() * 9430430,
     label: "100000 Unit Monetary",
     value: {
       BalanceType: "*monetary",
