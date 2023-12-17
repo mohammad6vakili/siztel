@@ -9,6 +9,7 @@ import { Button, Row, Col, Label, Badge, Card, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Filterbar from "./components/filterbar";
 import { useDispatch, useSelector } from "react-redux";
+import { formatBytes } from "../../../../helper/format_unit";
 import moment from "moment";
 import {
   setDetailsModal,
@@ -199,7 +200,16 @@ const AccountsRoot = () => {
                                   <span
                                     style={{ fontWeight: 900, fontSize: 13 }}
                                   >
-                                    {itemInside.Value}
+                                    {item === "*voice"
+                                      ? itemInside.Value / 60000000000 +
+                                        " Minutes"
+                                      : null}
+                                    {item === "*data"
+                                      ? formatBytes(itemInside.Value)
+                                      : null}
+                                    {item === "*monetary"
+                                      ? itemInside.Value
+                                      : null}
                                   </span>
                                 </Col>
                                 <Col xs="12">
