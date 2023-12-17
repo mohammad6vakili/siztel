@@ -3,7 +3,7 @@
     "result": {
         "ID": "cgrates.org:0059",
         "BalanceMap": {
-            // monetary label for voices balance
+            // monetary label for monetary balance
             "*monetary": [
                 {
                     "Uuid": "3be429b7-b98a-4c86-a038-26df4c23b53e",

@@ -1,15 +1,14 @@
 import { Fragment } from "react";
 import { Button } from "reactstrap";
 import { useDispatch } from "react-redux";
-import {
-  setDetailsModal,
-  setSelectedEntity,
-} from "../../../../../redux/accounts_slice";
+import { setDetailsModal } from "../../../../../redux/accounts_slice";
 import { useNavigate } from "react-router-dom";
+import useAccounts from "../../../../../hooks/use_accounts";
 
 const ActionButton = ({ row }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { getAccount } = useAccounts();
 
   return (
     <Fragment>
@@ -29,8 +28,8 @@ const ActionButton = ({ row }) => {
         size="sm"
         color="primary"
         onClick={() => {
-          dispatch(setSelectedEntity(row.ID));
           dispatch(setDetailsModal(1));
+          getAccount(row.ID.split(":")[0], row.ID.split(":")[1]);
         }}
       >
         Details

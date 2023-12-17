@@ -5,7 +5,10 @@ import useHttp from "./use_http";
 import { useNavigate } from "react-router-dom";
 import { createAccountSchema } from "../utility/schemas/index";
 import { useDispatch, useSelector } from "react-redux";
-import { setViewAccountDetailLoading } from "../redux/accounts_slice";
+import {
+  setViewAccountDetail,
+  setViewAccountDetailLoading,
+} from "../redux/accounts_slice";
 
 const useAccounts = () => {
   const dispatch = useDispatch();
@@ -191,7 +194,7 @@ const useAccounts = () => {
       });
       dispatch(setViewAccountDetailLoading(false));
       if (response.data.result) {
-        console.log(response.data);
+        dispatch(setViewAccountDetail(response.data.result));
       }
     } catch ({ err, response }) {
       dispatch(setViewAccountDetailLoading(false));
