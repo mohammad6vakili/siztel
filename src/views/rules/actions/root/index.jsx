@@ -65,7 +65,7 @@ const ActionsRoot = () => {
               loadings.getActions ? (
                 ""
               ) : (
-                <div style={{ margin: "24px 0" }}>No Charger Founded!</div>
+                <div style={{ margin: "24px 0" }}>No Action Founded!</div>
               )
             }
             noHeader

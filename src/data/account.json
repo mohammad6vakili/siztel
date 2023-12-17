@@ -1,0 +1,78 @@
+{
+    "id": null,
+    "result": {
+        "ID": "cgrates.org:0059",
+        "BalanceMap": {
+            // monetary label for voices balance
+            "*monetary": [
+                {
+                    "Uuid": "3be429b7-b98a-4c86-a038-26df4c23b53e",
+                    "ID": "100KMoney", //show this
+                    "Value": 100000, //show this
+                    "ExpirationDate": "2024-01-14T00:00:00Z", // show this
+                    "Weight": 10,
+                    "DestinationIDs": {},
+                    "RatingSubject": "",
+                    "Categories": {},
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": true
+                }
+            ],
+            // voice label for voices balance
+            "*voice": [
+                {
+                    "Uuid": "478bcbec-388e-40ce-af0f-0b50876f6f2b",
+                    "ID": "10HVoice", //show this
+                    "Value": 36000000000000, //show this
+                    "ExpirationDate": "2030-01-14T00:00:00Z", //show this
+                    "Weight": 10,
+                    "DestinationIDs": {},
+                    "RatingSubject": "",
+                    "Categories": {
+                        "voice": true
+                    },
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": false
+                }
+            ]
+        },
+        // "UnitCounters": null,
+        // "ActionTriggers": null,
+        "AllowNegative": false, //true : permanent || false : credit
+        "Disabled": false, //Enabled || Disabled
+        "UpdateTime": "2023-12-13T15:28:36.156649364Z"
+    },
+    "error": null
+}

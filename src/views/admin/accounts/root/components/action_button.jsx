@@ -17,6 +17,7 @@ const ActionButton = ({ row }) => {
         style={{ padding: 6, marginRight: 8 }}
         size="sm"
         color="primary"
+        outline
         onClick={() => {
           navigate(`/admin/accounts/update?entity_id=${row.ID}`);
         }}
@@ -26,13 +27,13 @@ const ActionButton = ({ row }) => {
       <Button
         style={{ padding: 6 }}
         size="sm"
-        color="danger"
+        color="primary"
         onClick={() => {
           dispatch(setSelectedEntity(row.ID));
           dispatch(setDeleteModal(1));
         }}
       >
-        Delete
+        Details
       </Button>
     </Fragment>
   );
