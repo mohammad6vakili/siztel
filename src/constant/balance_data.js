@@ -28,7 +28,7 @@ export const BALANCE_DATA = [
     id: 2,
     label: "10 Hour Voice Monthly",
     value: {
-      BalanceType: "*data",
+      BalanceType: "*voice",
       Value: 36000,
       Balance: {
         Uuid: "d282703e-64f2-11ee-8c99-0242ac120002",

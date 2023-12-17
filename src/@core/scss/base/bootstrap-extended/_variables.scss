@@ -99,6 +99,11 @@ $container-max-widths: (
   border: 1px solid red !important;
   border-radius: 4px !important;
 }
+.account_details_cards{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  grid-gap: 16px !important;
+}
 
 // stylelint-disable
 $spacer: 1rem !default;

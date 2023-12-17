@@ -5,7 +5,7 @@ import { useSkin } from "@hooks/useSkin";
 import ProgressLoading from "../../../../components/progress_loading/index";
 import DataTable from "react-data-table-component";
 import { columns } from "./datatable/columns";
-import { Button, Row, Col, Label, Badge } from "reactstrap";
+import { Button, Row, Col, Label, Badge, Card, CardBody } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Filterbar from "./components/filterbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import {
   setDetailsModal,
   setViewAccountDetail,
 } from "../../../../redux/accounts_slice";
+import { BALANCE_DATA } from "../../../../constant/balance_data";
 import CustomModal from "../../../../components/modal";
 
 const AccountsRoot = () => {
@@ -96,81 +97,129 @@ const AccountsRoot = () => {
       >
         <Row>
           {/* Account */}
-          <Col xs="12" sm="6" className="mb-2 pr-0">
-            <Label style={{ fontSize: 12 }}>Account :</Label>{" "}
-            <span style={{ fontWeight: 900, fontSize: 13 }}>0059</span>
-            <Badge style={{ marginLeft: 5 }} color={"primary"}>
-              {viewAccountDetail?.AllowNegative === true
-                ? "Permanent"
-                : "Credit"}
-            </Badge>
+          <Col xs="12" sm="6" className="pr-0">
+            <Card className="mb-1">
+              <CardBody className="d-flex align-items-center justify-content-between">
+                <div>
+                  <Label style={{ fontSize: 12 }}>Account :</Label>{" "}
+                  <span style={{ fontWeight: 900, fontSize: 13 }}>
+                    {viewAccountDetail?.ID.split(":")[0]}
+                  </span>
+                </div>
+                <Badge color={"primary"}>
+                  {viewAccountDetail?.AllowNegative === true
+                    ? "Permanent"
+                    : "Credit"}
+                </Badge>
+              </CardBody>
+            </Card>
           </Col>
           {/* Tenant */}
-          <Col xs="12" sm="6" className="mb-2 pr-0">
-            <Label style={{ fontSize: 12 }}>Tenant :</Label>{" "}
-            <span style={{ fontWeight: 900, fontSize: 13 }}>cgrates.com</span>
+          <Col xs="12" sm="6" className="pr-0">
+            <Card className="mb-1">
+              <CardBody>
+                <Label style={{ fontSize: 12 }}>Tenant :</Label>{" "}
+                <span style={{ fontWeight: 900, fontSize: 13 }}>
+                  {viewAccountDetail?.ID.split(":")[1]}
+                </span>
+              </CardBody>
+            </Card>
           </Col>
           {/* Disabled */}
-          <Col xs="12" sm="6" className="mb-2 pr-0">
-            <Label style={{ fontSize: 12 }}>Status :</Label>{" "}
-            <Badge
-              style={{ fontSize: 13 }}
-              color={
-                viewAccountDetail?.Disabled === true ? "danger" : "success"
-              }
-            >
-              {viewAccountDetail?.Disabled === true ? "Disabled" : "Enabled"}
-            </Badge>
+          <Col xs="12" sm="6" className="pr-0">
+            <Card className="mb-2">
+              <CardBody>
+                <Label style={{ fontSize: 12 }}>Status :</Label>{" "}
+                <Badge
+                  style={{ fontSize: 13 }}
+                  color={
+                    viewAccountDetail?.Disabled === true ? "danger" : "success"
+                  }
+                >
+                  {viewAccountDetail?.Disabled === true
+                    ? "Disabled"
+                    : "Enabled"}
+                </Badge>
+              </CardBody>
+            </Card>
           </Col>
           {/* UpdateTime */}
-          <Col xs="12" sm="6" className="mb-2 pr-0">
-            <Label style={{ fontSize: 12 }}>UpdateTime :</Label>{" "}
-            <span style={{ fontWeight: 900, fontSize: 13 }}>
-              {moment(viewAccountDetail?.UpdateTime)
-                .utc()
-                .format("YYYY/MM/DD HH:mm:ss")}
-            </span>
+          <Col xs="12" sm="6" className="pr-0">
+            <Card className="mb-2">
+              <CardBody>
+                <Label style={{ fontSize: 12 }}>UpdateTime :</Label>{" "}
+                <span style={{ fontWeight: 900, fontSize: 13 }}>
+                  {moment(viewAccountDetail?.UpdateTime)
+                    .utc()
+                    .format("YYYY/MM/DD HH:mm:ss")}
+                </span>
+              </CardBody>
+            </Card>
           </Col>
           {/* balances */}
-          <div className="d-flex justify-content-between">
+          <div className="account_details_cards">
+            {/* data */}
             {viewAccountDetail?.BalanceMap
-              ? Object.keys(viewAccountDetail?.BalanceMap).map(
-                  (balance, index) => (
-                    <div
-                      style={{ width: "48.5%", borderRadius: 8, padding: 8 }}
-                      key={index}
-                      className="border"
-                    >
-                      <h5 className="mb-1">{balance.replace("*", "")}</h5>
-                      {/* ID */}
-                      <Col xs="12">
-                        <Label style={{ fontSize: 12 }}>ID :</Label>{" "}
-                        <span style={{ fontWeight: 900, fontSize: 13 }}>
-                          {viewAccountDetail?.BalanceMap[balance][0]?.ID}
-                        </span>
-                      </Col>
-                      {/* Value */}
-                      <Col xs="12">
-                        <Label style={{ fontSize: 12 }}>Value :</Label>{" "}
-                        <span style={{ fontWeight: 900, fontSize: 13 }}>
-                          {viewAccountDetail?.BalanceMap[balance][0]?.Value}
-                        </span>
-                      </Col>
-                      {/* ExpirationDate */}
-                      <Col xs="12">
-                        <Label style={{ fontSize: 12 }}>ExpirationDate :</Label>{" "}
-                        <span style={{ fontWeight: 900, fontSize: 13 }}>
-                          {moment(
-                            viewAccountDetail?.BalanceMap[balance][0]
-                              ?.ExpirationDate
-                          )
-                            .utc()
-                            .format("YYYY/MM/DD HH:mm:ss")}
-                        </span>
-                      </Col>
-                    </div>
-                  )
-                )
+              ? Object.keys(viewAccountDetail?.BalanceMap).map((item) => {
+                  if (item) {
+                    return (
+                      <div
+                        style={{
+                          width: "100%",
+                          minWidth: 180,
+                          borderRadius: 8,
+                          padding: 8,
+                        }}
+                        className="border mb-1"
+                      >
+                        <h5 className="mb-2">{item.replace("*", "")}</h5>
+                        {viewAccountDetail?.BalanceMap[item]?.map(
+                          (itemInside, i) => {
+                            return (
+                              <div
+                                key={i}
+                                className={`${
+                                  viewAccountDetail?.BalanceMap[item].length > 1
+                                    ? "border-bottom"
+                                    : ""
+                                } mb-1 pb-1`}
+                              >
+                                <Col xs="12">
+                                  <Label style={{ fontSize: 12 }}>ID :</Label>{" "}
+                                  <span
+                                    style={{ fontWeight: 900, fontSize: 13 }}
+                                  >
+                                    {itemInside.ID}
+                                  </span>
+                                </Col>
+                                <Col xs="12">
+                                  <Label style={{ fontSize: 12 }}>
+                                    Value :
+                                  </Label>{" "}
+                                  <span
+                                    style={{ fontWeight: 900, fontSize: 13 }}
+                                  >
+                                    {itemInside.Value}
+                                  </span>
+                                </Col>
+                                <Col xs="12">
+                                  <Label style={{ fontSize: 12 }}>
+                                    ExpireDate :
+                                  </Label>{" "}
+                                  <span
+                                    style={{ fontWeight: 900, fontSize: 12 }}
+                                  >
+                                    {itemInside.ExpirationDate}
+                                  </span>
+                                </Col>
+                              </div>
+                            );
+                          }
+                        )}
+                      </div>
+                    );
+                  }
+                })
               : null}
           </div>
         </Row>
