@@ -122,39 +122,6 @@ const AccountsUpdate = () => {
                   </FormFeedback>
                 ) : null}
               </Col>
-              {/* ActionPlanIDs */}
-              <Col xs="12" sm="6" md="4" className="mb-1">
-                <Label className="form-label" for="mobile">
-                  ActionPlanIDs
-                </Label>
-                <Select
-                  placeholder="Select ActionPlanIDs"
-                  isLoading={getActionPlansLoading}
-                  isClearable={false}
-                  options={actionPlans}
-                  className={`react-select ${
-                    updateAccountController.touched.ActionPlanIDs &&
-                    updateAccountController.errors.ActionPlanIDs
-                      ? "form_error"
-                      : ""
-                  }`}
-                  classNamePrefix="select"
-                  theme={selectThemeColors}
-                  value={updateAccountController.values.ActionPlanIDs}
-                  onChange={(value) => {
-                    updateAccountController.setFieldValue(
-                      "ActionPlanIDs",
-                      value
-                    );
-                  }}
-                />
-                {updateAccountController.touched.ActionPlanIDs &&
-                updateAccountController.errors.ActionPlanIDs ? (
-                  <FormFeedback style={{ display: "block" }}>
-                    The ActionPlanIDs field is required.
-                  </FormFeedback>
-                ) : null}
-              </Col>
               {/* ActionTriggerIDs */}
               <Col xs="12" sm="6" md="4" className="mb-1">
                 <Label className="form-label" for="mobile">

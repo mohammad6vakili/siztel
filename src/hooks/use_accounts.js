@@ -12,6 +12,7 @@ import {
   setViewAccountDetail,
   setViewAccountDetailLoading,
 } from "../redux/accounts_slice";
+import { BALANCE_DATA } from "../constant/balance_data";
 
 const useAccounts = () => {
   const dispatch = useDispatch();
@@ -114,7 +115,7 @@ const useAccounts = () => {
     let postData = {
       Tenant: values.Tenant,
       Account: values.Account,
-      ActionPlanIDs: "",
+      ActionPlanIDs: [],
       ActionPlansOverwrite: false,
       ActionTriggerIDs: [values.ActionTriggerIDs.value],
       ActionTriggerOverwrite: false,
@@ -122,7 +123,7 @@ const useAccounts = () => {
       ReloadScheduler: false,
     };
     if (values.ActionPlanIDs) {
-      postData.ActionPlanIDs = [values.ActionPlanIDs.value];
+      postData.ActionPlanIDs.push(values.ActionPlanIDs.value);
     }
     try {
       setLoadings({ ...loadings, createAccount: true });
@@ -228,7 +229,6 @@ const useAccounts = () => {
       });
       setLoadings({ ...loadings, getAccountById: false });
       if (response.data.result) {
-        console.log(response.data.result);
         updateAccountController.setFieldValue(
           "Tenant",
           response.data.result.ID.split(":")[0]
@@ -243,25 +243,11 @@ const useAccounts = () => {
         });
         if (response.data.result.BalanceMap) {
           Object.keys(response.data.result.BalanceMap).map((item) => {
-            if (item === "*data") {
-              balanceArray.push({
-                id: Math.random() * 9430430,
-                label: "1Gigabyte Data Monthly",
-                value: response.data.result.BalanceMap[item][0],
-              });
-            } else if (item === "*monetary") {
-              balanceArray.push({
-                id: Math.random() * 9430430,
-                label: "100000 Unit Monetary",
-                value: response.data.result.BalanceMap[item][0],
-              });
-            } else if (item === "*voice") {
-              balanceArray.push({
-                id: Math.random() * 9430430,
-                label: "10 Hour Voice Monthly",
-                value: response.data.result.BalanceMap[item][0],
-              });
-            }
+            BALANCE_DATA.find((bal) => {
+              if (bal.value.BalanceType === item) {
+                balanceArray.push(bal);
+              }
+            });
           });
           updateAccountController.setFieldValue("Balances", balanceArray);
         }
