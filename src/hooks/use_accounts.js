@@ -3,7 +3,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import useHttp from "./use_http";
 import { useNavigate } from "react-router-dom";
-import { createAccountSchema } from "../utility/schemas/index";
+import {
+  createAccountSchema,
+  updateAccountSchema,
+} from "../utility/schemas/index";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setViewAccountDetail,
@@ -111,13 +114,16 @@ const useAccounts = () => {
     let postData = {
       Tenant: values.Tenant,
       Account: values.Account,
-      ActionPlanIDs: [values.ActionPlanIDs.value],
+      ActionPlanIDs: "",
       ActionPlansOverwrite: false,
       ActionTriggerIDs: [values.ActionTriggerIDs.value],
       ActionTriggerOverwrite: false,
       ExtraOptions: {},
       ReloadScheduler: false,
     };
+    if (values.ActionPlanIDs) {
+      postData.ActionPlanIDs = [values.ActionPlanIDs.value];
+    }
     try {
       setLoadings({ ...loadings, createAccount: true });
       const response = await httpService.post("", {
@@ -271,7 +277,6 @@ const useAccounts = () => {
     initialValues: {
       Tenant: "",
       Account: "",
-      ActionPlanIDs: null,
       ActionPlansOverwrite: false,
       ActionTriggerIDs: null,
       ActionTriggerOverwrite: false,
@@ -279,7 +284,7 @@ const useAccounts = () => {
       ReloadScheduler: false,
       Balances: null,
     },
-    validationSchema: createAccountSchema,
+    validationSchema: updateAccountSchema,
     onSubmit: (values) => {
       createAccount(values);
     },

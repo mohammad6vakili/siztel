@@ -61,3 +61,16 @@ export const createAccountSchema = yup.object({
     .min(1, "You should select a balance.")
     .required("You should select a balance."),
 });
+
+export const updateAccountSchema = yup.object({
+  Account: yup.string().required("The Account field is required."),
+  Tenant: yup.string().required("The Tenant field is required."),
+  ActionTriggerIDs: yup
+    .object()
+    .nullable(false)
+    .required("The ActionTriggerIDs field is required."),
+  Balances: yup
+    .array()
+    .min(1, "You should select a balance.")
+    .required("You should select a balance."),
+});
