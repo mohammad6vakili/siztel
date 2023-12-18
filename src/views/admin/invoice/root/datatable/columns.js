@@ -16,7 +16,7 @@ export const columns = [
   },
   {
     name: "EndTime",
-    minWidth: "100px",
+    minWidth: "200px",
     selector: (row) => row.EndTime,
     cell: (row) => {
       return moment(row.EndTime).utc().format("YYYY/MM/DD HH:mm:ss");
@@ -24,17 +24,17 @@ export const columns = [
   },
   {
     name: "InvoicePrice",
-    minWidth: "100px",
+    minWidth: "200px",
     selector: (row) => row.InvoicePrice,
   },
   {
     name: "Status",
-    minWidth: "100px",
+    minWidth: "200px",
     selector: (row) => row.Status,
   },
   {
     name: "CreatedAt",
-    minWidth: "100px",
+    minWidth: "200px",
     selector: (row) => row.CreatedAt,
     cell: (row) => {
       return moment(row.CreatedAt).utc().format("YYYY/MM/DD HH:mm:ss");

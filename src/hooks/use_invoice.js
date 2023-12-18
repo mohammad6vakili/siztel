@@ -31,18 +31,18 @@ const useInvoice = () => {
     if (!without_filter && filters.from_time) {
       postData.from_time =
         filters.from_time.year +
-        "/" +
+        "-" +
         filters.from_time.month +
-        "/" +
+        "-" +
         filters.from_time.day +
         "T00:00:00Z";
     }
     if (!without_filter && filters.to_time) {
       postData.to_time =
         filters.to_time.year +
-        "/" +
+        "-" +
         filters.to_time.month +
-        "/" +
+        "-" +
         filters.to_time.day +
         "T00:00:00Z";
     }

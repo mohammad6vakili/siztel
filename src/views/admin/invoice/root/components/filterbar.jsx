@@ -40,7 +40,7 @@ const Filterbar = ({ filters, setFilters, getInvoices }) => {
         <CardBody>
           <Row>
             {/* imsi */}
-            <Col className="mt-1" xs="12" sm="6" md="3">
+            <Col className="mt-1" xs="12" sm="6" md="4">
               <Label for="user" className="form-label">
                 imsi
               </Label>
@@ -51,6 +51,38 @@ const Filterbar = ({ filters, setFilters, getInvoices }) => {
                 onChange={(e) =>
                   setFilters({ ...filters, imsi: e.target.value })
                 }
+              />
+            </Col>
+            {/* from_time */}
+            <Col className="mt-1" xs="12" sm="6" md="4">
+              <Label for="user" className="form-label">
+                From Time
+              </Label>
+              <CustomDatePicker
+                inputPlaceholder="Click to open calendar"
+                value={filters.from_time}
+                onChange={(value) => {
+                  setFilters({
+                    ...filters,
+                    from_time: value,
+                  });
+                }}
+              />
+            </Col>
+            {/* to_time */}
+            <Col className="mt-1" xs="12" sm="6" md="4">
+              <Label for="user" className="form-label">
+                To Time
+              </Label>
+              <CustomDatePicker
+                inputPlaceholder="Click to open calendar"
+                value={filters.to_time}
+                onChange={(value) => {
+                  setFilters({
+                    ...filters,
+                    to_time: value,
+                  });
+                }}
               />
             </Col>
           </Row>
