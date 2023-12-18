@@ -6,7 +6,7 @@ import ProgressLoading from "../../../../components/progress_loading/index";
 import DataTable from "react-data-table-component";
 import { ChevronDown } from "react-feather";
 import { columns } from "./datatable/columns";
-import InvoiceData from "../../../../data/invoice.json";
+import FilterBar from "./components/filterbar";
 
 const InvoiceRoot = () => {
   const { skin } = useSkin();
@@ -20,6 +20,11 @@ const InvoiceRoot = () => {
   return (
     <Fragment>
       <Breadcrumbs title="Invoice" data={[{ title: "Invoice" }]} />
+      <FilterBar
+        filters={filters}
+        setFilters={setFilters}
+        getInvoices={getInvoices}
+      />
       {/* datatable */}
       <div className="react-dataTable mv_datatable_container">
         {!loadings.getInvoices ? (

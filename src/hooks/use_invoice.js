@@ -10,7 +10,7 @@ const useInvoice = () => {
   });
 
   const [filters, setFilters] = useState({
-    imsi: "",
+    imsi: null,
     from_time: null,
     to_time: null,
   });
@@ -25,7 +25,7 @@ const useInvoice = () => {
       page: 1,
       per_page: 100,
     };
-    if (!without_filter && filters.imsi.length > 0) {
+    if (!without_filter && filters?.imsi) {
       postData.imsi = filters.imsi;
     }
     if (!without_filter && filters.from_time) {
@@ -46,6 +46,8 @@ const useInvoice = () => {
         filters.to_time.day +
         "T00:00:00Z";
     }
+    console.log(postData);
+
     try {
       setLoadings({ ...loadings, getInvoices: true });
       const response = await axios.post(
