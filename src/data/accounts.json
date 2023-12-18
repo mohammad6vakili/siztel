@@ -1,0 +1,218 @@
+[
+    {
+        "ID": "cgrates.org:999809999900004",
+        "BalanceMap": null,
+        "UnitCounters": null,
+        "ActionTriggers": null,
+        "AllowNegative": false,
+        "Disabled": false,
+        "UpdateTime": "2023-12-06T14:38:34.176069615Z"
+    },
+    {
+        "ID": "cgrates.org:0059",
+        "BalanceMap": {
+            "*monetary": [
+                {
+                    "Uuid": "3be429b7-b98a-4c86-a038-26df4c23b53e",
+                    "ID": "100KMoney",
+                    "Value": 100000,
+                    "ExpirationDate": "2024-01-14T00:00:00Z",
+                    "Weight": 10,
+                    "DestinationIDs": {},
+                    "RatingSubject": "",
+                    "Categories": {},
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": true
+                }
+            ],
+            "*voice": [
+                {
+                    "Uuid": "478bcbec-388e-40ce-af0f-0b50876f6f2b",
+                    "ID": "10HVoice",
+                    "Value": 36000000000000,
+                    "ExpirationDate": "2030-01-14T00:00:00Z",
+                    "Weight": 10,
+                    "DestinationIDs": {},
+                    "RatingSubject": "",
+                    "Categories": {
+                        "voice": true
+                    },
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": false
+                }
+            ]
+        },
+        "UnitCounters": null,
+        "ActionTriggers": null,
+        "AllowNegative": false,
+        "Disabled": false,
+        "UpdateTime": "2023-12-13T15:28:36.156649364Z"
+    },
+    {
+        "ID": "cgrates.org:999809999900009",
+        "BalanceMap": null,
+        "UnitCounters": null,
+        "ActionTriggers": null,
+        "AllowNegative": false,
+        "Disabled": false,
+        "UpdateTime": "2023-12-13T12:04:59.250728844Z"
+    },
+    {
+        "ID": "cgrates.org:999809999900005",
+        "BalanceMap": null,
+        "UnitCounters": null,
+        "ActionTriggers": null,
+        "AllowNegative": false,
+        "Disabled": false,
+        "UpdateTime": "2023-12-06T14:39:15.562970429Z"
+    },
+    {
+        "ID": "cgrates.org:418200000069759",
+        "BalanceMap": {
+            "*data": [
+                {
+                    "Uuid": "b6977fff-9112-4735-8324-59bcf96ea44b",
+                    "ID": "1G_DATA",
+                    "Value": 104857600000,
+                    "ExpirationDate": "2024-01-13T19:07:12+03:30",
+                    "Weight": 10,
+                    "DestinationIDs": {},
+                    "RatingSubject": "",
+                    "Categories": {
+                        "data": true
+                    },
+                    "SharedGroups": {},
+                    "Timings": [
+                        {
+                            "ID": "*any",
+                            "Years": [],
+                            "Months": [],
+                            "MonthDays": [],
+                            "WeekDays": [],
+                            "StartTime": "00:00:00",
+                            "EndTime": ""
+                        }
+                    ],
+                    "TimingIDs": {
+                        "*any": true
+                    },
+                    "Disabled": false,
+                    "Factor": null,
+                    "Blocker": true
+                }
+            ]
+        },
+        "UnitCounters": null,
+        "ActionTriggers": [
+            {
+                "ID": "AT_SIP",
+                "UniqueID": "4a8e82cc-c3a6-4f12-a144-b3d081d84cb9",
+                "ThresholdType": "*min_balance",
+                "ThresholdValue": 1,
+                "Recurrent": false,
+                "MinSleep": 0,
+                "ExpirationDate": "2024-09-14T00:00:00Z",
+                "ActivationDate": "2023-03-14T00:00:00Z",
+                "Balance": {
+                    "Uuid": null,
+                    "ID": null,
+                    "Type": null,
+                    "Value": null,
+                    "ExpirationDate": null,
+                    "Weight": 10,
+                    "DestinationIDs": null,
+                    "RatingSubject": null,
+                    "Categories": null,
+                    "SharedGroups": null,
+                    "TimingIDs": null,
+                    "Timings": null,
+                    "Disabled": null,
+                    "Factor": null,
+                    "Blocker": null
+                },
+                "Weight": 10,
+                "ActionsID": "DISABLE_ACCOUNT",
+                "MinQueuedItems": 0,
+                "Executed": false,
+                "LastExecutionTime": "0001-01-01T00:00:00Z"
+            }
+        ],
+        "AllowNegative": false,
+        "Disabled": false,
+        "UpdateTime": "2023-12-13T15:38:44.912199874Z"
+    },
+    {
+        "ID": "cgrates.org:sip:0059@ims.mnc020.mcc418.3gppnetwork.org",
+        "BalanceMap": null,
+        "UnitCounters": null,
+        "ActionTriggers": [
+            {
+                "ID": "AT_SIP",
+                "UniqueID": "4a8e82cc-c3a6-4f12-a144-b3d081d84cb9",
+                "ThresholdType": "*min_balance",
+                "ThresholdValue": 1,
+                "Recurrent": false,
+                "MinSleep": 0,
+                "ExpirationDate": "2024-09-14T00:00:00Z",
+                "ActivationDate": "2023-03-14T00:00:00Z",
+                "Balance": {
+                    "Uuid": null,
+                    "ID": null,
+                    "Type": null,
+                    "Value": null,
+                    "ExpirationDate": null,
+                    "Weight": 10,
+                    "DestinationIDs": null,
+                    "RatingSubject": null,
+                    "Categories": null,
+                    "SharedGroups": null,
+                    "TimingIDs": null,
+                    "Timings": null,
+                    "Disabled": null,
+                    "Factor": null,
+                    "Blocker": null
+                },
+                "Weight": 10,
+                "ActionsID": "DISABLE_ACCOUNT",
+                "MinQueuedItems": 0,
+                "Executed": false,
+                "LastExecutionTime": "0001-01-01T00:00:00Z"
+            }
+        ],
+        "AllowNegative": true,
+        "Disabled": false,
+        "UpdateTime": "2023-12-13T15:33:20.325720488Z"
+    }
+]
